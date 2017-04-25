@@ -1,6 +1,6 @@
 const express = require('express');
 
-let port = 3000; // process.env.PORT || 
+let port = process.env.PORT || 3000;
 
 let redirectToHomePage = function (req, res) {
 	require('fs').readFile('./public/index.html', 'utf8', function (err, text) {
