@@ -1,0 +1,76 @@
+body{
+    font-family: "Rubik", sans-serif;
+    color: black;
+    padding: 0px;
+    margin: 0px;
+}
+.form-control:focus {
+    border-color: #ffda31;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 218, 49, 0.5);
+}
+
+img.logoto {
+
+    width: 170px;
+    height: 90px;
+}
+.top-nav{
+    background: white;
+    padding: 5px;
+}
+.search{
+    padding-top: 30px;
+}
+.log-in-reg{
+    padding-top: 35px;
+    padding-left: 0px;
+    list-style: none;
+}
+.log-in-reg > li{
+    margin-left: 10px;
+    margin-right: 15px;
+    display: inline-block;
+    font-weight: bold;
+}
+.log-in-reg > li a {
+    color: black;
+    text-decoration: none;
+}
+.log-in-reg > li a:hover {
+    color: #ffda31;
+}
+.navigation{
+    background: #FFDA31;
+    text-align: center;
+    list-style:none;
+}
+.navigation > li {
+    border-right: 1px solid #ffe984;
+    /*text-align: center;*/
+    padding: 10px 35px;
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+}
+.navigation > li:first-child{
+    border-left:1px solid #ffe984 ;
+}
+.navigation > li a {
+    color: black;
+    text-decoration: none;
+}
+
+.navigation > li:hover {
+    cursor: pointer;
+    background-color: #ffe984;
+}
+
+/*.search-form{*/
+    /*padding: 20px;*/
+    /*border: 1px solid black;*/
+    /*border-radius: 10px;*/
+/*}*/
+h2{
+    text-align: center;
+    margin-bottom: 40px;
+}

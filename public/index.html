@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BestCars</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/mine.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+
+
+    <!--<script src="./node_modules/jquery/dist/jquery.min.js"></script>-->
+    <!--<script src="scripts/script.js"></script>-->
+    <!--<script src="scripts/jquery-3.2.1.min.js"></script>-->
+    <!--<script src="../bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>-->
+</head>
+
+<body>
+    <header class="container-fluid">
+        <div class="row top-nav">
+            <div class="col-md-4 text-right logo">
+                <img class="animated fadeInLeft logoto" class="img-responsive" src="./images/Sell-Your-Used-Car-Online222.jpg" />
+            </div>
+            <div class="col-md-4 search">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Търси">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <ul class="log-in-reg">
+
+                    <li class="btn btn-success"><a href="#/login">Вход</a></li>
+                    <li class="btn btn-success"><a href="#/register">Регистрация</a></li>
+                    <li class="btn btn-danger"><a href="#/logout">Излез</a></li>
+                </ul>
+            </div>
+        </div>
+        <nav class="row">
+            <ul class="navigation">
+                <li id="first"><a href="#/cars">Автомобили</a></li>
+                <li><a href="#/motors">Мотоциклети</a></li>
+                <li><a href="#/trucks">Камиони</a></li>
+                <li><a href="#/caravans">Каравани</a></li>
+                <li><a href="#/about">За нас</a></li>
+                <li><a href="#/contacts">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="app-container" class="container">
+        <div id="route" class="container jumbotron"></div>  
+        <div id="home-page-results">
+            <form class="form-horizontal search-form animated fadeInUp" />
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label">Град</label>
+                    <select class="form-control">
+                    <option value="1">София</option>
+                    <option value="3">Пловдив</option>
+                    <option value="2">Бургас</option>
+                </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label">Марка</label>
+                    <select class="form-control">
+                        <option value="1">BMW</option>
+                        <option value="3">Mercedes</option>
+                        <option value="2">Trabant</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label">Модел</label>
+                    <select class="form-control">
+                        <option value="1">156</option>
+                        <option value="3">алфа</option>
+                        <option value="2">кадет</option>
+                    </select>
+                </div>
+            </div>
+            <hr class="blabla" />
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label">Година</label>
+                    <select class="form-control">
+                        <option value="1">Bus</option>
+                        <option value="3">Car</option>
+                        <option value="2">Caravan</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label">Скоростна кутия</label>
+                    <select class="form-control">
+                        <option value="1">Bus</option>
+                        <option value="3">Car</option>
+                        <option value="2">Caravan</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label">Двигател</label>
+                    <select class="form-control">
+                        <option value="1">Бензин</option>
+                        <option value="3">Дизел</option>
+                        <option value="2">Пропан</option>
+                    </select>
+                </div>
+            </div>
+            <hr />
+
+            <div class="container">
+                <h2>Резултати</h2>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">BMW</div>
+                            <div class="panel-body"><img src="images/30-2016-bmw-7-series.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">FERRARI</div>
+                            <div class="panel-body"><img src="images/sporty-hood-of-2016-ferrari-488-with-aerodynamic-grille.jpg" class="img-responsive"
+                                    style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">BMW</div>
+                            <div class="panel-body"><img src="images/manhart-g11-bmw-7-series.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">BLACK FRIDAY DEAL</div>
+                            <div class="panel-body"><img src="images/sporty-hood-of-2016-ferrari-488-with-aerodynamic-grille.jpg" class="img-responsive"
+                                    style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">BLACK FRIDAY DEAL</div>
+                            <div class="panel-body"><img src="images/best-of-WA-Livigno-2016-0317.jpg" class="img-responsive" style="width:100%"
+                                    alt="Image"></div>
+                            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">BLACK FRIDAY DEAL</div>
+                            <div class="panel-body"><img src="images/manhart-g11-bmw-7-series.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br>
+        </div>
+    </main>
+
+<script src="libs/jquery/dist/jquery.min.js"></script>
+<script src="libs/systemjs/dist/system.js"></script>
+<script src="js/system-config.js"></script>
+<script src="libs/sammy/lib/sammy.js"></script>
+<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

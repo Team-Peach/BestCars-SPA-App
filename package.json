@@ -1,0 +1,34 @@
+{
+  "name": "bestcars",
+  "version": "1.0.0",
+  "description": "Telerik academy teamwork SPA app",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Peach/BestCars-SPA-App.git"
+  },
+  "keywords": [
+    "teamwork",
+    "SPA",
+    "application"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Team-Peach/BestCars-SPA-App/issues"
+  },
+  "homepage": "https://github.com/Team-Peach/BestCars-SPA-App#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.15.2",
+    "jquery": "^3.2.1",
+    "sammy": "^0.7.6",
+    "systemjs": "^0.20.12",
+    "systemjs-plugin-babel": "0.0.21",
+    "systemjs-plugin-text": "0.0.9",
+    "toastr": "^2.1.2"
+  }
+}
