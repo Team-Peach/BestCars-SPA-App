@@ -1,15 +1,16 @@
 /*globals $, Sammy*/
+import 'addEventOnButtonsForChangeTheRoute';
+import {homeController} from 'homeController';
+import {carsController} from 'carsController';
 
 (function () {
 	var sammyApp = Sammy('#app-container', function () {
 
-		this.get('/#/', function () {
-			$('#route').html('TODO home');
-		});
+		this.get('#/', homeController);
 
-		this.get('#/cars', function () {
-			$('#route').html('TODO cars');
-		});
+		this.get('#/home', homeController);
+
+		this.get('#/cars', carsController);
 
 		this.get('#/motors', function () {
 			$('#route').html('TODO motors');
@@ -45,6 +46,6 @@
 	});
 
 	$(function () {
-		sammyApp.run('#/home');
+		sammyApp.run('#/');
 	});
 })();

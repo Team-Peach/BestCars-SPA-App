@@ -9,11 +9,19 @@ System.config({
 
 		// library
 		// 'jquery': 'libs/jquery/dist/jquery.min.js',
-		// 'bootstrap': './../node_modules/bootstrap/dist/js/bootstrap.min.js',
-		// 'Sammy': 'libs/sammy/lib/sammy.js'
+		// 'bootstrap': 'libs/bootstrap/dist/js/bootstrap.min.js',
+		// 'sammy': 'libs/sammy/lib/sammy.js'
+		// 'toastr': 'libs/toastr/build/toastr.min.js',
+		// 'handlebars': 'libs/handlebars/dist/handlebars.min.js',
 
 		// app scripts
 		'app': 'js/app.js',
+		'addEventOnButtonsForChangeTheRoute' : 'js/utils/addEventOnButtonsForChangeTheRoute.js',
+		'requester' : 'js/requester.js',
+		'data' : 'js/data.js',
+		'templates': 'js/templates.js',
+		'homeController': 'js/controllers/homeController.js',
+		'carsController': 'js/controllers/carsController.js',
 	}
 });
 
