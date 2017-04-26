@@ -7,7 +7,7 @@ const kinveyUserAuthorization = 'Kinvey ';
 
 const kinveyAppDataUrl = 'https://baas.kinvey.com/appdata/kid_HJD_8Q9Al';
 
-const kinveyUsersProfileColleciton = '/usersProfile';
+const kinveyUsersProfileCollection = '/usersProfile';
 
 export { kinveyKey, kinveySecret, kinveyBasicHeaders, guestUserAuthToken, kinveyHeaderKey, kinveyUserAuthorization, 
-    kinveyAppDataUrl, kinveyUsersProfileColleciton };
+    kinveyAppDataUrl, kinveyUsersProfileCollection };

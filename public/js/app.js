@@ -33,13 +33,9 @@ import * as usersController from 'usersController';
 			$('#route').html('TODO contacts');
 		});
 
-		this.get('#/register', function () {
-			usersController.loadRegistrationForm();
-		});
+		this.get('#/register', usersController.loadRegistrationForm);
 
-		this.get('#/login', function () {
-			usersController.loadLoginForm();
-		});
+		this.get('#/login', usersController.loadLoginForm);
 
 		this.get('#/logout', function () {
 			$('#route').html('TODO logout');
