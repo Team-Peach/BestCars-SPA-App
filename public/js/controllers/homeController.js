@@ -2,7 +2,7 @@
 import { getHome as getHome } from 'data';
 import { load as loadTemplate } from 'templates';
 
-let $appContainer = $('app-container');
+let $appContainer = $('#app-container');
 export function homeController(params) {
 	//TODO delete this -  just for test 
 	$('#route').html('TODO home');

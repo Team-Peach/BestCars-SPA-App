@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Telerik academy teamwork SPA app",
   "main": "index.html",
+  "start": "node server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

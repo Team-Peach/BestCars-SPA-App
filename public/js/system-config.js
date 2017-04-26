@@ -20,8 +20,10 @@ System.config({
 		'requester' : 'js/requester.js',
 		'data' : 'js/data.js',
 		'templates': 'js/templates.js',
+		'constants': 'js/utils/constants.js',
 		'homeController': 'js/controllers/homeController.js',
 		'carsController': 'js/controllers/carsController.js',
+		'usersController': 'js/controllers/usersController.js'
 	}
 });
 

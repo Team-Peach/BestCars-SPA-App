@@ -2,6 +2,7 @@
 import 'addEventOnButtonsForChangeTheRoute';
 import {homeController} from 'homeController';
 import {carsController} from 'carsController';
+import * as usersController from 'usersController';
 
 (function () {
 	var sammyApp = Sammy('#app-container', function () {
@@ -33,11 +34,11 @@ import {carsController} from 'carsController';
 		});
 
 		this.get('#/register', function () {
-			$('#route').html('TODO register');
+			usersController.loadRegistrationForm();
 		});
 
 		this.get('#/login', function () {
-			$('#route').html('TODO login');
+			usersController.loadLoginForm();
 		});
 
 		this.get('#/logout', function () {
