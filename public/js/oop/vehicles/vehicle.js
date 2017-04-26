@@ -1,17 +1,17 @@
 class Vehicle {
-    constructor(manufacturer, model, year, kilometers, price, type) {
+    constructor(manufacturer, model, year, kilometers, price, fuel, transmission, horsepower) {
         this._manufacturer = manufacturer;
         this._model = model;
         this._year = year;
-        this._price = price;
         this._kilometers = kilometers;
-        this._type = type;
-        this._comments = [];
-
+        this._price = price;
+        this._fuel = fuel;
+        this._transmission = transmission;
+        this._horsepower = horsepower;
     }
 
     get manufacturer() {
-    return this._manufacturer;
+        return this._manufacturer;
     }
 
     set manufacturer(value) {
@@ -47,7 +47,7 @@ class Vehicle {
     }
 
     set kilometers(value) {
-        this._kilometers = kilometers;
+        this._kilometers = value;
     }
 
     get type() {
@@ -57,4 +57,30 @@ class Vehicle {
     set type(value) {
         this._type = value;
     }
+
+    get fuel() {
+        return this._fuel;
+    }
+
+    set fuel(value) {
+        this._fuel = value;
+    }
+
+    get transmission() {
+        return this._transmission;
+    }
+
+    set transmission(value) {
+        this._transmission = value;
+    }
+
+     get horsepower() {
+        return this._horsepower;
+    }
+
+    set horsepower(value) {
+        this._horsepower = value;
+    }
 }
+
+export { Vehicle };

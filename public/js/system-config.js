@@ -15,6 +15,15 @@ System.config({
 		// 'handlebars': 'libs/handlebars/dist/handlebars.min.js',
 
 		// app scripts
+		'Vehicle': 'js/OOP/vehicles/vehicle.js',
+		'Car': 'js/OOP/vehicles/car.js',
+		'Motorcycle': 'js/OOP/vehicles/motorcycle.js',
+		'Truck': 'js/OOP/vehicles/truck.js',
+		'Camper': 'js/OOP/vehicles/camper.js',
+		'Advertisement': 'js/OOP/advertisement.js',
+		'Comment': 'js/OOP/comment.js',
+		'User': 'js/OOP/user.js',
+
 		'app': 'js/app.js',
 		'addEventOnButtonsForChangeTheRoute' : 'js/utils/addEventOnButtonsForChangeTheRoute.js',
 		'requester' : 'js/requester.js',
@@ -23,7 +32,8 @@ System.config({
 		'constants': 'js/utils/constants.js',
 		'homeController': 'js/controllers/homeController.js',
 		'carsController': 'js/controllers/carsController.js',
-		'usersController': 'js/controllers/usersController.js'
+		'usersController': 'js/controllers/usersController.js',
+
 	}
 });
 

@@ -1,0 +1,49 @@
+{
+	"cars": [
+		{
+			"manufacturer": "BMW",
+			"model": "528",
+			"yearOfManufacture": "1997",
+			"kilometersTraveled": "220 000",
+			"price": "14 000",
+			"fuel" : "Бензин",
+			"transmission":"Автоматични",
+			"horsepower" : 193,
+
+			"type": "Комби",
+			"numberOfDoors": 5,
+			"numberOfSeats": 5,
+			"color": "Светло сив"
+		},
+
+		{
+			"manufacturer": "Audi",
+			"model": "A4",
+			"yearOfManufacture": "2009",
+			"kilometersTraveled": "210 000",
+			"price": "15 900",
+			"fuel" : "Дизел",
+			"transmission":"Ръчни",
+			"horsepower" : 143,
+			"type": "Комби",
+			"numberOfDoors": 5,
+			"numberOfSeats": 5,
+			"color": "Черен"
+		},
+
+		{
+			"manufacturer": "Honda",
+			"model": "Civic 2",
+			"yearOfManufacture": "2006",
+			"kilometersTraveled": "141 000",
+			"price": "9 500",
+			"fuel" : "Дизел",
+			"transmission":"Ръчни",
+			"horsepower" : 140,
+			"type": "Хечбек",
+			"numberOfDoors": 5,
+			"numberOfSeats": 5,
+			"color": "Сив"
+		}
+	]
+}

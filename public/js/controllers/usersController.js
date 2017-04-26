@@ -7,13 +7,13 @@ let $appContainer = $('#app-container');
 export function loadRegistrationForm() {
     loadTemplate('register')
         .then(template => {
-            $appContainer.html(template())
+            $appContainer.html(template());
         });
 }
 
 export function loadLoginForm() {
     loadTemplate('login')
         .then(template => {
-            $appContainer.html(template())
+            $appContainer.html(template());
         });
 }

@@ -1,12 +1,13 @@
-class Car extends Vehicle {
-    constructor(manufacturer, model, year, kilometers,price, numberOfDoors, numberOfSeats, type, color, engine) {
-        super(manufacturer, model, year, kilometers, price, type);
+import { Vehicle } from "Vehicle";
 
+class Car extends Vehicle {
+    constructor(manufacturer, model, year, kilometers, price, fuel, transmission, horsepower, type, numberOfDoors, numberOfSeats, color) {
+        super(manufacturer, model, year, kilometers, price, fuel, transmission, horsepower);
+
+        this._type = type;
         this._numberOfDoors = numberOfDoors;
         this._numberOfSeats = numberOfSeats;
-        this._type = type;
         this._color = color;
-        this._engine = engine;
     }
     get numberOfDoors() {
         return this._numberOfDoors;
@@ -37,5 +38,6 @@ class Car extends Vehicle {
     set engine(value) {
         this._engine = value;
     }
-
 }
+
+export { Car };

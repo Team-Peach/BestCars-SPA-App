@@ -10,15 +10,16 @@ class User {
         this._town = town;
         this.adds = [];
     }
+
     get firstName() {
         return this._firstName;
     }
     set firstName(value) {
-        if(value.length < 3 || value.length > 20){
+        if (value.length < 3 || value.length > 20) {
             throw new TypeError("First name must be between 3 and 20 characters long");
         }
         let firstNameRegex = /^[A-Za-z]+$/;
-        if(! firstNameRegex.test(value)){
+        if (!firstNameRegex.test(value)) {
             throw new TypeError("First name must contain only Latin characters");
         }
 
@@ -29,11 +30,11 @@ class User {
         return this._lastName;
     }
     set lastName(value) {
-        if(value.length < 3 || value.length > 20){
+        if (value.length < 3 || value.length > 20) {
             throw new TypeError("Last name must be between 3 and 20 characters long");
         }
         let lastNameRegex = /^[A-Za-z]+$/;
-        if(! lastNameRegex.test(value)){
+        if (!lastNameRegex.test(value)) {
             throw new TypeError("Last name must contain only Latin characters");
         }
 
@@ -59,7 +60,7 @@ class User {
     }
     set email(value) {
         let emailRegex = /^\w+@[a-zA-Z.]+$/;
-        if(! emailRegex.test(value)){
+        if (!emailRegex.test(value)) {
             throw new TypeError("Invalid e-mail");
         }
 
@@ -90,8 +91,9 @@ class User {
     get adds() {
         return this.adds;
     }
-    set phoneNumber(value) {
+    set adds(value) {
         this.adds = value;
     }
-    
 }
+
+export { User };
