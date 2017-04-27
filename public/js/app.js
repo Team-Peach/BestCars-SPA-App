@@ -1,7 +1,7 @@
 /*globals $, Sammy*/
 import 'addEventOnButtonsForChangeTheRoute';
 import {homeController} from 'homeController';
-import {carsController} from 'carsController';
+import * as carsController from 'carsController';
 import * as usersController from 'usersController';
 
 (function () {
@@ -12,8 +12,10 @@ import * as usersController from 'usersController';
 		this.get('#/home', homeController);
 		
 		this.post('#/home', homeController);
+		
+		this.get('#/cars', carsController.get);
 
-		this.get('#/cars', carsController);
+		this.post('#/cars', carsController.post);
 
 		this.get('#/motors', function () {
 			$('#route').html('TODO motors');
@@ -44,7 +46,6 @@ import * as usersController from 'usersController';
 		});
 
 		this.get('#/logout', function (context) {
-			//$('#route').html('TODO logout');
 			usersController.logout(context);
 		});
 	});
