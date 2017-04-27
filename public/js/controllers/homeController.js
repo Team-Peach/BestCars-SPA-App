@@ -2,6 +2,15 @@
 import { getHome as getHome } from 'data';
 import { load as loadTemplate } from 'templates';
 
+export function homeController(context) {
+
+    loadTemplate('home')
+	.then(template => {
+            context.$element().html(template());
+        });
+}
+
+/*
 let $appContainer = $('#app-container');
 export function homeController(params) {
 	//TODO delete this -  just for test 
@@ -15,4 +24,6 @@ export function homeController(params) {
 			$appContainer.html(handlebarsTemplate(databaseAJAXResponse));
 		})
 		.catch((err) => console.log(err));
+	
 }
+*/

@@ -33,7 +33,9 @@ System.config({
 		'homeController': 'js/controllers/homeController.js',
 		'carsController': 'js/controllers/carsController.js',
 		'usersController': 'js/controllers/usersController.js',
+		'userData': 'js/data/userData.js',
 
+		'user': 'js/oop/user.js'
 	}
 });
 

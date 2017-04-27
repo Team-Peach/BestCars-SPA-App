@@ -10,6 +10,8 @@ import * as usersController from 'usersController';
 		this.get('#/', homeController);
 
 		this.get('#/home', homeController);
+		
+		this.post('#/home', homeController);
 
 		this.get('#/cars', carsController);
 
@@ -33,12 +35,17 @@ import * as usersController from 'usersController';
 			$('#route').html('TODO contacts');
 		});
 
-		this.get('#/register', usersController.loadRegistrationForm);
+		this.get('#/register', function (context) {
+			usersController.loadRegistrationForm(context);
+		});
 
-		this.get('#/login', usersController.loadLoginForm);
+		this.get('#/login', function (context) {
+			usersController.loadLoginForm(context);
+		});
 
-		this.get('#/logout', function () {
-			$('#route').html('TODO logout');
+		this.get('#/logout', function (context) {
+			//$('#route').html('TODO logout');
+			usersController.logout(context);
 		});
 	});
 

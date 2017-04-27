@@ -75,7 +75,7 @@ class User {
     }
 
     get country() {
-        return this._phoneNumber;
+        return this._country;
     }
     set country(value) {
         this._country = value;
@@ -87,13 +87,14 @@ class User {
     set town(value) {
         this._town = value;
     }
-
+/*
     get adds() {
         return this.adds;
     }
     set adds(value) {
         this.adds = value;
     }
+    */
 }
 
 export { User };
