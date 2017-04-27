@@ -1,6 +1,5 @@
 /*globals $*/
-//import { getHome as getHome } from 'data';
-import * as userData from 'userData';
+import { registerUser, loginUser, logoutUser } from 'data';
 import { load as loadTemplate } from 'templates';
 import { User } from 'user';
 
@@ -22,7 +21,7 @@ export function loadRegistrationForm(context) {
                 let town = $('#town').val();
 
                 user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
-                registerUser(context, user);
+                register(context, user);
              })
         });
 }
@@ -41,8 +40,8 @@ export function loadLoginForm(context) {
         });
 }
 
-export function registerUser(context, user) {
-    userData.registerUser(user)
+export function register(context, user) {
+    registerUser(user)
         .then(response => {
             sessionStorage.setItem('username', response.username);
             sessionStorage.setItem('authtoken', response._kmd.authtoken);
@@ -57,12 +56,13 @@ export function registerUser(context, user) {
 }
 
 export function login(context, user) {
-    userData.loginUser(user)
+    loginUser(user)
         .then(response => {
-            //console.log(response)
+            console.log(response)
             sessionStorage.setItem('username', response.username);
             sessionStorage.setItem('authtoken', response._kmd.authtoken);
             sessionStorage.setItem('id',response._id);
+            console.log(sessionStorage);
             //todo - ajax for user profile
             alert("Successful login");
             context.redirect('#/home');
@@ -75,7 +75,7 @@ export function login(context, user) {
 export function logout(context) {
     let authtoken = sessionStorage.getItem('authtoken');
 
-    userData.logoutUser(authtoken)
+    logoutUser(authtoken)
             .then(response => {
             sessionStorage.clear();
             // TODO: let user = {};
