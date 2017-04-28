@@ -48,6 +48,10 @@ import * as usersController from 'usersController';
 		this.get('#/logout', function (context) {
 			usersController.logout(context);
 		});
+
+		this.get('#/profile',  function (context) {
+			usersController.loadUserProfileForm(context);
+		}); /*/?:username */
 	});
 
 	$(function () {

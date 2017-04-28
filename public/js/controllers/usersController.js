@@ -1,9 +1,9 @@
 /*globals $*/
-import { registerUser, loginUser, logoutUser } from 'data';
+import { registerUser, loginUser, logoutUser, createUserProfile, getUserProfileById } from 'data';
 import { load as loadTemplate } from 'templates';
 import { User } from 'user';
 
-let user;
+let user = {};
 
 export function loadRegistrationForm(context) {
     loadTemplate('register')
@@ -20,7 +20,7 @@ export function loadRegistrationForm(context) {
                 let country = $('#country').val();
                 let town = $('#town').val();
 
-                user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
+                let user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
                 register(context, user);
              })
         });
@@ -40,32 +40,54 @@ export function loadLoginForm(context) {
         });
 }
 
+export function loadUserProfileForm(context) {
+    loadTemplate('userProfile')
+        .then(template => {
+            context.$element().html(template( { user }));
+        });
+}
+
 export function register(context, user) {
     registerUser(user)
         .then(response => {
-            sessionStorage.setItem('username', response.username);
-            sessionStorage.setItem('authtoken', response._kmd.authtoken);
-            sessionStorage.setItem('id',response._id);
-            //todo - ajax for user profile
-            alert("Welcome to BestCars!");
-            context.redirect('#/home');
-        }, error => {
-            alert("Unsuccessful registration");
-            context.redirect('#/home');
+            let username = response.username;
+            let authtoken = response._kmd.authtoken;
+            let userId = response._id;
+            sessionStorage.setItem('username', username);
+            sessionStorage.setItem('authtoken', authtoken);
+            sessionStorage.setItem('id', userId);   
+            createProfile(user, authtoken)
+                .then(response => {
+                    alert("Welcome to BestCars!");
+                    context.redirect('#/profile');
+                }, error => {
+                    alert("Unsuccessful registration");
+                    context.redirect('#/home');
+                });
+            }, error => {
+                alert("Unsuccessful registration");
+                context.redirect('#/home');
         });
 }
 
 export function login(context, user) {
     loginUser(user)
         .then(response => {
-            console.log(response)
-            sessionStorage.setItem('username', response.username);
-            sessionStorage.setItem('authtoken', response._kmd.authtoken);
-            sessionStorage.setItem('id',response._id);
-            console.log(sessionStorage);
-            //todo - ajax for user profile
-            alert("Successful login");
-            context.redirect('#/home');
+            let username = response.username;
+            let authtoken = response._kmd.authtoken;
+            let userId = response._id;
+            sessionStorage.setItem('username', username);
+            sessionStorage.setItem('authtoken', authtoken);
+            sessionStorage.setItem('id', userId);  
+            //TODO: refactor
+            getProfileById(userId, authtoken)
+                .then(response => {
+                    console.log(response)
+                    context.redirect("#/profile");
+                }, error => {
+                    console.log(error)
+                    context.redirect("#/home");
+                })
         }, error => {
             alert("Unsuccessful login");
             context.redirect('#/home');
@@ -76,13 +98,56 @@ export function logout(context) {
     let authtoken = sessionStorage.getItem('authtoken');
 
     logoutUser(authtoken)
-            .then(response => {
+        .then(response => {
             sessionStorage.clear();
+            user = {};
             // TODO: let user = {};
             alert("Successful logout");
             context.redirect('#/home');
         }, error => {
             alert("Unsuccessful logout");
             context.redirect('#/home');
+        });
+}
+
+export function createProfile(user, authtoken) {
+    return createUserProfile(user, authtoken)
+        .then(response => {
+            let userData = response[0];
+            let firstName = userData._firstName;
+            let lastName = userData._lastName;
+            let username = userData._username;
+            let password = userData._password;
+            let email = userData._email;
+            let phoneNumber = userData._phoneNumber;
+            let country = userData._country;
+            let town = userData._town;
+            // TODO: get adds from profile??
+            // let adds
+            user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
+            alert("Welcome to BestCars!");
+            }, error => {
+            alert("Unsuccessful registration");
+        });
+}
+
+export function getProfileById(userId, authtoken) {
+    return getUserProfileById(userId, authtoken)
+        .then(response => {
+            let userData = response[0];
+            let firstName = userData._firstName;
+            let lastName = userData._lastName;
+            let username = userData._username;
+            let password = userData._password;
+            let email = userData._email;
+            let phoneNumber = userData._phoneNumber;
+            let country = userData._country;
+            let town = userData._town;
+            // TODO: get adds from profile??
+            // let adds
+            user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
+            alert("Successful login");
+            }, error => {
+            alert("Cannot load profile");
         });
 }

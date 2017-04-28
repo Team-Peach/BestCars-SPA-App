@@ -42,3 +42,20 @@ export function logoutUser(authtoken) {
         return requester.post(url, {}, headers);
 }
 
+export function createUserProfile(user, authtoken) {
+        let url = CONSTANTS.kinveyAppDataUrl + CONSTANTS.kinveyUsersProfileCollection;
+        console.log(url);
+        let headers =  { 'Authorization': CONSTANTS.kinveyUserAuthorization + authtoken};
+        let body = user;
+        return requester.post(url, JSON.stringify(body), headers);  
+}
+
+export function getUserProfileById(userId, authtoken) {
+        let filter = JSON.stringify({"_acl.creator": userId})
+        let url = CONSTANTS.kinveyAppDataUrl + CONSTANTS.kinveyUsersProfileCollection +'/?query=' + filter;
+        let headers =  { 'Authorization': CONSTANTS.kinveyUserAuthorization + authtoken};
+
+        return requester.get(url, headers);
+}
+
+//TODO getAll Users Profiles
