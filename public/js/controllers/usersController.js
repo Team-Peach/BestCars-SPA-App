@@ -56,7 +56,7 @@ export function register(context, user) {
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('authtoken', authtoken);
             sessionStorage.setItem('id', userId);   
-            createProfile(user, authtoken)
+            createProfile(user, userId, authtoken)
                 .then(response => {
                     alert("Welcome to BestCars!");
                     context.redirect('#/profile');
@@ -64,6 +64,7 @@ export function register(context, user) {
                     alert("Unsuccessful registration");
                     context.redirect('#/home');
                 });
+
             }, error => {
                 alert("Unsuccessful registration");
                 context.redirect('#/home');
@@ -79,13 +80,12 @@ export function login(context, user) {
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('authtoken', authtoken);
             sessionStorage.setItem('id', userId);  
-            //TODO: refactor
             getProfileById(userId, authtoken)
                 .then(response => {
-                    console.log(response)
+                    alert("Successful login");
                     context.redirect("#/profile");
                 }, error => {
-                    console.log(error)
+                    alert("Unsuccessful login");
                     context.redirect("#/home");
                 })
         }, error => {
@@ -109,11 +109,13 @@ export function logout(context) {
             context.redirect('#/home');
         });
 }
-
-export function createProfile(user, authtoken) {
+//TODO: refactor
+export function createProfile(user, userId, authtoken) {
     return createUserProfile(user, authtoken)
-        .then(response => {
-            let userData = response[0];
+        .then(
+            response => {
+                /*
+            let userData = response;          
             let firstName = userData._firstName;
             let lastName = userData._lastName;
             let username = userData._username;
@@ -125,9 +127,11 @@ export function createProfile(user, authtoken) {
             // TODO: get adds from profile??
             // let adds
             user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
-            alert("Welcome to BestCars!");
-            }, error => {
-            alert("Unsuccessful registration");
+            */
+            return getProfileById(userId, authtoken);
+            console.log("create", user);
+    }, error => {
+            alert("Unsuccessful registration");            
         });
 }
 
@@ -146,7 +150,6 @@ export function getProfileById(userId, authtoken) {
             // TODO: get adds from profile??
             // let adds
             user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
-            alert("Successful login");
             }, error => {
             alert("Cannot load profile");
         });
