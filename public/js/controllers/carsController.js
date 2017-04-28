@@ -8,7 +8,7 @@ export function get(context) {
 		.then(([carsDatabaseAJAXResponse, template]) => {
 			console.log(carsDatabaseAJAXResponse);
 
-			context.$element().html(template(carsDatabaseAJAXResponse));
+			context.$element().html(template());
 		});
 }
 

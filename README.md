@@ -1,3 +1,32 @@
+	# tasks
+  
+  - unit testing
+	- use KendoUI or jQueryUI
+	- Make the application responsive - bootstrap
+	- third-part API - Facebook
+	- work in all browsers - chrome, mozilla, edge, opera, safari, internet explorer 10/11
+	- semantic HTML tags
+
+	- buttons hiding (login, logout, profile,  ... ) 
+	- len user is logged show buttons - logout, new ad, profile
+	- showing user profile and all ads when clicked on button profile
+	- adding new ad when user is logged
+
+	- template for ad preview
+	- template for ad content 
+
+	- home page
+	- about page
+	- contacts page
+
+	- implementation for search cars page - truck, motor, camper
+	- footer
+	- ads comments
+	- integration tests
+	- minify source code
+	- work in browser internet explorer 6, 7, 8
+
+
 # JavaScript Applications: Teamwork Assignment
 
 This document describes the teamwork assignment for Telerik Academy students in "JavaScript Applications" course

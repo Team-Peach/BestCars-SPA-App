@@ -1,8 +1,9 @@
 /*globals $, Sammy*/
 import 'addEventOnButtonsForChangeTheRoute';
-import {homeController} from 'homeController';
+import { homeController } from 'homeController';
 import * as carsController from 'carsController';
 import * as usersController from 'usersController';
+import {createAdController} from 'createAdController';
 
 (function () {
 	var sammyApp = Sammy('#app-container', function () {
@@ -10,9 +11,9 @@ import * as usersController from 'usersController';
 		this.get('#/', homeController);
 
 		this.get('#/home', homeController);
-		
+
 		this.post('#/home', homeController);
-		
+
 		this.get('#/cars', carsController.get);
 
 		this.post('#/cars', carsController.post);
@@ -24,6 +25,7 @@ import * as usersController from 'usersController';
 		this.get('#/caravans', function () {
 			$('#route').html('TODO caravans');
 		});
+
 
 		this.get('#/trucks', function () {
 			$('#route').html('TODO trucks');
@@ -49,9 +51,11 @@ import * as usersController from 'usersController';
 			usersController.logout(context);
 		});
 
-		this.get('#/profile',  function (context) {
+		this.get('#/profile', function (context) {
 			usersController.loadUserProfileForm(context);
 		}); /*/?:username */
+
+		this.get('#/createAd', createAdController);
 	});
 
 	$(function () {

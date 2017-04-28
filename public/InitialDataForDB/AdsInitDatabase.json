@@ -1,56 +1,44 @@
 {
-	"Ads": [
-		{
-			"title": "Audi A4 2,0TDI",
-			"userID": "sadasdasd",
-			"vehicleID": "sdaasdasd",
-			"date": "03-04-2017",
-			"description": "ABS, ESP, Airbag, Халогенни фарове, Аларма, Имобилайзер, Центр. заключване, Старт-Стоп система",
-			"contacts": {
-				"name": "Петър",
-				"city": "Пловдив",
-				"GMS": "0888 888 888"
-			},
-			"images": [
-				"url",
-				"url",
-				"url",
-				"url"
-			],
-			"comments": [
-				{
-					"title": "много яка",
-					"content": "Колата е страшна. Заслужава си",
-					"author": "Пешо разбирача",
-					"date": "04-04-2017"
-				}
-			]
+	"Ads": {
+		"title": "Audi A4 2,0TDI",
+		"vehicleID": {
+			"manufacturer": "BMW",
+			"model": "528",
+			"yearOfManufacture": "1997",
+			"kilometersTraveled": "220 000",
+			"price": "14 000",
+			"fuel": "Бензин",
+			"transmission": "Автоматични",
+			"horsepower": 193,
+			// car
+			"type": "Комби",
+			"numberOfDoors": 5,
+			"numberOfSeats": 5,
+			"color": "Светло сив"
+			// truck
+			// motor
+			// camper
 		},
-		{
-			"title": "Honda Civic 2,2i-ctdi",
-			"userID": "sadasdasd",
-			"vehicleID": "sdaasdasd",
-			"date": "01-04-2017",
-			"description": "ABS, ESP, Airbag, Халогенни фарове, Аларма, Имобилайзер, Центр. заключване, Старт-Стоп система",
-			"contacts": {
-				"name": "Петър",
-				"city": "Пловдив",
-				"GMS": "0888 888 888"
-			},
-			"images": [
-				"url",
-				"url",
-				"url",
-				"url"
-			],
-			"comments": [
-				{
-					"title": "Колицате е развалина",
-					"content": "Пълна гробница, не си губете времето!",
-					"author": "Гошко",
-					"date": "02-04-2017"
-				}
-			]
-		}
-	]
+		"date": "date.now",
+		"description": "ABS, ESP, Airbag, Халогенни фарове, Аларма, Имобилайзер, Центр. заключване, Старт-Стоп система",
+		"contacts": {
+			"name": "Петър",
+			"city": "Пловдив",
+			"GMS": "0888 888 888"
+		},
+		"images": [
+			"url",
+			"url",
+			"url",
+			"url"
+		],
+		"comments": [
+			{
+				"title": "много яка",
+				"content": "Колата е страшна. Заслужава си",
+				"author": "Пешо разбирача",
+				"date": "04-04-2017"
+			}
+		]
+	}
 }

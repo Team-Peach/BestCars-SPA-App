@@ -22,7 +22,7 @@ export function loadRegistrationForm(context) {
 
                 let user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
                 register(context, user);
-             })
+             });
         });
 }
 
