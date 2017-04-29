@@ -6,9 +6,11 @@ import { load as loadTemplate } from 'templates';
 export function get(context) {
 	Promise.all([getCars(), loadTemplate('cars')])
 		.then(([carsDatabaseAJAXResponse, template]) => {
-			console.log(carsDatabaseAJAXResponse);
 
-			context.$element().html(template());
+			let allCars = {
+				cars: carsDatabaseAJAXResponse
+			};
+			context.$element().html(template(allCars));
 		});
 }
 

@@ -26,6 +26,9 @@ import {createAdController} from 'createAdController';
 			$('#route').html('TODO caravans');
 		});
 
+		this.get('#/cars', function (context) {
+			usersController.get(context)
+		});
 
 		this.get('#/trucks', function () {
 			$('#route').html('TODO trucks');
