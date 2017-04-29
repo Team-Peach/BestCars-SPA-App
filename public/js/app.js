@@ -31,8 +31,8 @@ import {createAdController} from 'createAdController';
 			$('#route').html('TODO trucks');
 		});
 
-		this.get('#/about', function () {
-			$('#route').html('TODO about');
+		this.get('#/about', function (context) {
+			usersController.loadAboutUs(context)
 		});
 
 		this.get('#/contacts', function (context) {
