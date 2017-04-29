@@ -1,300 +1,350 @@
-<form class="well form-horizontal" action=" " method="post" id="contact_form">
+<form id="form-createAd" class="well form-horizontal" method="POST" action="#/createAd" >
     <fieldset>
-
         <!-- Form Name -->
-        <legend class="text-center" style="font: normal 20px, cursive;">Create ad</legend>
+        <legend class="text-center"><h1>Create new ad</h1></legend>
+
+        <div id="typeNewAd" class="form-group selectContainer text-center">
+            <h3><strong>Please first select vehicle type</strong></h3>
+            <div class="btn-group " data-toggle="buttons">
+                <label class="btn btn-lg btn-default">
+                    <input name="type" value="cars" type="radio">Car
+                </label>
+                <label class="btn btn-lg btn-default">
+                    <input name="type" value="motorcycles" type="radio">Motorcycle
+                </label>
+                <label class="btn btn-lg btn-default">
+                    <input name="type" value="trucks" type="radio">Truck
+                </label>
+                <label class="btn btn-lg btn-default">
+                    <input name="type" value="campers" type="radio">Camper
+                </label>
+            </div>
+        </div>
+        <hr>
 
         <!-- Text input-->
-
         <div class="form-group">
             <label class="col-md-4 control-label">Title</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    <input class="form-control" type="text">
-                </div>
-            </div>
-        </div>
-
-        <!-- Select Basic -->
-
-        <div class="form-group">
-            <label class="col-md-4 control-label">State</label>
-            <div class="col-md-4 selectContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                    <select class="form-control selectpicker">
-                                <option value=" " >Select Category</option>
-                                <option>PC/Laptop/Accessories</option>
-                                <option>Phones/Accessories</option>
-                                <option >TV/Accessories</option>
-                                <option >Clothes</option>
-                                <option >Toys</option>
-                                <option >Antiques</option>
-                                <option >Books</option>
-                                <option >Tickets</option>
-                                <option >Other</option>
-                            </select>
+                    <input name="title" class="form-control" type="text">
                 </div>
             </div>
         </div>
 
         <!-- Text input-->
-
         <div class="form-group">
             <label class="col-md-4 control-label">Description</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-blackboard"></i></span>
-                    <textarea class="form-control"></textarea>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <textarea name="description" class="form-control"></textarea>
                 </div>
             </div>
         </div>
 
         <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Town</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input name="town" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Name for contacts</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <input name="nameForContacts" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input  e-Mail-->
         <div class="form-group">
             <label class="col-md-4 control-label">E-Mail</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input class="form-control" type="text">
+                    <input name="eMail" class="form-control" type="text">
                 </div>
             </div>
         </div>
 
         <!-- Text input-->
-
         <div class="form-group">
-            <label class="col-md-4 control-label">Mobile Number</label>
+            <label class="col-md-4 control-label">GSM</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input placeholder="0889987222" class="form-control" type="text">
+                    <input name="gsm" placeholder="+359 " class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">Manufacturer</label>
+            <div class="col-md-4 inputGroupContainer">
+                <select name="manufacturer" class="form-control">
+                    <option value="" ></option>
+                    <optgroup label="A">
+                        <option value="Acura" >Acura</option>
+                        <option value="Aixam" >Aixam</option>
+                        <option value="Alfa Romeo" >Alfa Romeo</option>
+                        <option value="5" >Alpina</option>
+                        <option value="6" >Asia Motors</option>
+                        <option value="7" >Aston Martin</option>
+                        <option value="8" >Audi</option>
+                        <option value="128" >Austin</option>
+                        <optgroup label="B">
+                            <option value="9" >Bentley</option>
+                            <option value="10" >BMW</option>
+                            <option value="104" >Borgward</option>
+                            <option value="11" >Brilliance</option>
+                            <option value="12" >Bugatti</option>
+                            <option value="13" >Buick</option>
+                            <optgroup label="C">
+                                <option value="14" >Cadillac</option>
+                                <option value="15" >Chevrolet</option>
+                                <option value="16" >Chrysler</option>
+                                <option value="17" >Citroen</option>
+                                <option value="18" >Corvette</option>
+                                <optgroup label="D">
+                                    <option value="19" >Dacia</option>
+                                    <option value="20" >Daewoo</option>
+                                    <option value="21" >Daihatsu</option>
+                                    <option value="22" >Datsun</option>
+                                    <option value="23" >Dodge</option>
+                                    <option value="123" >DR</option>
+                                    <optgroup label="F">
+                                        <option value="24" >Ferrari</option>
+                                        <option value="25" >Fiat</option>
+                                        <option value="26" >Ford</option>
+                                        <optgroup label="G">
+                                            <option value="127" >Gac Gonow</option>
+                                            <option value="27" >GAZ</option>
+                                            <option value="29" >GMC</option>
+                                            <option value="30" >Great wall</option>
+                                            <optgroup label="H">
+                                                <option value="31" >Honda</option>
+                                                <option value="32" >Hummer</option>
+                                                <option value="33" >Hyundai</option>
+                                                <optgroup label="I">
+                                                    <option value="34" >Infiniti</option>
+                                                    <option value="35" >Isuzu</option>
+                                                    <option value="97" >Iveco</option>
+                                                    <optgroup label="J">
+                                                        <option value="36" >Jaguar</option>
+                                                        <option value="37" >Jeep</option>
+                                                        <optgroup label="K">
+                                                            <option value="38" >Kia</option>
+                                                            <optgroup label="L">
+                                                                <option value="40" >Lada</option>
+                                                                <option value="41" >Lamborghini</option>
+                                                                <option value="42" >Lancia</option>
+                                                                <option value="43" >Land Rover</option>
+                                                                <option value="45" >Lexus</option>
+                                                                <option value="47" >Lincoln</option>
+                                                                <option value="48" >Lotus</option>
+                                                                <optgroup label="M">
+                                                                    <option value="49" >Mahindra</option>
+                                                                    <option value="50" >Maserati</option>
+                                                                    <option value="52" >Maybach</option>
+                                                                    <option value="53" >Mazda</option>
+                                                                    <option value="54" >Mercedes-Benz</option>
+                                                                    <option value="55" >MG</option>
+                                                                    <option value="105" >Microcar</option>
+                                                                    <option value="56" >Mini</option>
+                                                                    <option value="57" >Mitsubishi</option>
+                                                                    <option value="59" >Moskvich</option>
+                                                                    <optgroup label="N">
+                                                                        <option value="60" >Nissan</option>
+                                                                        <optgroup label="O">
+                                                                            <option value="61" >Oldsmobile</option>
+                                                                            <option value="63" >Opel</option>
+                                                                            <optgroup label="P">
+                                                                                <option value="64" >Peugeot</option>
+                                                                                <option value="65" >Piaggio</option>
+                                                                                <option value="66" >Plymouth</option>
+                                                                                <option value="67" >Pontiac</option>
+                                                                                <option value="68" >Porsche</option>
+                                                                                <optgroup label="R">
+                                                                                    <option value="106" >Range Rover</option>
+                                                                                    <option value="69" >Renault</option>
+                                                                                    <option value="70" >Rolls Royce</option>
+                                                                                    <option value="71" >Rover</option>
+                                                                                    <optgroup label="S">
+                                                                                        <option value="92" >Saab</option>
+                                                                                        <option value="101" >Samand</option>
+                                                                                        <option value="95" >Scion</option>
+                                                                                        <option value="72" >Seat</option>
+                                                                                        <option value="99" >Shuanghuan</option>
+                                                                                        <option value="73" >Skoda</option>
+                                                                                        <option value="74" >Smart</option>
+                                                                                        <option value="75" >Ssangyong</option>
+                                                                                        <option value="76" >Subaru</option>
+                                                                                        <option value="77" >Suzuki</option>
+                                                                                        <optgroup label="T">
+                                                                                            <option value="78" >Talbot</option>
+                                                                                            <option value="79" >Tata</option>
+                                                                                            <option value="129" >Tesla</option>
+                                                                                            <option value="80" >Toyota</option>
+                                                                                            <option value="81" >Trabant</option>
+                                                                                            <optgroup label="U">
+                                                                                                <option value="89" >UAZ</option>
+                                                                                                <optgroup label="V">
+                                                                                                    <option value="84" >Volga</option>
+                                                                                                    <option value="85" >Volvo</option>
+                                                                                                    <option value="86" >VW</option>
+                                                                                                    <optgroup label="W">
+                                                                                                        <option value="87" >Wartburg</option>
+                                                                                                        <optgroup label="Y">
+                                                                                                            <option value="134" >Yogomo</option>
+                                                                                                            <optgroup label="Z">
+                                                                                                                <option value="90" >Zastava</option>
+                                                                                                                <option value="91" >Zaz</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Model</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <input name="model" class="form-control" type="text">
                 </div>
             </div>
         </div>
 
         <!-- Text input-->
-
         <div class="form-group">
-            <label class="col-md-4 control-label">Address</label>
+            <label class="col-md-4 control-label">Year</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input class="form-control" type="text">
-                </div>
-            </div>
-        </div>
-
-        <!-- Text input-->
-
-        <div class="form-group">
-            <label class="col-md-4 control-label">Post Code</label>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input class="form-control" type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <input name="year" class="form-control" type="text">
                 </div>
             </div>
         </div>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label">Start Price</label>
+            <label class="col-md-4 control-label">Kilometers</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
-                    <input class="form-control" type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <input name="kilometers" class="form-control" type="text">
                 </div>
             </div>
         </div>
 
+        <!-- Dropdown-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Fuel</label>
+            <div class="col-md-4 inputGroupContainer">
+                <select name="fuel" class="form-control">
+                    <option value=""></option>
+                    <option value="1">Diesel</option>
+                    <option value="2">Gasoline</option>
+                    <option value="3">Gas-Gasoline</option>
+                    <option value="4">Methane</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Dropdown-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Transmisson</label>
+            <div class="col-md-4 inputGroupContainer">
+                <select name="transmission" class="form-control">
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Horsepower</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <input name="horsepower" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+
+        <!-- Select Basic dropdown-->
+        <div id="newAdContainer" class="form-group">
+
+            <!-- Dropdown-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Type</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <select name="type" class="form-control">
+                        <option value=""></option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="Limousine">Limousine</option>
+                        <option value="Cabriolet">Cabriolet</option>
+                        <option value="Combi">Combi</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="Coupe">Coupe</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Number of doors</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <select name="numberOfDoors" class="form-control">
+                        <option value=""></option>
+                        <option value="2/3">2/3</option>
+                        <option value="4/5">4/5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Number of seats</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <select name="numberOfSeats" class="form-control">
+                        <option value=""></option>
+                        <option value="4+1">4+1</option>
+                        <option value="2">2</option>
+                        <option value="6+1">6+1</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Price</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
+                    <input name="price" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
 
         <!-- Button -->
         <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-4">
-                <button type="submit" class="btn btn-info">Send <span class="glyphicon glyphicon-send"></span></button>
+                <button type="submit" class="btn btn-lg btn-info pull-right">Send <span class="glyphicon glyphicon-send"></span></button>
             </div>
         </div>
-
     </fieldset>
 </form>
-
-
-
-
-
-<form id="createAd-form" class="form-horizontal" method="POST" action="#/home">
-	<div class="dropdown">
-		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Какво продавате<span class="caret"></span></button>
-		<ul class="dropdown-menu">
-			<li><a href="#">Car</a></li>
-			<li><a href="#">Motorcycle</a></li>
-			<li><a href="#">Truck</a></li>
-			<li><a href="#">Campers</a></li>
-		</ul>
-	</div>
-
-
-	<div class="col-md-4">
-		<label class="control-label">GSM for contacts:</label>
-		<select class="form-control">
-			<option value="1">156</option>
-			<option value="3">алфа</option>
-			<option value="2">кадет</option>
-		</select>
-	</div>
-
-
-	<div class="form-group ">
-		<button id="createAd-button" type="submit" class="btn btn-primary btn-lg btn-block login-button">Create</button>
-	</div>
-</form>
-
-
-<div id="vehicle-info">
-	<div class="row">
-		<div class="col-md-4">
-			<label class="control-label">Title of ad</label>
-			<select class="form-control">
-                    
-                </select>
-		</div>
-		<div class="col-md-4">
-			<label class="control-label">Descripr</label>
-			<select class="form-control">
-                        
-                    </select>
-		</div>
-		<div class="col-md-4">
-			<label class="control-label">Телефон за връзка:</label>
-			<select class="form-control">
-                     
-                    </select>
-		</div>
-		<div class="col-md-4">
-			<label class="control-label">Град:</label>
-			<select class="form-control">
-                      
-                    </select>
-		</div>
-		<div class="col-md-4">
-			<label class="control-label">Вашето име:</label>
-			<select class="form-control">
-                        
-                    </select>
-		</div>
-	</div>
-	<hr class="blabla" /> {{!--vehicle--}}
-	<div class="col-md-4">
-		<label class="control-label">Производител</label>
-		<select class="form-control">
-                        <option value="1">156</option>
-                        <option value="3">алфа</option>
-                        <option value="2">кадет</option>
-                    </select>
-	</div>
-	<div class="col-md-4">
-		<label class="control-label">Модел</label>
-		<select class="form-control">
-                        <option value="0">- Всички -</option>
-						 <optgroup label="A">						 
-							 <option value="1" >Acura</option>
-							 	<option value="2" >Aixam</option>
-							 	<option value="4" >Alfa Romeo</option>
-							 	<option value="5" >Alpina</option>
-							 	<option value="6" >Asia Motors</option>
-							 	<option value="7" >Aston Martin</option>
-							 	<option value="8" >Audi</option>
-							 	<option value="128" >Austin</option>
-						 <optgroup label="B">						 
-							<option value="9" >Bentley</option>
-							<option value="10" >BMW</option>
-						 						 <option value="104" >Borgward</option>
-						 						 <option value="11" >Brilliance</option>
-						 						 <option value="12" >Bugatti</option>
-						 						 <option value="13" >Buick</option>
-						 <optgroup label="C">						 <option value="14" >Cadillac</option>
-						 						 <option value="15" >Chevrolet</option>
-						 						 <option value="16" >Chrysler</option>
-						 						 <option value="17" >Citroen</option>
-						 						 <option value="18" >Corvette</option>
-						 <optgroup label="D">						 <option value="19" >Dacia</option>
-						 						 <option value="20" >Daewoo</option>
-						 						 <option value="21" >Daihatsu</option>
-						 						 <option value="22" >Datsun</option>
-						 						 <option value="23" >Dodge</option>
-						 						 <option value="123" >DR</option>
-						 <optgroup label="F">						 <option value="24" >Ferrari</option>
-						 						 <option value="25" >Fiat</option>
-						 						 <option value="26" >Ford</option>
-						 <optgroup label="G">						 <option value="127" >Gac Gonow</option>
-						 						 <option value="27" >GAZ</option>
-						 						 <option value="29" >GMC</option>
-						 						 <option value="30" >Great wall</option>
-						 <optgroup label="H">						 <option value="31" >Honda</option>
-						 						 <option value="32" >Hummer</option>
-						 						 <option value="33" >Hyundai</option>
-						 <optgroup label="I">						 <option value="34" >Infiniti</option>
-						 						 <option value="35" >Isuzu</option>
-						 						 <option value="97" >Iveco</option>
-						 <optgroup label="J">						 <option value="36" >Jaguar</option>
-						 						 <option value="37" >Jeep</option>
-						 <optgroup label="K">						 <option value="38" >Kia</option>
-						 <optgroup label="L">						 <option value="40" >Lada</option>
-						 						 <option value="41" >Lamborghini</option>
-						 						 <option value="42" >Lancia</option>
-						 						 <option value="43" >Land Rover</option>
-						 						 <option value="45" >Lexus</option>
-						 						 <option value="47" >Lincoln</option>
-						 						 <option value="48" >Lotus</option>
-						 <optgroup label="M">						 <option value="49" >Mahindra</option>
-						 						 <option value="50" >Maserati</option>
-						 						 <option value="52" >Maybach</option>
-						 						 <option value="53" >Mazda</option>
-						 						 <option value="54" >Mercedes-Benz</option>
-						 						 <option value="55" >MG</option>
-						 						 <option value="105" >Microcar</option>
-						 						 <option value="56" >Mini</option>
-						 						 <option value="57" >Mitsubishi</option>
-						 						 <option value="59" >Moskvich</option>
-						 <optgroup label="N">						 <option value="60" >Nissan</option>
-						 <optgroup label="O">						 <option value="61" >Oldsmobile</option>
-						 						 <option value="63" >Opel</option>
-						 <optgroup label="P">						 <option value="64" >Peugeot</option>
-						 						 <option value="65" >Piaggio</option>
-						 						 <option value="66" >Plymouth</option>
-						 						 <option value="67" >Pontiac</option>
-						 						 <option value="68" >Porsche</option>
-						 <optgroup label="R">						 <option value="106" >Range Rover</option>
-						 						 <option value="69" >Renault</option>
-						 						 <option value="70" >Rolls Royce</option>
-						 						 <option value="71" >Rover</option>
-						 <optgroup label="S">						 <option value="92" >Saab</option>
-						 						 <option value="101" >Samand</option>
-						 						 <option value="95" >Scion</option>
-						 						 <option value="72" >Seat</option>
-						 						 <option value="99" >Shuanghuan</option>
-						 						 <option value="73" >Skoda</option>
-						 						 <option value="74" >Smart</option>
-						 						 <option value="75" >Ssangyong</option>
-						 						 <option value="76" >Subaru</option>
-						 						 <option value="77" >Suzuki</option>
-						 <optgroup label="T">						 <option value="78" >Talbot</option>
-						 						 <option value="79" >Tata</option>
-						 						 <option value="129" >Tesla</option>
-						 						 <option value="80" >Toyota</option>
-						 						 <option value="81" >Trabant</option>
-						 <optgroup label="U">						 <option value="89" >UAZ</option>
-						 <optgroup label="V">						 <option value="84" >Volga</option>
-						 						 <option value="85" >Volvo</option>
-						 						 <option value="86" >VW</option>
-						 <optgroup label="W">						 <option value="87" >Wartburg</option>
-						 <optgroup label="Y">						 <option value="134" >Yogomo</option>
-						 <optgroup label="Z">						 <option value="90" >Zastava</option>
-						 						 <option value="91" >Zaz</option>
-						 <optgroup label="В">						 <option value="107" >ВАЗ</option>
-						 						 <option value="102" >Варшава</option>
-                    </select>
-	</div>
