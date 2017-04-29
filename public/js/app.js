@@ -35,8 +35,8 @@ import {createAdController} from 'createAdController';
 			$('#route').html('TODO about');
 		});
 
-		this.get('#/contacts', function () {
-			$('#route').html('TODO contacts');
+		this.get('#/contacts', function (context) {
+			usersController.loadContactUsForm(context)
 		});
 
 		this.get('#/register', function (context) {
