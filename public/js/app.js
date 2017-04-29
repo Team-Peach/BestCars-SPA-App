@@ -18,6 +18,8 @@ import {createAdController} from 'createAdController';
 
 		this.post('#/cars', carsController.post);
 
+		this.post('#/createAd', createAdController);
+
 		this.get('#/motors', function () {
 			$('#route').html('TODO motors');
 		});
