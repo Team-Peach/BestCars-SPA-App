@@ -6,34 +6,35 @@ import { createAd as createAd } from 'data';
 export function createAdController(context) {
 	loadTemplate('createAd')
 		.then(template => {
-			context.$element().html(template());
-			let $loginForm = $('#createAd-form');
-			$loginForm.on('submit', function () {
-				let aaa = $('#createAd-town option:selected').text();
-				let bbb = $('#createAd-town1 option:selected').text();
-				let aaaa = $('#createAd-town2 option:selected').text();
-				let ddd = $('#createAd-town3 option:selected').text();
+			context.$element().html(template);
 
-				let params = {};
+			// let $loginForm = $('#createAd-form');
+			// $loginForm.on('submit', function () {
+			// 	let aaa = $('#createAd-town option:selected').text();
+			// 	let bbb = $('#createAd-town1 option:selected').text();
+			// 	let aaaa = $('#createAd-town2 option:selected').text();
+			// 	let ddd = $('#createAd-town3 option:selected').text();
 
-				// TODO get all drop down
-				if (params.hasOwnProperty()) {
+			// 	let params = {};
 
-				}
+			// 	// TODO get all drop down
+			// 	if (params.hasOwnProperty()) {
 
-				let type = 'cars';
+			// 	}
 
-				params = {
-					aaa,
-					bbb,
-					aaaa,
-					ddd
-				};
+			// 	let type = 'cars';
 
-				let authtoken = sessionStorage.getItem('authtoken');
+			// 	params = {
+			// 		aaa,
+			// 		bbb,
+			// 		aaaa,
+			// 		ddd
+			// 	};
 
-				createAd(params, authtoken, type);
-			});
+			// 	let authtoken = sessionStorage.getItem('authtoken');
+
+			// 	createAd(params, authtoken, type);
+			// });
 		});
 }
 

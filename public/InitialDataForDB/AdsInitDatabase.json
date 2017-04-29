@@ -1,25 +1,7 @@
 {
 	"Ads": {
 		"title": "Audi A4 2,0TDI",
-		"vehicleID": {
-			"manufacturer": "BMW",
-			"model": "528",
-			"yearOfManufacture": "1997",
-			"kilometersTraveled": "220 000",
-			"price": "14 000",
-			"fuel": "Бензин",
-			"transmission": "Автоматични",
-			"horsepower": 193,
-			// car
-			"type": "Комби",
-			"numberOfDoors": 5,
-			"numberOfSeats": 5,
-			"color": "Светло сив"
-			// truck
-			// motor
-			// camper
-		},
-		"date": "date.now",
+		// "date": "date.now",
 		"description": "ABS, ESP, Airbag, Халогенни фарове, Аларма, Имобилайзер, Центр. заключване, Старт-Стоп система",
 		"contacts": {
 			"name": "Петър",
@@ -32,6 +14,24 @@
 			"url",
 			"url"
 		],
+		"vehicle": {
+						"manufacturer": "BMW",
+						"model": "528",
+						"yearOfManufacture": "1997",
+						"kilometersTraveled": "220 000",
+						"price": "14 000",
+						"fuel": "Бензин",
+						"transmission": "Автоматични",
+						"horsepower": 193,
+			// car
+			"type": "Комби",
+			"numberOfDoors": 5,
+			"numberOfSeats": 5,
+			"color": "Светло сив"
+			// truck
+			// motor
+			// camper
+		},
 		"comments": [
 			{
 				"title": "много яка",
