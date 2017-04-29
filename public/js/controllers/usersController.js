@@ -40,6 +40,24 @@ export function loadLoginForm(context) {
         });
 }
 
+export function loadContactUsForm(context) {
+    loadTemplate('contactUs')
+        .then(template => {
+            context.$element().html(template());
+        });
+
+    //TODO finish
+}
+
+export function loadAboutUs(context) {
+    loadTemplate('aboutUs')
+        .then(template => {
+            context.$element().html(template());
+        });
+
+    //TODO finish
+}
+
 export function loadUserProfileForm(context) {
     loadTemplate('userProfile')
         .then(template => {

@@ -18,6 +18,8 @@ import {createAdController} from 'createAdController';
 
 		this.post('#/cars', carsController.post);
 
+		this.post('#/createAd', createAdController);
+
 		this.get('#/motors', function () {
 			$('#route').html('TODO motors');
 		});
@@ -26,17 +28,20 @@ import {createAdController} from 'createAdController';
 			$('#route').html('TODO caravans');
 		});
 
+		this.get('#/cars', function (context) {
+			usersController.get(context)
+		});
 
 		this.get('#/trucks', function () {
 			$('#route').html('TODO trucks');
 		});
 
-		this.get('#/about', function () {
-			$('#route').html('TODO about');
+		this.get('#/about', function (context) {
+			usersController.loadAboutUs(context)
 		});
 
-		this.get('#/contacts', function () {
-			$('#route').html('TODO contacts');
+		this.get('#/contacts', function (context) {
+			usersController.loadContactUsForm(context)
 		});
 
 		this.get('#/register', function (context) {

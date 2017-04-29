@@ -35,7 +35,6 @@ System.config({
 		'usersController': 'js/controllers/usersController.js',
 		'createAdController': 'js/controllers/createAdController.js',
 		'userData': 'js/data/userData.js',
-
 	}
 });
 
