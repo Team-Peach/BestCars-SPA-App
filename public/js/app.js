@@ -56,6 +56,8 @@ import {createAdController} from 'createAdController';
 		}); /*/?:username */
 
 		this.get('#/createAd', createAdController);
+		
+		this.post('#/createAd', createAdController);
 	});
 
 	$(function () {
