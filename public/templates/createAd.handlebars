@@ -1,10 +1,12 @@
-<form id="form-createAd" class="well form-horizontal" method="POST" action="#/createAd" >
+<form id="form-createAd" class="well form-horizontal" method="POST" action="#/createAd">
     <fieldset>
         <!-- Form Name -->
-        <legend class="text-center"><h1>Create new ad</h1></legend>
+        <legend class="text-center">
+            <h1>Create new ad</h1>
+        </legend>
 
         <div id="typeNewAd" class="form-group selectContainer text-center">
-            <h3><strong>Please first select vehicle type</strong></h3>
+            <h3><strong>Select vehicle type</strong></h3>
             <div class="btn-group " data-toggle="buttons">
                 <label class="btn btn-lg btn-default">
                     <input name="type" value="cars" type="radio">Car
@@ -224,6 +226,11 @@
             </div>
         </div>
 
+        <!-- Select Basic dropdown-->
+        <div id="newAdContainer" class="form-group">
+
+        </div>
+
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label">Year</label>
@@ -281,52 +288,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- Select Basic dropdown-->
-        <div id="newAdContainer" class="form-group">
-
-            <!-- Dropdown-->
-            <div class="form-group">
-                <label class="col-md-4 control-label">Type</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <select name="type" class="form-control">
-                        <option value=""></option>
-                        <option value="Sedan">Sedan</option>
-                        <option value="Hatchback">Hatchback</option>
-                        <option value="Limousine">Limousine</option>
-                        <option value="Cabriolet">Cabriolet</option>
-                        <option value="Combi">Combi</option>
-                        <option value="Jeep">Jeep</option>
-                        <option value="Coupe">Coupe</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label">Number of doors</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <select name="numberOfDoors" class="form-control">
-                        <option value=""></option>
-                        <option value="2/3">2/3</option>
-                        <option value="4/5">4/5</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label">Number of seats</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <select name="numberOfSeats" class="form-control">
-                        <option value=""></option>
-                        <option value="4+1">4+1</option>
-                        <option value="2">2</option>
-                        <option value="6+1">6+1</option>
-                    </select>
-                </div>
-            </div>
-
-        </div>
-
+        
 
         <!-- Text input-->
         <div class="form-group">
@@ -338,7 +300,8 @@
                 </div>
             </div>
         </div>
-
+        <hr>
+        
         <!-- Button -->
         <div class="form-group">
             <label class="col-md-4 control-label"></label>

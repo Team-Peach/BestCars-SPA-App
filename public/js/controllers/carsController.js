@@ -10,7 +10,9 @@ export function get(context) {
 			let allCars = {
 				cars: carsDatabaseAJAXResponse
 			};
-			console.log(allCars);
+
+			console.log(allCars); // TODO delete
+
 			context.$element().html(template(allCars));
 		});
 }
