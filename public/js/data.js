@@ -10,8 +10,8 @@ export function getUsers() {
         return requester.get('/users');
 }
 
-export function getCars() {
-        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/cars';
+export function getCars(cars) {
+        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/cars/' + '?query={"type":"'+ cars + '"}';
         let guestUserAuthToken = CONSTANTS.guestUserAuthToken;
         const kinveyAuthHeaders = { 'Authorization': "Kinvey " + guestUserAuthToken };
 
