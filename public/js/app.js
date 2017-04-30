@@ -29,9 +29,11 @@ import {createAdController} from 'createAdController';
 
 		this.get('#/caravans', carsController.getCaravans);
 
-		// this.get('#/cars', function (context) {
-		// 	usersController.get(context)
-		// });
+		this.get('#/myAd', carsController.getMyAd);
+
+		this.get('#/cars', function (context) {
+			usersController.get(context)
+		});
 
 		this.get('#/trucks', function () {
 			carsController.getTruck()
@@ -39,10 +41,11 @@ import {createAdController} from 'createAdController';
 
 		this.get('#/about', function (context) {
 			usersController.loadAboutUs(context)
+
 		});
 
 		this.get('#/contacts', function (context) {
-			usersController.loadContactUsForm(context)
+			usersController.loadContactUsForm(context);
 		});
 
 		this.get('#/register', function (context) {

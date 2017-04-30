@@ -18,6 +18,14 @@ export function getCars(params) {
         return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);
 }
 
+export function getMyCars(params) {
+        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/cars/' + '?query={"_acl.creator":"'+ params + '"}';
+        let guestUserAuthToken = CONSTANTS.guestUserAuthToken;
+        const kinveyAuthHeaders = { 'Authorization': "Kinvey " + guestUserAuthToken };
+
+        return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);
+}
+
 export function postCar() {
         return requester.post('/cars/add');
 }

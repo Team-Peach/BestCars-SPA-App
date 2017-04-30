@@ -1,5 +1,6 @@
 /*globals $ */
 import { getCars as getCars } from 'data';
+import { getMyCars as getMyCars } from 'data';
 import { postCar as postCar } from 'data';
 import { load as loadTemplate } from 'templates';
 
@@ -48,7 +49,8 @@ export function getCaravans(context) {
 }
 
 export function getMyAd(context) {
-	Promise.all([getCars('myAd'), loadTemplate('cars')])
+	var userId = sessionStorage.id;
+	Promise.all([getMyCars(userId), loadTemplate('cars')])
 		.then(([carsDatabaseAJAXResponse, template]) => {
 
 			let allCars = {
