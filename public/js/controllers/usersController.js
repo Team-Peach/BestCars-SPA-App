@@ -104,6 +104,7 @@ export function login(context, user) {
                     $('#buttonRegister').addClass('hidden');
                     $('#buttonLogout').removeClass('hidden');
                     $('#buttonCreateNewAd').removeClass('hidden');
+                    $('#buttonMyAd').removeClass('hidden');
 
                     alert("Successful login");
                     context.redirect("#/profile");
@@ -126,6 +127,7 @@ export function logout(context) {
             $('#buttonRegister').removeClass('hidden');
             $('#buttonLogout').addClass('hidden');
             $('#buttonCreateNewAd').addClass('hidden');
+            $('#buttonMyAd').addClass('hidden');
 
             sessionStorage.clear();
             user = {};
