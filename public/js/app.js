@@ -8,40 +8,44 @@ import {createAdController} from 'createAdController';
 (function () {
 	var sammyApp = Sammy('#app-container', function () {
 
+
+
 		this.get('#/', homeController);
 
 		this.get('#/home', homeController);
 
 		this.post('#/home', homeController);
 
-		this.get('#/cars', carsController.get);
+		this.get('#/cars', carsController.getAllCars);
 
 		this.post('#/cars', carsController.post);
 
 		this.post('#/createAd', createAdController);
 
-		this.get('#/motors', function () {
-			$('#route').html('TODO motors');
-		});
 
-		this.get('#/caravans', function () {
-			$('#route').html('TODO caravans');
-		});
+		this.get('#/trucks', carsController.getTrucks);
+
+		this.get('#/motors', carsController.getMotors);
+
+		this.get('#/caravans', carsController.getCaravans);
+
+		this.get('#/myAd', carsController.getMyAd);
 
 		this.get('#/cars', function (context) {
 			usersController.get(context)
 		});
 
 		this.get('#/trucks', function () {
-			$('#route').html('TODO trucks');
+			carsController.getTruck()
 		});
 
 		this.get('#/about', function (context) {
 			usersController.loadAboutUs(context)
+
 		});
 
 		this.get('#/contacts', function (context) {
-			usersController.loadContactUsForm(context)
+			usersController.loadContactUsForm(context);
 		});
 
 		this.get('#/register', function (context) {
