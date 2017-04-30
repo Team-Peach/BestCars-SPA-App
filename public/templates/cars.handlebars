@@ -7,13 +7,47 @@
                     <div class="panel-heading text-center">{{manufacturer}}</div>
                     <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
                     <div class="panel-footer">
-                        <p>Тип:{{type}}</p>
-                        <p>Конски сили:{{horsepower}}</p>
-                        <p>Цвят:{{color}}</p>
+                        <p>Модел: {{model}}</p>
+                        <p>Тип: {{type}}</p>
+                        <p>Цена: {{price}}</p>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{_id}}">Информация</button>
                     </div>
                 </div>
             </div>
+
+
+            <div id="{{_id}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title text-center">Информация за модела</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Производител:{{manufacturer}}</p>
+                            <p>Модел:{{model}}</p>
+                            <p>Тип:{{type}}</p>
+                            <p>Конски сили:{{horsepower}}</p>
+                            <p>Цвят:{{color}}</p>
+                            <p>Гориво:{{fuel}}</p>
+                            <p>Пробег:{{kilometersTraveled}}</p>
+                            <p>Цена:{{price}}</p>
+                            <p>Скоростна кутия:{{transmision}}</p>
+                            <p>Година на производство:{{yearOfManufacture}}</p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         {{/each}}
+
+
         </div>
     </div>
  <br>
