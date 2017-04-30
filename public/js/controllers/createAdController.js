@@ -51,7 +51,7 @@ export function createAdController(context) {
 					valuesFromForm[field.name] = field.value;
 				});
 
-				let typeOfVehicleAd = valuesFromForm.type;
+				let typeOfVehicleAd = valuesFromForm.typeOfVehicle;
 				let authtoken = sessionStorage.getItem('authtoken');
 
 				createAd(valuesFromForm, authtoken, typeOfVehicleAd);
