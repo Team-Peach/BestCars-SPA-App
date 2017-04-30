@@ -10,8 +10,8 @@ export function getUsers() {
         return requester.get('/users');
 }
 
-export function getCars(cars) {
-        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/cars/' + '?query={"type":"'+ cars + '"}';
+export function getCars(params) {
+        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/cars/' + '?query={"type":"'+ params + '"}';
         let guestUserAuthToken = CONSTANTS.guestUserAuthToken;
         const kinveyAuthHeaders = { 'Authorization': "Kinvey " + guestUserAuthToken };
 
@@ -30,7 +30,7 @@ export function registerUser(newUser) {
 }
 
 export function loginUser(user) {
-        let url = CONSTANTS.kinveyRegisterUserUrl + '/login';
+        let url = CONSTANTS.kinveyRegisterUserUrl + '/login' ;
         let headers = CONSTANTS.kinveyBasicHeaders;
         let body = { "username": user.username, "password": user.password };
         return requester.post(url, JSON.stringify(body), headers);
