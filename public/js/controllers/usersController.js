@@ -10,7 +10,7 @@ export function loadRegistrationForm(context) {
         .then(template => {
             context.$element().html(template());
             let $registerForm = $('#register');
-            $registerForm.on('submit', function() {
+            $registerForm.on('submit', function () {
                 let firstName = $('#firstName').val();
                 let lastName = $('#lastName').val();
                 let username = $('#username').val();
@@ -22,7 +22,7 @@ export function loadRegistrationForm(context) {
 
                 let user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
                 register(context, user);
-             });
+            });
         });
 }
 
@@ -31,10 +31,10 @@ export function loadLoginForm(context) {
         .then(template => {
             context.$element().html(template());
             let $loginForm = $('#login');
-            $loginForm.on('submit', function() {
+            $loginForm.on('submit', function () {
                 let username = $('#username').val();
                 let password = $('#password').val();
-                let user = {"username": username, "password": password};
+                let user = { "username": username, "password": password };
                 login(context, user);
             })
         });
@@ -61,7 +61,7 @@ export function loadAboutUs(context) {
 export function loadUserProfileForm(context) {
     loadTemplate('userProfile')
         .then(template => {
-            context.$element().html(template( { user }));
+            context.$element().html(template({ user }));
         });
 }
 
@@ -73,7 +73,7 @@ export function register(context, user) {
             let userId = response._id;
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('authtoken', authtoken);
-            sessionStorage.setItem('id', userId);   
+            sessionStorage.setItem('id', userId);
             createProfile(user, userId, authtoken)
                 .then(response => {
                     alert("Welcome to BestCars!");
@@ -83,9 +83,9 @@ export function register(context, user) {
                     context.redirect('#/home');
                 });
 
-            }, error => {
-                alert("Unsuccessful registration");
-                context.redirect('#/home');
+        }, error => {
+            alert("Unsuccessful registration");
+            context.redirect('#/home');
         });
 }
 
@@ -97,9 +97,14 @@ export function login(context, user) {
             let userId = response._id;
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('authtoken', authtoken);
-            sessionStorage.setItem('id', userId);  
+            sessionStorage.setItem('id', userId);
             getProfileById(userId, authtoken)
                 .then(response => {
+                    $('#buttonLogin').addClass('hidden');
+                    $('#buttonRegister').addClass('hidden');
+                    $('#buttonLogout').removeClass('hidden');
+                    $('#buttonCreateNewAd').removeClass('hidden');
+
                     alert("Successful login");
                     context.redirect("#/profile");
                 }, error => {
@@ -117,6 +122,11 @@ export function logout(context) {
 
     logoutUser(authtoken)
         .then(response => {
+            $('#buttonLogin').removeClass('hidden');
+            $('#buttonRegister').removeClass('hidden');
+            $('#buttonLogout').addClass('hidden');
+            $('#buttonCreateNewAd').addClass('hidden');
+
             sessionStorage.clear();
             user = {};
             // TODO: let user = {};
@@ -131,25 +141,25 @@ export function logout(context) {
 export function createProfile(user, userId, authtoken) {
     return createUserProfile(user, authtoken)
         .then(
-            response => {
-                /*
-            let userData = response;          
-            let firstName = userData._firstName;
-            let lastName = userData._lastName;
-            let username = userData._username;
-            let password = userData._password;
-            let email = userData._email;
-            let phoneNumber = userData._phoneNumber;
-            let country = userData._country;
-            let town = userData._town;
-            // TODO: get adds from profile??
-            // let adds
-            user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
-            */
+        response => {
+            /*
+        let userData = response;          
+        let firstName = userData._firstName;
+        let lastName = userData._lastName;
+        let username = userData._username;
+        let password = userData._password;
+        let email = userData._email;
+        let phoneNumber = userData._phoneNumber;
+        let country = userData._country;
+        let town = userData._town;
+        // TODO: get adds from profile??
+        // let adds
+        user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
+        */
             return getProfileById(userId, authtoken);
             console.log("create", user);
-    }, error => {
-            alert("Unsuccessful registration");            
+        }, error => {
+            alert("Unsuccessful registration");
         });
 }
 
@@ -168,7 +178,7 @@ export function getProfileById(userId, authtoken) {
             // TODO: get adds from profile??
             // let adds
             user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
-            }, error => {
+        }, error => {
             alert("Cannot load profile");
         });
 }

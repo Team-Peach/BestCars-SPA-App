@@ -35,6 +35,7 @@
                 </button>
                 <a class="navbar-brand" href="#">Site-logo</a>
             </div>
+            
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li class="btn-route"><a href="#/cars">Cars</a></li>
@@ -44,6 +45,7 @@
                     <li class="btn-route"><a href="#/about">About us</a></li>
                     <li class="btn-route"><a href="#/contacts">Contacts</a></li>
                 </ul>
+
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group input-group">
                         <input type="text" class="form-control" placeholder="Search..">
@@ -56,16 +58,14 @@
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="btn-route" ><a href="#/createAd"><span class="glyphicon glyphicon-log-in"></span> New ad</a></li>
-                    <li class="btn-route" ><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li class="btn-route" ><a href="#/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
-                    <li class="btn-route" ><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    <li id="buttonLogin" class="btn-route" ><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li id="buttonRegister" class="btn-route" ><a href="#/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+                    <li id="buttonCreateNewAd" class="btn-route hidden" ><a href="#/createAd"><span class="glyphicon glyphicon-log-in"></span> New ad</a></li>
+                    <li id="buttonLogout" class="btn-route hidden" ><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
-
 
     <main id="app-container" class="container">
         <div>

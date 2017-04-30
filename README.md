@@ -1,4 +1,4 @@
-	# tasks
+# Tasks
   
   - unit testing
 	- use KendoUI or jQueryUI
@@ -7,8 +7,8 @@
 	- work in all browsers - chrome, mozilla, edge, opera, safari, internet explorer 10/11
 	- semantic HTML tags
 
-	- buttons hiding (login, logout, profile,  ... ) 
-	- len user is logged show buttons - logout, new ad, profile
+	- DONE! - buttons hiding (login, logout, profile,  ... ) 
+	- DONE! - len user is logged show buttons - logout, new ad, profile
 	- showing user profile and all ads when clicked on button profile
 	- adding new ad when user is logged
 
