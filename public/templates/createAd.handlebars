@@ -99,8 +99,8 @@
                         <option value="Acura" >Acura</option>
                         <option value="Aixam" >Aixam</option>
                         <option value="Alfa Romeo" >Alfa Romeo</option>
-                        <option value="5" >Alpina</option>
-                        <option value="6" >Asia Motors</option>
+                        <option value="Alpina" >Alpina</option>
+                        <option value="Asia Motors" >Asia Motors</option>
                         <option value="7" >Aston Martin</option>
                         <option value="8" >Audi</option>
                         <option value="128" >Austin</option>
@@ -288,7 +288,6 @@
                 </div>
             </div>
         </div>
-        
 
         <!-- Text input-->
         <div class="form-group">
@@ -301,8 +300,40 @@
             </div>
         </div>
         <hr>
-        
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Upload images</label>
+            <div class="col-md-4 inputGroupContainer">
+                <input  id="file" type="file" class="form-control" name="uploadedImage" onchange="show(this)" multiple="multiple" />
+            </div>
+        </div>
+        <div id="imgContainer" class="col-sm-12"></div>
+
+        <script>
+            function show(input) {
+                if (input.files && input.files[0]) {
+                    let imgId = 1;
+                    for (let img of input.files) {
+                        let filerdr = new FileReader();
+                        filerdr.onload = function (e) {
+                            $('<div>').addClass('col-sm-4')
+                                .append($('<img>')
+                                    .attr('name', 'uploadedImage' + imgId)
+                                    .attr('src', e.target.result)
+                                    .addClass('img-thumbnail'))
+                                .appendTo('#imgContainer');
+                        }
+
+                        filerdr.readAsDataURL(img);
+                        imgId += 1;
+                    }
+                }
+            }
+        </script>
+
         <!-- Button -->
+        <hr>
         <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-4">

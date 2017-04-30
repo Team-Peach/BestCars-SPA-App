@@ -4,9 +4,10 @@ import { postCar as postCar } from 'data';
 import { load as loadTemplate } from 'templates';
 
 export function get(context) {
-	Promise.all([getCars('Комби'), loadTemplate('cars')])
+	console.log(5);
+	Promise.all([getCars(), loadTemplate('cars')])
 		.then(([carsDatabaseAJAXResponse, template]) => {
-
+			console.log(5);
 			let allCars = {
 				cars: carsDatabaseAJAXResponse
 			};

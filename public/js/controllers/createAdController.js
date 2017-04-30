@@ -18,21 +18,18 @@ export function createAdController(context) {
 						.then(templateCars => {
 							adContainerForDifferentTypes.html(templateCars());
 						});
-
 				}
 				else if (currentTypeSelected === 'motorcycles') {
 					loadTemplate('createAdMotorcycle')
 						.then(templateMotorcycles => {
 							adContainerForDifferentTypes.html(templateMotorcycles());
 						});
-
 				}
 				else if (currentTypeSelected === 'trucks') {
 					loadTemplate('createAdTruck')
 						.then(templateTrucks => {
 							adContainerForDifferentTypes.html(templateTrucks());
 						});
-
 				}
 				else if (currentTypeSelected === 'campers') {
 					loadTemplate('createAdCamper')
@@ -50,6 +47,15 @@ export function createAdController(context) {
 				$.each(arrayOfFormObjValues, function (i, field) {
 					valuesFromForm[field.name] = field.value;
 				});
+
+				if($('#imgContainer').find('img').length > 0) {
+					valuesFromForm.images = [];
+					let imagesFromForm = $('#imgContainer').find('img').each((i, img) => {
+						let $img = $(img);
+						valuesFromForm.images.push($img.attr('src'));
+					});
+
+				}
 
 				let typeOfVehicleAd = valuesFromForm.typeOfVehicle;
 				let authtoken = sessionStorage.getItem('authtoken');
