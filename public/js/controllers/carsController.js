@@ -7,7 +7,6 @@ import { load as loadTemplate } from 'templates';
 export function getAllCars(context) {
 	Promise.all([getCars('cars'), loadTemplate('cars')])
 		.then(([carsDatabaseAJAXResponse, template]) => {
-			console.log(5);
 			let allCars = {
 				cars: carsDatabaseAJAXResponse
 			};

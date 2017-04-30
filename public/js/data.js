@@ -11,7 +11,7 @@ export function getUsers() {
 }
 
 export function getCars(params) {
-        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/cars/' + '?query={"type":"'+ params + '"}';
+        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/cars'; //' + '?query={"type":"'+ params + '"}'
         let guestUserAuthToken = CONSTANTS.guestUserAuthToken;
         const kinveyAuthHeaders = { 'Authorization': "Kinvey " + guestUserAuthToken };
 
