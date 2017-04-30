@@ -1,11 +1,20 @@
-{{#each cars}}
-    <p>{{color}}</p>
-    <p>{{type}}</p>
-    <p>{{model}}</p>
-
-    <p>{{color}}</p>
-    <p>{{type}}</p>
-    <p>{{model}}</p>
-    <p>wwweeee</p>
-{{/each}}
+ <div class="container">
+        <div class="row">
+            </br>
+        {{#each cars}}
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">{{manufacturer}}</div>
+                    <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+                    <div class="panel-footer">
+                        <p>Тип:{{type}}</p>
+                        <p>Конски сили:{{horsepower}}</p>
+                        <p>Цвят:{{color}}</p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+ <br>
 

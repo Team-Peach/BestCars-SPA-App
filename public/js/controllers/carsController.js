@@ -10,6 +10,7 @@ export function get(context) {
 			let allCars = {
 				cars: carsDatabaseAJAXResponse
 			};
+			console.log(allCars);
 			context.$element().html(template(allCars));
 		});
 }
