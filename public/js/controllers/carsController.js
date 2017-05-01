@@ -26,7 +26,7 @@ export function getTrucks(context) {
 }
 
 export function getMotors(context) {
-	Promise.all([getCars('motors'), loadTemplate('cars')])
+	Promise.all([getCars('motorcycles'), loadTemplate('cars')])
 		.then(([carsDatabaseAJAXResponse, template]) => {
 
 			let allCars = {
