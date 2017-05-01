@@ -52,7 +52,6 @@ export function logoutUser(authtoken) {
 
 export function createUserProfile(user, authtoken) {
         let url = CONSTANTS.kinveyAppDataUrl + CONSTANTS.kinveyUsersProfileCollection;
-        console.log(url);
         let headers = { 'Authorization': CONSTANTS.kinveyUserAuthorization + authtoken };
         let body = user;
         return requester.post(url, JSON.stringify(body), headers);
@@ -76,4 +75,12 @@ export function createAd(params, authtoken, type) {
         // factory create 
 
         return requester.post(url, JSON.stringify(body), headers);
+}
+
+export function addUserProfileImage(user, profileId, authtoken) {
+        let url = CONSTANTS.kinveyAppDataUrl + CONSTANTS.kinveyUsersProfileCollection + '/' + profileId;
+        let headers = { 'Authorization': CONSTANTS.kinveyUserAuthorization + authtoken };
+        let body = user;
+
+        return requester.put(url, JSON.stringify(body), headers);
 }

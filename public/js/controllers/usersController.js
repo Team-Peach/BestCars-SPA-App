@@ -1,5 +1,5 @@
 /*globals $*/
-import { registerUser, loginUser, logoutUser, createUserProfile, getUserProfileById } from 'data';
+import { registerUser, loginUser, logoutUser, createUserProfile, getUserProfileById, addUserProfileImage } from 'data';
 import { load as loadTemplate } from 'templates';
 import { User } from 'user';
 
@@ -20,7 +20,7 @@ export function loadRegistrationForm(context) {
                 let country = $('#country').val();
                 let town = $('#town').val();
 
-                let user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
+                let user = new User(firstName, lastName, username, email, phoneNumber, country, town);
                 register(context, user);
             });
         });
@@ -59,9 +59,42 @@ export function loadAboutUs(context) {
 }
 
 export function loadUserProfileForm(context) {
+
     loadTemplate('userProfile')
         .then(template => {
+            let currentUser = sessionStorage.getItem('user');
+            if( currentUser !== null) {
+                user = JSON.parse(currentUser);
+            }
             context.$element().html(template({ user }));
+            let input = $('#file');
+            input.on('change', function () {
+                showImage(this);
+            });            
+            $('#submit-image').on('click', function () {
+            if($('#imgContainer').find('img').length > 0) {
+                addProfileImage()
+                .then(response => {
+                    let userId = sessionStorage.getItem('id');
+                    let authtoken = sessionStorage.getItem('authtoken');
+                    getProfileById(userId, authtoken)
+                    .then(response => {
+                        let imgContainer = $('#imgContainer');
+                        imgContainer.empty();
+                        input.val('');
+                        context.redirect('#/home');
+                        //loadUserProfileForm(context);
+                    }, error => {
+                        alert("Cannot save the picture");
+                         });
+                }, error => {
+                    alert("Cannot save the picture");
+                });                
+              }
+            else {
+                alert('You must upload a picture first');
+            }
+            });  
         });
 }
 
@@ -167,7 +200,6 @@ export function createProfile(user, userId, authtoken) {
         user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
         */
             return getProfileById(userId, authtoken);
-            console.log("create", user);
         }, error => {
             alert("Unsuccessful registration");
         });
@@ -180,15 +212,46 @@ export function getProfileById(userId, authtoken) {
             let firstName = userData._firstName;
             let lastName = userData._lastName;
             let username = userData._username;
-            let password = userData._password;
             let email = userData._email;
             let phoneNumber = userData._phoneNumber;
             let country = userData._country;
             let town = userData._town;
+
+            let profileId = userData._id;
             // TODO: get adds from profile??
             // let adds
-            user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
+            user = new User(firstName, lastName, username, email, phoneNumber, country, town);
+            user.image = userData._image;
+            sessionStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('profileId', profileId);
         }, error => {
             alert("Cannot load profile");
         });
+}
+
+export function showImage(input) {
+    if (input.files && input.files[0]) {
+        let img = input.files[0];
+        let filerdr = new FileReader();
+        filerdr.onload = function (e) {
+            let imgContainer = $('#imgContainer');
+            imgContainer.empty();
+            $('<img>')
+            .attr('id', 'profile-image')
+            .attr('src', e.target.result)
+            .addClass('img-thumbnail')
+            .appendTo(imgContainer);
+        }
+        filerdr.readAsDataURL(img);
+    }
+}
+
+export function addProfileImage() {
+    let currentUser = JSON.parse(sessionStorage.getItem('user'));
+    let authtoken = sessionStorage.getItem('authtoken');
+    let profileId = sessionStorage.getItem('profileId');
+    user = new User(currentUser._firstName, currentUser._lastName, currentUser._username, currentUser._email, currentUser._phoneNumber, currentUser._country, currentUser._town);
+    let uploadedImage = $('#profile-image').attr('src'); 
+    user.image = uploadedImage;
+    return addUserProfileImage(user, profileId, authtoken);
 }

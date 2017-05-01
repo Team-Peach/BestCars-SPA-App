@@ -26,7 +26,7 @@ export function get(url, headers) {
 	return request(url, 'POST', body, headers);
 }
 
-export function put(url) {
-	return request(url, 'PUT', {}, {});
+export function put(url, body, headers) {
+	return request(url, 'PUT', body, headers);
 }
 
