@@ -1,5 +1,6 @@
 /*globals $, Sammy*/
 import 'addEventOnButtonsForChangeTheRoute';
+import { loadNavigationButtons } from 'loadNavigationButtons';
 import { homeController } from 'homeController';
 import * as carsController from 'carsController';
 import * as usersController from 'usersController';
