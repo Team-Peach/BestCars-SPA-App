@@ -27,6 +27,7 @@ System.config({
 		'app': 'js/app.js',
 		'addEventOnButtonsForChangeTheRoute' : 'js/utils/addEventOnButtonsForChangeTheRoute.js',
 		'loadNavigationButtons': 'js/utils/loadNavigationButtons.js',
+		'search': 'js/utils/search.js',
 		'requester' : 'js/requester.js',
 		'data' : 'js/data.js',
 		'templates': 'js/templates.js',

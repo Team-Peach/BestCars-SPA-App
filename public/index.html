@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="css/mine.css">
     <link rel="stylesheet" href="css/animate.css">
     <!-- Website Font style -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">		
 	<!-- Google Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <!-- Jquery-UI themes -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 </head>
 
 <body>
@@ -42,9 +43,9 @@
 
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group input-group">
-                        <input type="text" class="form-control" placeholder="Search..">
+                        <input type="text" id="search" class="form-control" placeholder="Search by manifacturor or model">
                         <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
+                        <button id="search-button" class="btn btn-default" type="button">
                         <span class="glyphicon glyphicon-search"></span>
                         </button>
                         </span>
@@ -76,5 +77,8 @@
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="libs/handlebars/dist/handlebars.min.js"></script>
     <script src="libs/toastr/build/toastr.min.js"></script>
+    <script src="libs/fuse.js/dist/fuse.min.js"></script>    
+    <!-- Jquery-UI scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </body>
 </html>

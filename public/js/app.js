@@ -1,6 +1,6 @@
 /*globals $, Sammy*/
 import 'addEventOnButtonsForChangeTheRoute';
-import { loadNavigationButtons } from 'loadNavigationButtons';
+import 'loadNavigationButtons';
 import { homeController } from 'homeController';
 import * as carsController from 'carsController';
 import * as usersController from 'usersController';
@@ -8,8 +8,6 @@ import {createAdController} from 'createAdController';
 
 (function () {
 	var sammyApp = Sammy('#app-container', function () {
-
-
 
 		this.get('#/', homeController);
 
@@ -22,7 +20,6 @@ import {createAdController} from 'createAdController';
 		this.post('#/cars', carsController.post);
 
 		this.post('#/createAd', createAdController);
-
 
 		this.get('#/trucks', carsController.getTrucks);
 
