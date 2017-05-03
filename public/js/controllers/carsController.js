@@ -12,7 +12,6 @@ export function getAllCars(context) {
 				cars: carsDatabaseAJAXResponse
 			};
 
-			console.log(allCars.cars);
 
 			context.$element().html(template(allCars));
 			let allTags = [];
@@ -30,7 +29,37 @@ export function getAllCars(context) {
 					cars: findedAds,
 				};
 				context.$element().html(template(findedCars));
-			});	
+			});
+
+			$('#sortByPrice-Low').click(function (event) {
+				// event.preventDefault();
+				let LowCars = {
+					cars: carsDatabaseAJAXResponse
+				};
+
+				LowCars.cars.sort(function(a, b) {
+					return parseInt(a.price) - parseInt(b.price);
+				});
+
+
+				context.$element().html(template(LowCars));
+
+			});
+
+			$('#sortByPrice-High').click(function (event) {
+				// event.preventDefault();
+				let HighCars = {
+					cars: carsDatabaseAJAXResponse
+				};
+
+				HighCars.cars.sort(function(a, b) {
+					return parseInt(b.price) - parseInt(a.price);
+				});
+
+
+				context.$element().html(template(HighCars));
+
+			});
 		});
 }
 
@@ -57,7 +86,37 @@ export function getTrucks(context) {
 					cars: findedAds,
 				};
 				context.$element().html(template(findedTrucks));
-			});	
+			});
+
+			$('#sortByPrice-Low').click(function (event) {
+				// event.preventDefault();
+				let LowCars = {
+					cars: carsDatabaseAJAXResponse
+				};
+
+				LowCars.cars.sort(function(a, b) {
+					return parseInt(a.price) - parseInt(b.price);
+				});
+
+
+				context.$element().html(template(LowCars));
+
+			});
+
+			$('#sortByPrice-High').click(function (event) {
+				// event.preventDefault();
+				let HighCars = {
+					cars: carsDatabaseAJAXResponse
+				};
+
+				HighCars.cars.sort(function(a, b) {
+					return parseInt(b.price) - parseInt(a.price);
+				});
+
+
+				context.$element().html(template(HighCars));
+
+			});
 		});
 }
 
@@ -76,20 +135,40 @@ export function getMotors(context) {
 			}
 			autocomplete(allTags);
 
-			let searchButton = $('#search-button');
-			searchButton.on('click', function () {
-				let inputText = $('#search').val();
-				let findedAds = search(carsDatabaseAJAXResponse, inputText);
-				let findedMotors = {
-					cars: findedAds,
+			$('#sortByPrice-Low').click(function (event) {
+				// event.preventDefault();
+				let LowCars = {
+					cars: carsDatabaseAJAXResponse
 				};
-				context.$element().html(template(findedMotors));
-			});	
+
+				LowCars.cars.sort(function(a, b) {
+					return parseInt(a.price) - parseInt(b.price);
+				});
+
+
+				context.$element().html(template(LowCars));
+
+			});
+
+			$('#sortByPrice-High').click(function (event) {
+				// event.preventDefault();
+				let HighCars = {
+					cars: carsDatabaseAJAXResponse
+				};
+
+				HighCars.cars.sort(function(a, b) {
+					return parseInt(b.price) - parseInt(a.price);
+				});
+
+
+				context.$element().html(template(HighCars));
+
+			});
 		});
 }
 
 export function getCaravans(context) {
-	Promise.all([getCars('caravans'), loadTemplate('cars')])
+	Promise.all([getCars('campers'), loadTemplate('cars')])
 		.then(([carsDatabaseAJAXResponse, template]) => {
 
 			let allCars = {
@@ -112,7 +191,37 @@ export function getCaravans(context) {
 					cars: findedAds,
 				};
 				context.$element().html(template(findedCaravanas));
-			});	
+			});
+
+			$('#sortByPrice-Low').click(function (event) {
+				// event.preventDefault();
+				let LowCars = {
+					cars: carsDatabaseAJAXResponse
+				};
+
+				LowCars.cars.sort(function(a, b) {
+					return parseInt(a.price) - parseInt(b.price);
+				});
+
+
+				context.$element().html(template(LowCars));
+
+			});
+
+			$('#sortByPrice-High').click(function (event) {
+				// event.preventDefault();
+				let HighCars = {
+					cars: carsDatabaseAJAXResponse
+				};
+
+				HighCars.cars.sort(function(a, b) {
+					return parseInt(b.price) - parseInt(a.price);
+				});
+
+
+				context.$element().html(template(HighCars));
+
+			});
 		});
 }
 
@@ -140,7 +249,37 @@ export function getMyAd(context) {
 					cars: findedAds,
 				};
 				context.$element().html(template(findedMyAds));
-			});	
+			});
+
+			$('#sortByPrice-Low').click(function (event) {
+				// event.preventDefault();
+				let LowCars = {
+					cars: carsDatabaseAJAXResponse
+				};
+
+				LowCars.cars.sort(function(a, b) {
+					return parseInt(a.price) - parseInt(b.price);
+				});
+
+
+				context.$element().html(template(LowCars));
+
+			});
+
+			$('#sortByPrice-High').click(function (event) {
+				// event.preventDefault();
+				let HighCars = {
+					cars: carsDatabaseAJAXResponse
+				};
+
+				HighCars.cars.sort(function(a, b) {
+					return parseInt(b.price) - parseInt(a.price);
+				});
+
+
+				context.$element().html(template(HighCars));
+
+			});
 		});
 }
 

@@ -185,4 +185,6 @@ input::-webkit-input-placeholder {
 .toppad {
     margin-top:20px;
 }
-
+#viewSearch{
+    display: none;
+}
