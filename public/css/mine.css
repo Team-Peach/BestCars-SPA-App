@@ -6,7 +6,7 @@ body {
 }
 
 .jumbotron {
-    position: relative;
+    /*position: relative;*/
     background: #000 url("../images/Banner.jpg") center center;
     width: 100%;
     height: 340px;
