@@ -230,3 +230,9 @@ input::-webkit-input-placeholder {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* fix bug with slider width */
+.img-responsive{
+    min-height: 220px;
+    max-height: 220px;
+}
