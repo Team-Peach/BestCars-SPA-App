@@ -9,7 +9,7 @@
 
 	- DONE! - buttons hiding (login, logout, profile,  ... ) 
 	- DONE! - len user is logged show buttons - logout, new ad, profile
-	- showing user profile and all ads when clicked on button profile
+	- DONE! - showing user profile and all ads when clicked on button profile - added button my ads
 	- adding new ad when user is logged
 
 	- template for ad preview
@@ -19,7 +19,7 @@
 	- about page
 	- contacts page
 
-	- implementation for search cars page - truck, motor, camper
+	- DONE! - implementation for search cars page - truck, motor, camper
 	- footer
 	- ads comments
 	- integration tests

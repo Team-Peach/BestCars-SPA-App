@@ -10,7 +10,8 @@ export function loadRegistrationForm(context) {
         .then(template => {
             context.$element().html(template());
             let $registerForm = $('#register');
-            $registerForm.on('submit', function () {
+            $registerForm.on('submit', function (ev) {
+                ev.preventDefault();
                 let firstName = $('#firstName').val();
                 let lastName = $('#lastName').val();
                 let username = $('#username').val();
@@ -31,7 +32,8 @@ export function loadLoginForm(context) {
         .then(template => {
             context.$element().html(template());
             let $loginForm = $('#login');
-            $loginForm.on('submit', function () {
+            $loginForm.on('submit', function (ev) {
+                ev.preventDefault();
                 let username = $('#username').val();
                 let password = $('#password').val();
                 let user = { "username": username, "password": password };
@@ -68,10 +70,12 @@ export function loadUserProfileForm(context) {
             }
             context.$element().html(template({ user }));
             let input = $('#file');
-            input.on('change', function () {
+            input.on('change', function (ev) {
+                ev.preventDefault();
                 showImage(this);
             });            
-            $('#submit-image').on('click', function () {
+            $('#submit-image').on('click', function (ev) {
+            ev.preventDefault();
             if($('#imgContainer').find('img').length > 0) {
                 addProfileImage()
                 .then(response => {
@@ -82,79 +86,19 @@ export function loadUserProfileForm(context) {
                         let imgContainer = $('#imgContainer');
                         imgContainer.empty();
                         input.val('');
-                        context.redirect('#/home');
-                        //loadUserProfileForm(context);
+                        toastr.success("Successfully added new profile image");
+                        window.location.reload(true);
                     }, error => {
-                        alert("Cannot save the picture");
+                        toastr.error("Cannot save the picture");
                          });
                 }, error => {
-                    alert("Cannot save the picture");
+                    toastr.error("Cannot save the picture");
                 });                
               }
             else {
-                alert('You must upload a picture first');
+                toastr.info('You must upload a picture first');
             }
             });  
-        });
-}
-
-export function register(context, user) {
-    registerUser(user)
-        .then(response => {
-            let username = response.username;
-            let authtoken = response._kmd.authtoken;
-            let userId = response._id;
-            sessionStorage.setItem('username', username);
-            sessionStorage.setItem('authtoken', authtoken);
-            sessionStorage.setItem('id', userId);
-            createProfile(user, userId, authtoken)
-                .then(response => {
-                    alert("Welcome to BestCars!");
-                    $('#buttonLogin').addClass('hidden');
-                    $('#buttonRegister').addClass('hidden');
-                    $('#buttonLogout').removeClass('hidden');
-                    $('#buttonCreateNewAd').removeClass('hidden');
-                    $('#buttonMyAd').removeClass('hidden');
-                    $('#buttonUserProfile').removeClass('hidden');                    
-                    context.redirect('#/profile');
-                }, error => {
-                    alert("Unsuccessful registration");
-                    context.redirect('#/home');
-                });
-
-        }, error => {
-            alert("Unsuccessful registration");
-            context.redirect('#/home');
-        });
-}
-
-export function login(context, user) {
-    loginUser(user)
-        .then(response => {
-            let username = response.username;
-            let authtoken = response._kmd.authtoken;
-            let userId = response._id;
-            sessionStorage.setItem('username', username);
-            sessionStorage.setItem('authtoken', authtoken);
-            sessionStorage.setItem('id', userId);
-            getProfileById(userId, authtoken)
-                .then(response => {
-                    $('#buttonLogin').addClass('hidden');
-                    $('#buttonRegister').addClass('hidden');
-                    $('#buttonLogout').removeClass('hidden');
-                    $('#buttonCreateNewAd').removeClass('hidden');
-                    $('#buttonMyAd').removeClass('hidden');
-                    $('#buttonUserProfile').removeClass('hidden');
-
-                    alert("Successful login");
-                    context.redirect("#/profile");
-                }, error => {
-                    alert("Unsuccessful login");
-                    context.redirect("#/home");
-                })
-        }, error => {
-            alert("Unsuccessful login");
-            context.redirect('#/home');
         });
 }
 
@@ -173,15 +117,73 @@ export function logout(context) {
             sessionStorage.clear();
             user = {};
             // TODO: let user = {};
-            alert("Successful logout");
+            toastr.success("Successful logout");
             context.redirect('#/home');
         }, error => {
-            alert("Unsuccessful logout");
+            toastr.error("Unsuccessful logout");
             context.redirect('#/home');
         });
 }
+
+function register(context, user) {
+    registerUser(user)
+        .then(response => {
+            let username = response.username;
+            let authtoken = response._kmd.authtoken;
+            let userId = response._id;
+            sessionStorage.setItem('username', username);
+            sessionStorage.setItem('authtoken', authtoken);
+            sessionStorage.setItem('id', userId);
+            createProfile(user, userId, authtoken)
+                .then(response => {
+                    toastr.success("Welcome to BestCars!");
+                    $('#buttonLogin').addClass('hidden');
+                    $('#buttonRegister').addClass('hidden');
+                    $('#buttonLogout').removeClass('hidden');
+                    $('#buttonCreateNewAd').removeClass('hidden');
+                    $('#buttonMyAd').removeClass('hidden');
+                    $('#buttonUserProfile').removeClass('hidden');                    
+                    context.redirect('#/profile');
+                }, error => {
+                    toastr.error("Unsuccessful registration");
+                });
+
+        }, error => {
+            toastr.error("Unsuccessful registration");
+        });
+}
+
+function login(context, user) {
+    loginUser(user)
+        .then(response => {
+            let username = response.username;
+            let authtoken = response._kmd.authtoken;
+            let userId = response._id;
+            sessionStorage.setItem('username', username);
+            sessionStorage.setItem('authtoken', authtoken);
+            sessionStorage.setItem('id', userId);
+            getProfileById(userId, authtoken)
+                .then(response => {
+                    $('#buttonLogin').addClass('hidden');
+                    $('#buttonRegister').addClass('hidden');
+                    $('#buttonLogout').removeClass('hidden');
+                    $('#buttonCreateNewAd').removeClass('hidden');
+                    $('#buttonMyAd').removeClass('hidden');
+                    $('#buttonUserProfile').removeClass('hidden');
+
+                    toastr.success("Successful login");
+                    context.redirect("#/profile");
+                }, error => {
+                    toastr.error("Unsuccessful login");
+                    context.redirect("#/register");
+                })
+        }, error => {
+            toastr.error("Unsuccessful login");
+            context.redirect('#/register');
+        });
+}
 //TODO: refactor
-export function createProfile(user, userId, authtoken) {
+function createProfile(user, userId, authtoken) {
     return createUserProfile(user, authtoken)
         .then(
         response => {
@@ -201,11 +203,11 @@ export function createProfile(user, userId, authtoken) {
         */
             return getProfileById(userId, authtoken);
         }, error => {
-            alert("Unsuccessful registration");
+            toastr.error("Unsuccessful registration");
         });
 }
 
-export function getProfileById(userId, authtoken) {
+function getProfileById(userId, authtoken) {
     return getUserProfileById(userId, authtoken)
         .then(response => {
             let userData = response[0];
@@ -225,11 +227,11 @@ export function getProfileById(userId, authtoken) {
             sessionStorage.setItem('user', JSON.stringify(user));
             sessionStorage.setItem('profileId', profileId);
         }, error => {
-            alert("Cannot load profile");
+            toastr.error("Cannot load profile");
         });
 }
 
-export function showImage(input) {
+function showImage(input) {
     if (input.files && input.files[0]) {
         let img = input.files[0];
         let filerdr = new FileReader();
@@ -246,7 +248,7 @@ export function showImage(input) {
     }
 }
 
-export function addProfileImage() {
+function addProfileImage() {
     let currentUser = JSON.parse(sessionStorage.getItem('user'));
     let authtoken = sessionStorage.getItem('authtoken');
     let profileId = sessionStorage.getItem('profileId');

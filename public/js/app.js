@@ -18,13 +18,12 @@ import {createAdController} from 'createAdController';
 
 		this.post('#/createAd', createAdController);
 
-
-
 		this.get('#/', function (context) {
 			$('#viewSearch').hide();
 			homeController(context)
 
 		});
+
 		this.get('#/home', function (context) {
 			$('#viewSearch').hide();
 			homeController(context)
@@ -90,9 +89,13 @@ import {createAdController} from 'createAdController';
 			$('#viewSearch').hide();
 			createAdController(context)
 		});
-		
-
-	});
+	/*	
+    // Make Sammy.js leave the forms alone!
+    this._checkFormSubmission = function(form) {
+        return false;
+    };
+	*/
+});
 
 	$(function () {
 		sammyApp.run('#/');
