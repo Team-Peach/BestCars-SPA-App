@@ -61,6 +61,7 @@ export function createAdController(context) {
 				let authtoken = sessionStorage.getItem('authtoken');
 
 				createAd(valuesFromForm, authtoken, typeOfVehicleAd);
+				context.redirect('#/myAd');
 			});
 		});
 }
