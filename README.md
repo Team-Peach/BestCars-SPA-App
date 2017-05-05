@@ -1,27 +1,27 @@
 # Tasks
   
   - unit testing
-	- use KendoUI or jQueryUI
+	- DONE! - use KendoUI or jQueryUI
 	- Make the application responsive - bootstrap
-	- third-part API - Facebook
+	- DONE! - third-part API - Facebook
 	- work in all browsers - chrome, mozilla, edge, opera, safari, internet explorer 10/11
-	- semantic HTML tags
+	- DONE! - semantic HTML tags
 
 	- DONE! - buttons hiding (login, logout, profile,  ... ) 
 	- DONE! - len user is logged show buttons - logout, new ad, profile
 	- DONE! - showing user profile and all ads when clicked on button profile - added button my ads
-	- adding new ad when user is logged
+	- DONE! - adding new ad when user is logged
 
 	- template for ad preview
 	- template for ad content 
 
 	- home page
-	- about page
+	- DONE! - about page
 	- contacts page
 
 	- DONE! - implementation for search cars page - truck, motor, camper
 	- footer
-	- ads comments
+	- DONE! - ads comments
 	- integration tests
 	- minify source code
 	- work in browser internet explorer 6, 7, 8

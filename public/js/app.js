@@ -79,19 +79,19 @@ import { createAdController } from 'createAdController';
 		this.get('#/profile', function (context) {
 			usersController.loadUserProfileForm(context);
 			$('#viewSearch').hide();
-		}); /*/?:username */
+		});
 
 		this.get('#/createAd', function (context) {
 			$('#viewSearch').hide();
 			createAdController(context);
 		});
 
-		/*	
+			
 		// Make Sammy.js leave the forms alone!
 		this._checkFormSubmission = function(form) {
 			return false;
 		};
-		*/
+		
 	});
 
 	$(function () {
