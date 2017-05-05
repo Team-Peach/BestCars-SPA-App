@@ -21,7 +21,7 @@ System.config({
 		'truck': 'js/opp/vehicles/truck.js',
 		'camper': 'js/opp/vehicles/camper.js',
 		'advertisement': 'js/opp/advertisement.js',
-		'comment': 'js/opp/comment.js',
+		'comment': 'js/oop/comment.js',
 		'user': 'js/oop/user.js',
 
 		'app': 'js/app.js',

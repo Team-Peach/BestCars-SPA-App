@@ -84,3 +84,19 @@ export function addUserProfileImage(user, profileId, authtoken) {
 
         return requester.put(url, JSON.stringify(body), headers);
 }
+
+export function getAllCommentsByAdId(adId, authtoken, type) {    
+        let filter = JSON.stringify({ "_adId": adId })
+        let url = CONSTANTS.kinveyAppDataUrl + '/' + type + '/?query=' + filter;
+        let headers = { 'Authorization': CONSTANTS.kinveyUserAuthorization + authtoken };
+
+        return requester.get(url, headers);
+}
+
+export function addNewComment(params, authtoken, type) {
+        let url = CONSTANTS.kinveyAppDataUrl + '/' + type;
+        let headers = { 'Authorization': CONSTANTS.kinveyUserAuthorization + authtoken };
+        let body = params;
+
+        return requester.post(url, JSON.stringify(body), headers);
+}

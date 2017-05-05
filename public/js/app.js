@@ -10,7 +10,6 @@ import { createAdController } from 'createAdController';
 	var sammyApp = Sammy('#app-container', function () {
 
 		this.get('#/', function (context) {
-			console.log(context);
 			$('#viewSearch').hide();
 			homeController(context);
 		});

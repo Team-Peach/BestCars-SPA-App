@@ -73,9 +73,33 @@
                         <p>Цена:{{price}}</p>
                         <p>Скоростна кутия:{{transmision}}</p>
                         <p>Година на производство:{{yearOfManufacture}}</p>
+                        <div id="comments">
 
+                        </div>
+                        <!-- Ad new comment form -->
+
+				        <div class='hidden' id="div-comment-form" class="panel panel-default">
+					        <div class="panel-body">
+						        <form id="comment-form" role="form" method="POST">
+										<div class="form-group">
+											<div class="input-group">
+												<span class="input-group-addon">
+												</span> 
+												<textarea class="form-control" id="comment-content" placeholder="Comment" name="eventdescription" type="text"></textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<input type="submit" class="btn btn-default" value="Add">
+										</div>
+						        </form>
+					        </div>
+                        </div>
+
+                        <!-- end ad new commend form -->
+                    <button id="load-comments" type="button" class="btn btn-default" >See all comments</button>
                     </div>
                     <div class="modal-footer">
+                        <button id="load-comment-form" type="button" class="btn btn-default" >Add new comment</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
