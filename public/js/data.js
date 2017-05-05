@@ -10,6 +10,17 @@ export function getUsers() {
         return requester.get('/users');
 }
 
+function getKinveyUserAuthHeaders() {
+        return {
+                "Authorization": "Kinvey " + sessionStorage['authtoken']
+        };
+}
+
+export function deleteVehicle(params, vehicleId) {
+        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + vehicleId;
+        return requester.deletee(kinveyAppDataUrl, getKinveyUserAuthHeaders());
+}
+
 export function getCars(params) {
         let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + '?query={}&sort={"_kmd": -1}';
         let guestUserAuthToken = CONSTANTS.guestUserAuthToken;

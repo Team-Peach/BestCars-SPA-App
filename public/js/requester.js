@@ -30,3 +30,7 @@ export function put(url, body, headers) {
 	return request(url, 'PUT', body, headers);
 }
 
+export function deletee(url, headers)  {
+    return request(url, 'DELETE', {}, headers)
+}
+

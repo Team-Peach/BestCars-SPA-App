@@ -1,5 +1,6 @@
 /*globals $ */
 import { getCars as getCars } from 'data';
+import {deleteVehicle as deleteVehicle} from 'data';
 import { getMyCars as getMyCars } from 'data';
 import { postCar as postCar } from 'data';
 import { addNewComment as addNewComment } from 'data';
@@ -441,14 +442,14 @@ export function getCaravans(context) {
 
 export function getMyAd(context) {
 	var userId = sessionStorage.id;
-	Promise.all([getMyCars(userId), loadTemplate('cars'), loadTemplate('comment')])
+	Promise.all([getMyCars(userId), loadTemplate('myAd'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
 
 			let allCars = {
 				cars: carsDatabaseAJAXResponse
 			};
 			context.$element().html(template(allCars));
-
+			console.log(carsDatabaseAJAXResponse);
 			let loadComments = $("#load-comments");
 			// take all comments by ad id 
 			loadComments.on('click', function() {
@@ -544,6 +545,15 @@ export function getMyAd(context) {
 				context.$element().html(template(HighCars));
 
 			});
+
+			$('.deleteButton').click(function () {
+				var id = $(this).parent().parent().parent().attr('data-id');
+				var type = $(this).parent().parent().parent().attr('data-type');
+				alert(id);
+				deleteVehicle(type, id);
+				// context.redirect('#/myAd');
+			})
+
 		});
 }
 
