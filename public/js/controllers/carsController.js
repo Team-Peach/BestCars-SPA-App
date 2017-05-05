@@ -549,9 +549,13 @@ export function getMyAd(context) {
 			$('.deleteButton').click(function () {
 				var id = $(this).parent().parent().parent().attr('data-id');
 				var type = $(this).parent().parent().parent().attr('data-type');
-				alert(id);
-				deleteVehicle(type, id);
-				// context.redirect('#/myAd');
+				deleteVehicle(type, id)
+				.then(response => {
+					toastr.success("Successfully delete");
+					window.location.reload(true);
+				}, error => {
+					toastr.error("Cannot delete");
+				});
 			})
 
 		});
