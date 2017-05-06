@@ -6,8 +6,8 @@ import { Truck } from 'truck';
 import { Camper } from 'camper';
 import { Comment } from 'comment';
 
-export function createUser(firstName, lastName, username, password, email, phoneNumber, country, town){
-	return new User(firstName, lastName, username, password, email, phoneNumber, country, town);
+export function createUser(firstName, lastName, username,  email, phoneNumber, country, town){
+	return new User(firstName, lastName, username, email, phoneNumber, country, town);
 }
 
 export function createAdvertisement(title, vehicle, date, images, description, contacts){

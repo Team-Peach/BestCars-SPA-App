@@ -15,15 +15,15 @@ System.config({
 		// 'handlebars': 'libs/handlebars/dist/handlebars.min.js',
 
 		// app scripts
-		'vehicle': 'js/opp/vehicles/vehicle.js',
-		'car': 'js/opp/vehicles/car.js',
-		'motorcycle': 'js/opp/vehicles/motorcycle.js',
-		'truck': 'js/opp/vehicles/truck.js',
-		'camper': 'js/opp/vehicles/camper.js',
-		'advertisement': 'js/opp/advertisement.js',
+		'vehicle': 'js/oop/vehicles/vehicle.js',
+		'car': 'js/oop/vehicles/car.js',
+		'motorcycle': 'js/oop/vehicles/motorcycle.js',
+		'truck': 'js/oop/vehicles/truck.js',
+		'camper': 'js/oop/vehicles/camper.js',
+		'advertisement': 'js/oop/advertisement.js',
 		'comment': 'js/oop/comment.js',
 		'user': 'js/oop/user.js',
-		'factory': 'utils/factory.js',
+		'factory': 'js/utils/factory.js',
 
 		'app': 'js/app.js',
 		'addEventOnButtonsForChangeTheRoute' : 'js/utils/addEventOnButtonsForChangeTheRoute.js',

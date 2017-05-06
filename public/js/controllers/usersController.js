@@ -1,9 +1,7 @@
 /*globals $*/
 import { registerUser, loginUser, logoutUser, createUserProfile, getUserProfileById, addUserProfileImage } from 'data';
 import { load as loadTemplate } from 'templates';
-import { User } from 'user';
-
-let user = {};
+import { createUser } from 'factory';
 
 export function loadRegistrationForm(context) {
     loadTemplate('register')
@@ -21,7 +19,7 @@ export function loadRegistrationForm(context) {
                 let country = $('#country').val();
                 let town = $('#town').val();
 
-                let user = new User(firstName, lastName, username, email, phoneNumber, country, town);
+                let user = createUser(firstName, lastName, username, email, phoneNumber, country, town);
                 register(context, user);
             });
         });
@@ -61,44 +59,51 @@ export function loadAboutUs(context) {
 }
 
 export function loadUserProfileForm(context) {
+    let userId = sessionStorage.getItem('id');
+    let authtoken = sessionStorage.getItem('authtoken');
 
-    loadTemplate('userProfile')
-        .then(template => {
-            let currentUser = sessionStorage.getItem('user');
-            if( currentUser !== null) {
-                user = JSON.parse(currentUser);
-            }
+    Promise.all([getUserProfileById(userId, authtoken), loadTemplate('userProfile')])
+        .then(([response, template]) => {
+            let userData = response[0];
+            console.log(response)
+            let firstName = userData._firstName;
+            let lastName = userData._lastName;
+            let username = userData._username;
+            let email = userData._email;
+            let phoneNumber = userData._phoneNumber;
+            let country = userData._country;
+            let town = userData._town;
+
+            let user = createUser(firstName, lastName, username, email, phoneNumber, country, town);
+            user.image = userData._image;  
+
             context.$element().html(template({ user }));
             let input = $('#file');
-            input.on('change', function (ev) {
-                ev.preventDefault();
-                showImage(this);
-            });            
-            $('#submit-image').on('click', function (ev) {
-            ev.preventDefault();
-            if($('#imgContainer').find('img').length > 0) {
-                addProfileImage()
-                .then(response => {
-                    let userId = sessionStorage.getItem('id');
-                    let authtoken = sessionStorage.getItem('authtoken');
-                    getProfileById(userId, authtoken)
-                    .then(response => {
-                        let imgContainer = $('#imgContainer');
-                        imgContainer.empty();
-                        input.val('');
-                        toastr.success("Successfully added new profile image");
-                        window.location.reload(true);
-                    }, error => {
-                        toastr.error("Cannot save the picture");
-                         });
-                }, error => {
-                    toastr.error("Cannot save the picture");
-                });                
-              }
-            else {
-                toastr.info('You must upload a picture first');
-            }
-            });  
+            input.on('change', function () {
+                  showImage(this);
+            });
+            $('#submit-image').on('click', function () {
+                if ($('#imgContainer').find('img').length > 0) {
+                    addProfileImage(user)
+                        .then(response => {
+                            toastr.success("Successfully added new profile image");
+                            getProfileById(userId, authtoken)
+                                .then(response => {
+                                    let imgContainer = $('#imgContainer');
+                                    imgContainer.empty();
+                                    input.val('');
+                                    window.location.reload(true);
+                                }, error => {
+                                    toastr.error("Cannot save the picture");
+                                });
+                        }, error => {
+                            toastr.error("Cannot save the picture");
+                        });
+                }
+                else {
+                    toastr.info('You must upload a picture first');
+                }
+            });
         });
 }
 
@@ -115,13 +120,16 @@ export function logout(context) {
             $('#buttonUserProfile').addClass('hidden');
 
             sessionStorage.clear();
-            user = {};
             toastr.success("Successful logout");
             context.redirect('#/home');
         }, error => {
             toastr.error("Unsuccessful logout");
             context.redirect('#/home');
         });
+}
+
+export function getUserProfile(context) {
+
 }
 
 function register(context, user) {
@@ -161,27 +169,22 @@ function login(context, user) {
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('authtoken', authtoken);
             sessionStorage.setItem('id', userId);
-            getProfileById(userId, authtoken)
-                .then(response => {
-                    $('#buttonLogin').addClass('hidden');
-                    $('#buttonRegister').addClass('hidden');
-                    $('#buttonLogout').removeClass('hidden');
-                    $('#buttonCreateNewAd').removeClass('hidden');
-                    $('#buttonMyAd').removeClass('hidden');
-                    $('#buttonUserProfile').removeClass('hidden');
 
-                    toastr.success("Successful login");
-                    context.redirect("#/profile");
-                }, error => {
-                    toastr.error("Unsuccessful login");
-                    context.redirect("#/register");
-                })
+            $('#buttonLogin').addClass('hidden');
+            $('#buttonRegister').addClass('hidden');
+            $('#buttonLogout').removeClass('hidden');
+            $('#buttonCreateNewAd').removeClass('hidden');
+            $('#buttonMyAd').removeClass('hidden');
+            $('#buttonUserProfile').removeClass('hidden');
+
+            toastr.success("Successful login");
+            context.redirect("#/profile");
         }, error => {
             toastr.error("Unsuccessful login");
             context.redirect('#/register');
         });
 }
-//TODO: refactor
+
 function createProfile(user, userId, authtoken) {
     return createUserProfile(user, authtoken)
         .then(
@@ -195,22 +198,8 @@ function createProfile(user, userId, authtoken) {
 function getProfileById(userId, authtoken) {
     return getUserProfileById(userId, authtoken)
         .then(response => {
-            let userData = response[0];
-            let firstName = userData._firstName;
-            let lastName = userData._lastName;
-            let username = userData._username;
-            let email = userData._email;
-            let phoneNumber = userData._phoneNumber;
-            let country = userData._country;
-            let town = userData._town;
-
-            let profileId = userData._id;
-            // TODO: get adds from profile??
-            // let adds
-            user = new User(firstName, lastName, username, email, phoneNumber, country, town);
-            user.image = userData._image;
-            sessionStorage.setItem('user', JSON.stringify(user));
-            sessionStorage.setItem('profileId', profileId);
+            let profileId = response[0]._id;       
+            sessionStorage.setItem('profileId', profileId);            
         }, error => {
             toastr.error("Cannot load profile");
         });
@@ -233,12 +222,11 @@ function showImage(input) {
     }
 }
 
-function addProfileImage() {
-    let currentUser = JSON.parse(sessionStorage.getItem('user'));
+function addProfileImage(user) {
+    let currentUser = user;
     let authtoken = sessionStorage.getItem('authtoken');
     let profileId = sessionStorage.getItem('profileId');
-    user = new User(currentUser._firstName, currentUser._lastName, currentUser._username, currentUser._email, currentUser._phoneNumber, currentUser._country, currentUser._town);
     let uploadedImage = $('#profile-image').attr('src'); 
-    user.image = uploadedImage;
-    return addUserProfileImage(user, profileId, authtoken);
+    currentUser.image = uploadedImage;
+    return addUserProfileImage(currentUser, profileId, authtoken);
 }
