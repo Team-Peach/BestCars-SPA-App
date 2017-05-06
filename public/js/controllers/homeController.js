@@ -6,8 +6,10 @@ import { addNewComment as addNewComment } from 'data';
 import { getAllCommentsByAdId as getAllCommentsByAdId } from 'data';
 import { guestUserAuthToken } from 'constants';
 import * as comments from 'comments';
+import * as adsSearch from 'adsSearch';
 
 export function homeController(context) {
+	$('#viewSearch').hide();
 	Promise.all([getCars('cars'), getCars('trucks'), getCars('motorcycles'), getCars('campers'), loadTemplate('home'), loadTemplate('ads'), loadTemplate('comment')])
 		.then(([carsResponse, trucksResponse, motorcyclesResponse, campersResponse, templateHome, templateCars, commentTemplate]) => {
 			context.$element().html(templateHome());
@@ -17,11 +19,11 @@ export function homeController(context) {
 				searchForm = $('#search-form'),
 				input = $('#search');
 
-			getAllTags(allTags, allAds);
+			adsSearch.getAllTags(allTags, allAds);
 			autocomplete(allTags);
 			searchForm.on('submit', function (e) {
 				e.preventDefault();
-				searchInAds(input, allAds, context, templateCars)
+				adsSearch.searchInAds(input, allAds, context, templateCars)
 					.then(resolve => {
 						let loadCommentsBtn = $("#load-comments");
 
@@ -45,26 +47,8 @@ export function homeController(context) {
 						addCommentForm.on('submit', function (ev) {
 							ev.preventDefault();
 							comments.addComment(addCommentFormDiv, loadCommentFormBtn);
-				});
+						});
+					});
 			});
 		});
-	});
-}
-
-function getAllTags(allTags, allAds) {
-	for (let i = 0; i < allAds.length; i++) {
-		allTags.push(allAds[i].manufacturer);
-		allTags.push(allAds[i].model);
-	}
-}
-
-function searchInAds(input, allAds, context, template) {
-
-	let inputText = input.val();
-	let findAds = search(allAds, inputText);
-	let findCars = {
-		cars: findAds,
-	};
-
-	return Promise.resolve(context.$element().html(template(findCars)));
 }

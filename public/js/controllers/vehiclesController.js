@@ -60,7 +60,7 @@ export function vehiclesController(context) {
 		});
 }
 
-function getMyAd(context) {
+function myAds(context) {
 	var userId = sessionStorage.id;
 	Promise.all([getMyCars(userId), loadTemplate('myAd'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {

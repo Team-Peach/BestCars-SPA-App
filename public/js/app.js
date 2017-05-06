@@ -1,26 +1,22 @@
 /*globals $, Sammy*/
-import 'addEventOnButtonsForChangeTheRoute';
 import 'loadNavigationButtons';
 import 'factory';
+import 'logout';
 import { homeController } from 'homeController';
 import { vehiclesController } from 'vehiclesController';
 import { createAdController } from 'createAdController';
 import * as usersController from 'usersController';
 import { aboutUsController } from 'aboutUsController';
 import { contactUsController } from 'contactUsController';
+import * as profileController from 'profileController';
+
 
 (function () {
 	var sammyApp = Sammy('#app-container', function () {
 
-		this.get('#/', function (context) {
-			$('#viewSearch').hide();
-			homeController(context);
-		});
-
-		this.get('#/home', function (context) {
-			$('#viewSearch').hide();
-			homeController(context);
-		});
+		this.get('#/', homeController);
+		
+		this.get('#/home', homeController);
 
 		this.get('#/cars', vehiclesController);
 
@@ -36,40 +32,15 @@ import { contactUsController } from 'contactUsController';
 
 		this.get('#/createAd', createAdController);
 
-		
+		this.get('#/register',	usersController.loadRegistrationForm);
 
-		this.get('#/register', function (context) {
-			usersController.loadRegistrationForm(context);
-			$('#viewSearch').hide();
-		});
+		this.get('#/login', usersController.loadLoginForm);
 
-		this.get('#/login', function (context) {
-			usersController.loadLoginForm(context);
-			$('#viewSearch').hide();
-		});
+		this.get('#/profile', profileController.aaaa);	// to profileController from userController
 
-		this.get('#/logout', function (context) {
-			usersController.logout(context);
-			$('#viewSearch').hide();
-		});
+		this.get('#/user/profile/:id', usersController.aaaa);	// to profileController from userController
 
-		this.get('#/profile', function (context) {
-			usersController.loadUserProfileForm(context);
-			$('#viewSearch').hide();
-		});
-
-		this.get('#/user/profile/:id', function (context) {
-			usersController.loadUserProfile(context);
-		});
-
-		this.get('#/myAd', function (context) {
-			carsController.getMyAd(context);
-		});
-
-		this.get('#/createAd', function (context) {
-			$('#viewSearch').hide();
-			createAdController(context);
-		});
+		this.get('#/myAds', vehiclesController.myAds);	// to myAdsController from vehiclesController
 
 		// Make Sammy.js leave the forms alone!
 		this._checkFormSubmission = function (form) {

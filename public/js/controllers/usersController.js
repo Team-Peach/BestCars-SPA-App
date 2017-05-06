@@ -6,6 +6,7 @@ import { createUser } from 'factory';
 import { guestUserAuthToken } from 'constants'; 
 
 export function loadRegistrationForm(context) {
+    $('#viewSearch').hide();
     loadTemplate('register')
         .then(template => {
             context.$element().html(template());
@@ -28,6 +29,7 @@ export function loadRegistrationForm(context) {
 }
 
 export function loadLoginForm(context) {
+    $('#viewSearch').hide();
     loadTemplate('login')
         .then(template => {
             context.$element().html(template());
@@ -43,13 +45,13 @@ export function loadLoginForm(context) {
 }
 
 export function loadUserProfileForm(context) {
+    $('#viewSearch').hide();
     let userId = sessionStorage.getItem('id');
     let authtoken = sessionStorage.getItem('authtoken');
 
     Promise.all([getUserProfileById(userId, authtoken), loadTemplate('userProfile')])
         .then(([response, template]) => {
             let userData = response[0];
-            console.log(response)
             let firstName = userData._firstName;
             let lastName = userData._lastName;
             let username = userData._username;
@@ -64,7 +66,7 @@ export function loadUserProfileForm(context) {
             context.$element().html(template({ user }));
             let input = $('#file');
             input.on('change', function () {
-                  showImage(this);
+            showImage(this);
             });
             $('#submit-image').on('click', function () {
                 if ($('#imgContainer').find('img').length > 0) {
@@ -91,27 +93,6 @@ export function loadUserProfileForm(context) {
         });
 }
 
-export function logout(context) {
-    let authtoken = sessionStorage.getItem('authtoken');
-
-    logoutUser(authtoken)
-        .then(response => {
-            $('#buttonLogin').removeClass('hidden');
-            $('#buttonRegister').removeClass('hidden');
-            $('#buttonLogout').addClass('hidden');
-            $('#buttonCreateNewAd').addClass('hidden');
-            $('#buttonMyAd').addClass('hidden');
-            $('#buttonUserProfile').addClass('hidden');
-
-            sessionStorage.clear();
-            toastr.success("Successful logout");
-            context.redirect('#/home');
-        }, error => {
-            toastr.error("Unsuccessful logout");
-            context.redirect('#/home');
-        });
-}
-
 function register(context, user) {
     registerUser(user)
         .then(response => {
@@ -128,7 +109,6 @@ function register(context, user) {
                     $('#buttonRegister').addClass('hidden');
                     $('#buttonLogout').removeClass('hidden');
                     $('#buttonCreateNewAd').removeClass('hidden');
-                    $('#buttonMyAd').removeClass('hidden');
                     $('#buttonUserProfile').removeClass('hidden');                    
                     context.redirect('#/profile');
                 }, error => {
@@ -154,7 +134,6 @@ function login(context, user) {
             $('#buttonRegister').addClass('hidden');
             $('#buttonLogout').removeClass('hidden');
             $('#buttonCreateNewAd').removeClass('hidden');
-            $('#buttonMyAd').removeClass('hidden');
             $('#buttonUserProfile').removeClass('hidden');
 
             toastr.success("Successful login");
@@ -188,8 +167,8 @@ function getProfileById(userId, authtoken) {
 function showImage(input) {
     if (input.files && input.files[0]) {
         let img = input.files[0];
-        let filerdr = new FileReader();
-        filerdr.onload = function (e) {
+        let fileReader = new FileReader();
+        fileReader.onload = function (e) {
             let imgContainer = $('#imgContainer');
             imgContainer.empty();
             $('<img>')
@@ -198,7 +177,7 @@ function showImage(input) {
             .addClass('img-thumbnail')
             .appendTo(imgContainer);
         }
-        filerdr.readAsDataURL(img);
+        fileReader.readAsDataURL(img);
     }
 }
 
@@ -213,7 +192,7 @@ function addProfileImage(user) {
 
 export function loadUserProfile(context) {
     //let userId = sessionStorage.getItem('id');  //take from url
-    let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken
+    let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
     //let userId = context.params;
 
     Promise.all([getUserProfileById(userId, authtoken), loadTemplate('userProfile')])

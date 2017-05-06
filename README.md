@@ -3,7 +3,7 @@
   - DONE AboutController - routes - "aboutUs"(move from userController)
   - DONE ContactUs - routes - "contact us" (move from contactU)
   - DONE HomeController - refactoring
-  - UserController - move logout 
+  - DONE UserController - move logout 
   - data - userData, vehicleData, homeData.....
 
  --------------------------------------------------------------------------------------------------------------------- 

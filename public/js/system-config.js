@@ -26,7 +26,7 @@ System.config({
 		'factory': 'js/utils/factory.js',
 
 		'app': 'js/app.js',
-		'addEventOnButtonsForChangeTheRoute' : 'js/utils/addEventOnButtonsForChangeTheRoute.js',
+		'logout' : 'js/utils/logout.js',
 		'loadNavigationButtons': 'js/utils/loadNavigationButtons.js',
 		'comments': 'js/utils/comments.js',
 		
@@ -42,6 +42,7 @@ System.config({
 		'createAdController': 'js/controllers/createAdController.js',
 		'aboutUsController': 'js/controllers/aboutUsController.js',
 		'contactUsController': 'js/controllers/contactUsController.js',
+		'profileController': 'js/controllers/profileController.js',
 		'userData': 'js/data/userData.js',
 	}
 });

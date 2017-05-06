@@ -2,6 +2,7 @@
 
 import { load as loadTemplate } from 'templates';
 import { createAd as createAd } from 'data';
+import * as adsSearch from 'adsSearch'; 
 
 export function createAdController(context) {
 	loadTemplate('createAd')
@@ -36,35 +37,34 @@ export function createAdController(context) {
 				let authtoken = sessionStorage.getItem('authtoken');
 
 				createAd(valuesFromForm, authtoken, typeOfVehicleAd)
-				.then(response => { 	
-				context.redirect('#/myAd');
-				},			
-				error => {
-				})
+					.then(response => {
+						context.redirect('#/myAd');
+					},
+					error => {
+					});
 			});
 		});
+}
 
+function findSelectedTypeTemplate() {
+	$('#typeNewAd label.btn-lg').click(function () {
+		let $this = $(this);
+		let currentTypeSelectedString = $this.find('input').attr('value');
+		let currentTypeSelected = '';
 
-	function findSelectedTypeTemplate() {
-		$('#typeNewAd label.btn-lg').click(function () {
-			let $this = $(this);
-			let currentTypeSelectedString = $this.find('input').attr('value');
-			let currentTypeSelected = '';
+		if (currentTypeSelected === 'cars') {
+			currentTypeSelected = 'createAdCar';
+		}
+		else if (currentTypeSelected === 'motorcycles') {
+			currentTypeSelected = 'createAdMotorcycle';
+		}
+		else if (currentTypeSelected === 'trucks') {
+			currentTypeSelected = 'createAdTruck';
+		}
+		else if (currentTypeSelected === 'campers') {
+			currentTypeSelected = 'createAdCamper';
+		}
 
-			if (currentTypeSelected === 'cars') {
-				currentTypeSelected = 'createAdCar';
-			}
-			else if (currentTypeSelected === 'motorcycles') {
-				currentTypeSelected = 'createAdMotorcycle';
-			}
-			else if (currentTypeSelected === 'trucks') {
-				currentTypeSelected = 'createAdTruck';
-			}
-			else if (currentTypeSelected === 'campers') {
-				currentTypeSelected = 'createAdCamper';
-			}
-
-			return currentTypeSelected;
-		});
-	}
+		return currentTypeSelected;
+	});
 }
