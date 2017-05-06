@@ -43,7 +43,9 @@ System.config({
 		'aboutUsController': 'js/controllers/aboutUsController.js',
 		'contactUsController': 'js/controllers/contactUsController.js',
 		'profileController': 'js/controllers/profileController.js',
+		'myAdsController': 'js/controllers/myAdsController.js',
 		'userData': 'js/data/userData.js',
+		
 	}
 });
 

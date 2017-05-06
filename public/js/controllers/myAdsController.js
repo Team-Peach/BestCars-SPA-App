@@ -1,21 +1,21 @@
-/*globals $ */
-import { getCars as getCars } from 'data';
-import { postCar as postCar } from 'data';
-import { guestUserAuthToken } from 'constants';
+/* globals $,  */
+
+import { deleteVehicle as deleteVehicle } from 'data';
+import { getMyCars as getMyCars } from 'data';
 import { load as loadTemplate } from 'templates';
+import * as comments from 'comments';
 import * as adsSearch from 'adsSearch';
 import { attachFilterAds } from 'adsFilter';
-import * as comments from 'comments';
 
-export function vehiclesController(context) {
-	let vehicleType = window.location.hash.split('#/')[1];
-	Promise.all([getCars(vehicleType), loadTemplate('ads'), loadTemplate('comment')])
+export function myAdsController(context) {
+	var userId = sessionStorage.id;
+	console.log(555);
+	Promise.all([getMyCars(userId), loadTemplate('myAd'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
-			$('#viewSearch').show();
+
 			let allCars = {
 				cars: carsDatabaseAJAXResponse
 			};
-
 			context.$element().html(template(allCars));
 
 			let loadCommentsBtn = $("#load-comments");
@@ -24,7 +24,7 @@ export function vehiclesController(context) {
 			let isLoadCommentsBtnClicked = false;
 			loadCommentsBtn.on('click', function () {
 				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
-				comments.loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, commentTemplate, loadCommentsBtn);
+				comments.loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, comments.loadAllComments, commentTemplate, loadCommentsBtn);
 			});
 
 			// show/hide add new comment form
@@ -42,7 +42,9 @@ export function vehiclesController(context) {
 			});
 
 			let allTags = [];
+
 			adsSearch.getAllTags(allTags, carsDatabaseAJAXResponse);
+
 			adsSearch.autocomplete(allTags);
 
 			let searchForm = $('#search-form');
@@ -56,12 +58,3 @@ export function vehiclesController(context) {
 			attachFilterAds(carsDatabaseAJAXResponse, context, template);
 		});
 }
-
-/* Георги
-export function post(context) {
-	Promise.all([postCar(), loadTemplate()])
-		.then(() => {
-
-		});
-}
-*/

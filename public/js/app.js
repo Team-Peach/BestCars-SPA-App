@@ -9,6 +9,7 @@ import * as usersController from 'usersController';
 import { aboutUsController } from 'aboutUsController';
 import { contactUsController } from 'contactUsController';
 import * as profileController from 'profileController';
+import {myAdsController} from 'myAdsController';
 
 
 (function () {
@@ -36,11 +37,11 @@ import * as profileController from 'profileController';
 
 		this.get('#/login', usersController.loadLoginForm);
 
-		this.get('#/profile', profileController.aaaa);	// to profileController from userController
+		this.get('#/profile', usersController.loadUserProfileForm);	// to profileController from userController
 
-		this.get('#/user/profile/:id', usersController.aaaa);	// to profileController from userController
+		this.get('#/user/profile/:id', usersController.loadUserProfile);	// to profileController from userController
 
-		this.get('#/myAds', vehiclesController.myAds);	// to myAdsController from vehiclesController
+		this.get('#/myAds', myAdsController);	// to myAdsController from vehiclesController
 
 		// Make Sammy.js leave the forms alone!
 		this._checkFormSubmission = function (form) {
