@@ -91,7 +91,8 @@ import { createAdController } from 'createAdController';
 		this._checkFormSubmission = function(form) {
 			return false;
 		};
-		
+
+			//$('#app-container').jscroll();
 	});
 
 	$(function () {

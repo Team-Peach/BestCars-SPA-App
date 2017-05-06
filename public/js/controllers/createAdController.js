@@ -60,8 +60,12 @@ export function createAdController(context) {
 				let typeOfVehicleAd = valuesFromForm.typeOfVehicle;
 				let authtoken = sessionStorage.getItem('authtoken');
 
-				createAd(valuesFromForm, authtoken, typeOfVehicleAd);
+				createAd(valuesFromForm, authtoken, typeOfVehicleAd)
+				.then(response => { 	
 				context.redirect('#/myAd');
+				},			
+				error => {
+				})
 			});
 		});
 }

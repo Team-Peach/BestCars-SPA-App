@@ -13,21 +13,24 @@ export function homeController(context) {
 		.then(([carsResponse, trucksResponse, motorcyclesResponse, caravanasResponce, templateHome, templateCars, commentTemplate]) => {
 			context.$element().html(templateHome());
 			let allAds = [].concat(carsResponse, trucksResponse, motorcyclesResponse, caravanasResponce),
-			allTags = [],
-			findedAds,
-			searchForm = $('#search-form'),
-			input = $('#search');
-			
+				allTags = [],
+				findedAds,
+				searchForm = $('#search-form'),
+				input = $('#search');
+
 			getAllTags(allTags, allAds);
 			autocomplete(allTags);
 			searchForm.on('submit', function (e) {
 				e.preventDefault();
 				searchInAds(input, allAds, context, templateCars)
 					.then(resolve => {
-						let loadComments = $("#load-comments");
+						let loadCommentsBtn = $("#load-comments");
+
 						// take all comments by ad id 
-						loadComments.on('click', function () {
-							loadAllComments(commentTemplate);
+						let isLoadCommentsBtnClicked = false;
+						loadCommentsBtn.on('click', function () {
+							isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
+							loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, loadAllComments, commentTemplate, loadCommentsBtn);
 						});
 
 						// show/hide add new comment form
@@ -48,13 +51,39 @@ export function homeController(context) {
 		});
 }
 
+function getAllTags(allTags, allAds) {
+	for (let i = 0; i < allAds.length; i++) {
+		allTags.push(allAds[i].manufacturer);
+		allTags.push(allAds[i].model);
+	}
+}
+
+function searchInAds(input, allAds, context, template) {
+
+	let inputText = input.val();
+	let findedAds = search(allAds, inputText);
+	let findedCars = {
+		cars: findedAds,
+	};
+	return Promise.resolve(context.$element().html(template(findedCars)));
+}
+
+function loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, loadAllComments, commentTemplate, loadCommentsBtn) {
+	if (isLoadCommentsBtnClicked) {
+		loadAllComments(commentTemplate);
+		loadCommentsBtn.text('Hide Comments');
+	} else {
+		let commentDiv = $('#comments').html('');
+		loadCommentsBtn.text('Show Comments');
+	}
+}
+
 function loadAllComments(commentTemplate) {
 	let adId = $('.fade').attr("id");
 	let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
 	getAllCommentsByAdId(adId, authtoken, 'comments')
 		.then(response => {			
 			let comments = response;
-			console.log(comments);
         	for (let i = 0; i < comments.length; i++) {
                 comments[i] = fixDate(comments[i]);
             }			
@@ -101,23 +130,6 @@ function fixDate(item) {
     let newItem = Object.create(item);
     newItem._kmd.ect = moment(item._kmd.ect).format('MMM Do YYYY, hh:mm');
     return newItem;
-}
-
-function getAllTags(allTags, allAds) {
-	for (let i = 0; i < allAds.length; i++) {
-		allTags.push(allAds[i].manufacturer);
-		allTags.push(allAds[i].model);
-	}
-}
-
-function searchInAds(input, allAds, context, template) {
-
-	let inputText = input.val();
-	let findedAds = search(allAds, inputText);
-	let findedCars = {
-		cars: findedAds,
-	};
-	return Promise.resolve(context.$element().html(template(findedCars)));
 }
 
 /*
