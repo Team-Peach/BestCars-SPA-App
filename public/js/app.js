@@ -8,6 +8,8 @@ import * as usersController from 'usersController';
 import { createAdController } from 'createAdController';
 
 (function () {
+
+
 	var sammyApp = Sammy('#app-container', function () {
 
 		this.get('#/', function (context) {
@@ -23,9 +25,6 @@ import { createAdController } from 'createAdController';
 		this.post('#/cars', carsController.post);
 
 		this.post('#/createAd', createAdController);
-
-		this.post('#/createAd', createAdController);
-
 
 		this.get('#/cars', function (context) {
 			$('#viewSearch').show();
