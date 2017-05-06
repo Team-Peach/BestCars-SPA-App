@@ -1,18 +1,18 @@
 /*globals $ */
 import { getCars as getCars } from 'data';
-import {deleteVehicle as deleteVehicle} from 'data';
+import { deleteVehicle as deleteVehicle } from 'data';
 import { getMyCars as getMyCars } from 'data';
 import { postCar as postCar } from 'data';
-import { guestUserAuthToken } from 'constants'; 
+import { guestUserAuthToken } from 'constants';
 import { load as loadTemplate } from 'templates';
-import { getAllTags, searchInAds, autocomplete } from 'adsSearch';
+import * as adsSearch from 'adsSearch';
 import { attachFilterAds } from 'adsFilter';
 
 import * as comments from 'comments';
 
 export function vehiclesController(context) {
-	    	let vehicleType = window.location.hash.split('#/')[1];
-	Promise.all([getCars(vehicleType),loadTemplate('ads'), loadTemplate('comment')])
+	let vehicleType = window.location.hash.split('#/')[1];
+	Promise.all([getCars(vehicleType), loadTemplate('ads'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
 			$('#viewSearch').show();
 			let allCars = {
@@ -25,7 +25,7 @@ export function vehiclesController(context) {
 
 			// take all comments by ad id 
 			let isLoadCommentsBtnClicked = false;
-			loadCommentsBtn.on('click', function() {
+			loadCommentsBtn.on('click', function () {
 				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
 				comments.loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, commentTemplate, loadCommentsBtn);
 			});
@@ -34,7 +34,7 @@ export function vehiclesController(context) {
 			let loadCommentFormBtn = $('#load-comment-form');
 			let addCommentFormDiv = $('#div-comment-form');
 
-			loadCommentFormBtn.on('click', function () {				
+			loadCommentFormBtn.on('click', function () {
 				comments.loadAddNewCommentForm(addCommentFormDiv, loadCommentFormBtn);
 			});
 			// add new comment ?? Todo: commentController or extract function in other file
@@ -42,21 +42,21 @@ export function vehiclesController(context) {
 			addCommentForm.on('submit', function (ev) {
 				ev.preventDefault();
 				comments.addComment(addCommentFormDiv, loadCommentFormBtn);
-			});	
+			});
 
 			let allTags = [];
-			getAllTags(allTags, carsDatabaseAJAXResponse);
-			autocomplete(allTags);
+			adsSearch.getAllTags(allTags, carsDatabaseAJAXResponse);
+			adsSearch.autocomplete(allTags);
 
 			let searchForm = $('#search-form');
 			let input = $('#search');
 			searchForm.on('submit', function (e) {
 				e.preventDefault();
-				searchInAds(input, carsDatabaseAJAXResponse, context, template);
+				adsSearch.searchInAds(input, carsDatabaseAJAXResponse, context, template);
 			});
 
 			// filter events
-			attachFilterAds(carsDatabaseAJAXResponse, context, template);			
+			attachFilterAds(carsDatabaseAJAXResponse, context, template);
 		});
 }
 
@@ -74,41 +74,40 @@ function getMyAd(context) {
 
 			// take all comments by ad id 
 			let isLoadCommentsBtnClicked = false;
-			loadCommentsBtn.on('click', function() {
+			loadCommentsBtn.on('click', function () {
 				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
-				loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, loadAllComments, commentTemplate, loadCommentsBtn);
+				comments.loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, comments.loadAllComments, commentTemplate, loadCommentsBtn);
 			});
-		
+
 			// show/hide add new comment form
 			let loadCommentFormBtn = $('#load-comment-form');
 			let addCommentFormDiv = $('#div-comment-form');
 
-			loadCommentFormBtn.on('click', function () {				
-				loadAddNewCommentForm(addCommentFormDiv, loadCommentFormBtn);
+			loadCommentFormBtn.on('click', function () {
+				comments.loadAddNewCommentForm(addCommentFormDiv, loadCommentFormBtn);
 			});
 			// add new comment ?? Todo: commentController or extract function in other file
 			let addCommentForm = $('#comment-form');
 			addCommentForm.on('submit', function (ev) {
 				ev.preventDefault();
-				addComment(addCommentFormDiv, loadCommentFormBtn);
-			});		
+				comments.addComment(addCommentFormDiv, loadCommentFormBtn);
+			});
 
 			let allTags = [];
 
-			getAllTags(allTags, carsDatabaseAJAXResponse);
+			adsSearch.getAllTags(allTags, carsDatabaseAJAXResponse);
 
-			autocomplete(allTags);
+			adsSearch.autocomplete(allTags);
 
 			let searchForm = $('#search-form');
 			let input = $('#search');
 			searchForm.on('submit', function (e) {
 				e.preventDefault();
-				searchInAds(input, carsDatabaseAJAXResponse, context, template);
+				adsSearch.searchInAds(input, carsDatabaseAJAXResponse, context, template);
 			});
 
 			// filter events
-			attachFilterAds(carsDatabaseAJAXResponse, context, template);		
-
+			attachFilterAds(carsDatabaseAJAXResponse, context, template);
 		});
 }
 

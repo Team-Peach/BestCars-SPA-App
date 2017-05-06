@@ -1,3 +1,5 @@
+/* globals $, toastr, moment */
+
 import { guestUserAuthToken } from 'constants';
 import { addNewComment as addNewComment } from 'data';
 import { getAllCommentsByAdId as getAllCommentsByAdId } from 'data';
@@ -25,7 +27,7 @@ export function loadAddNewCommentForm(addCommentFormDiv, loadCommentFormBtn) {
 export function addComment(addCommentFormDiv, loadCommentFormBtn) {
 	let adId = $('.fade').attr("id");
 	let content = $('#comment-content').val();
-	let author = sessionStorage.getItem('username') || "Anonimous";
+	let author = sessionStorage.getItem('username') || "Anonymous";
 	let comment = createComment(adId, content, author);
 	let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
 	if (content === '') {
@@ -57,7 +59,6 @@ function loadAllComments(commentTemplate) {
             }			
 			let commentsDiv = $('#comments');
 			commentsDiv.html(commentTemplate({ comments }));
-					//$('.fade').jscroll();
 		}, error => {
 			toastr.error("Cannot load comments");
 		});

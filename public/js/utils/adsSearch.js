@@ -1,4 +1,5 @@
-/* globals $*/
+/* globals $, Fuse */
+
 export function getAllTags(allTags, carsDatabaseAJAXResponse) {
 	for (let i = 0; i < carsDatabaseAJAXResponse.length; i++) {
 		allTags.push(carsDatabaseAJAXResponse[i].manufacturer);
@@ -9,11 +10,12 @@ export function getAllTags(allTags, carsDatabaseAJAXResponse) {
 export function searchInAds(input, carsDatabaseAJAXResponse, context, template) {
 
 	let inputText = input.val();
-	let findedAds = search(carsDatabaseAJAXResponse, inputText);
-	let findedCars = {
-		cars: findedAds,
+	let findAds = search(carsDatabaseAJAXResponse, inputText);
+	let findCars = {
+		cars: findAds,
 	};
-	context.$element().html(template(findedCars));
+
+	context.$element().html(template(findCars));
 }
 
 export function autocomplete(availableTags) {
@@ -40,6 +42,6 @@ export function search(allVehicles, text) {
     ]
   };
   let fuse = new Fuse(allVehicles, options);
-  let findedVehicles = fuse.search(text);
-  return findedVehicles;
+  let findVehicles = fuse.search(text);
+  return findVehicles;
 }

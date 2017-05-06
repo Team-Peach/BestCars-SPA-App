@@ -2,7 +2,7 @@
   - ProfileController - routes - '#/profile', 'myAd'(move from vehicleController)-'user/profile/:id'(TODO)
   - DONE AboutController - routes - "aboutUs"(move from userController)
   - DONE ContactUs - routes - "contact us" (move from contactU)
-  - HomeCotroller - refactoring
+  - DONE HomeController - refactoring
   - UserController - move logout 
   - data - userData, vehicleData, homeData.....
 
@@ -24,7 +24,7 @@
 
 	- home page
 	- DONE! - about page
-	- contacts page
+	- DONE contacts page
 
 	- DONE! - implementation for search cars page - truck, motor, camper
 	- footer
