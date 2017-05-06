@@ -1,22 +1,22 @@
 /*globals $, Sammy*/
-import 'loadNavigationButtons';
-import 'factory';
+
 import 'logout';
+import 'factory';
+import 'loadNavigationButtons';
 import { homeController } from 'homeController';
 import { vehiclesController } from 'vehiclesController';
 import { createAdController } from 'createAdController';
-import * as usersController from 'usersController';
 import { aboutUsController } from 'aboutUsController';
 import { contactUsController } from 'contactUsController';
+import { myAdsController } from 'myAdsController';
+import * as usersController from 'usersController';
 import * as profileController from 'profileController';
-import {myAdsController} from 'myAdsController';
-
 
 (function () {
 	var sammyApp = Sammy('#app-container', function () {
 
 		this.get('#/', homeController);
-		
+
 		this.get('#/home', homeController);
 
 		this.get('#/cars', vehiclesController);
@@ -33,7 +33,7 @@ import {myAdsController} from 'myAdsController';
 
 		this.get('#/createAd', createAdController);
 
-		this.get('#/register',	usersController.loadRegistrationForm);
+		this.get('#/register', usersController.loadRegistrationForm);
 
 		this.get('#/login', usersController.loadLoginForm);
 
@@ -41,7 +41,7 @@ import {myAdsController} from 'myAdsController';
 
 		this.get('#/user/profile/:id', usersController.loadUserProfile);	// to profileController from userController
 
-		this.get('#/myAds', myAdsController);	// to myAdsController from vehiclesController
+		this.get('#/myAds', myAdsController);
 
 		// Make Sammy.js leave the forms alone!
 		this._checkFormSubmission = function (form) {

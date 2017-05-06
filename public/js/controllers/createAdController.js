@@ -2,20 +2,38 @@
 
 import { load as loadTemplate } from 'templates';
 import { createAd as createAd } from 'data';
-import * as adsSearch from 'adsSearch'; 
+import * as adsSearch from 'adsSearch';
 
 export function createAdController(context) {
 	loadTemplate('createAd')
 		.then(template => {
 			context.$element().html(template());
 
-			let currentTypeSelected = findSelectedTypeTemplate();
 			let adContainerForDifferentTypes = $('#newAdContainer');
 
-			loadTemplate(currentTypeSelected)
-				.then(templateCars => {
-					adContainerForDifferentTypes.html(templateCars());
-				});
+			$('#typeNewAd label.btn-lg').click(function () {
+				let $this = $(this);
+				let currentTypeSelectedString = $this.find('input').attr('value');
+				let currentTypeSelected = '';
+
+				if (currentTypeSelectedString === 'cars') {
+					currentTypeSelected = 'createAdCar';
+				}
+				else if (currentTypeSelectedString === 'motorcycles') {
+					currentTypeSelected = 'createAdMotorcycle';
+				}
+				else if (currentTypeSelectedString === 'trucks') {
+					currentTypeSelected = 'createAdTruck';
+				}
+				else if (currentTypeSelectedString === 'campers') {
+					currentTypeSelected = 'createAdCamper';
+				}
+
+				loadTemplate(currentTypeSelected)
+					.then(templateCars => {
+						adContainerForDifferentTypes.html(templateCars());
+					});
+			});
 
 			$('#form-createAd').submit(function () {
 				let arrayOfFormObjValues = $('#form-createAd').serializeArray();
@@ -44,27 +62,4 @@ export function createAdController(context) {
 					});
 			});
 		});
-}
-
-function findSelectedTypeTemplate() {
-	$('#typeNewAd label.btn-lg').click(function () {
-		let $this = $(this);
-		let currentTypeSelectedString = $this.find('input').attr('value');
-		let currentTypeSelected = '';
-
-		if (currentTypeSelected === 'cars') {
-			currentTypeSelected = 'createAdCar';
-		}
-		else if (currentTypeSelected === 'motorcycles') {
-			currentTypeSelected = 'createAdMotorcycle';
-		}
-		else if (currentTypeSelected === 'trucks') {
-			currentTypeSelected = 'createAdTruck';
-		}
-		else if (currentTypeSelected === 'campers') {
-			currentTypeSelected = 'createAdCamper';
-		}
-
-		return currentTypeSelected;
-	});
 }
