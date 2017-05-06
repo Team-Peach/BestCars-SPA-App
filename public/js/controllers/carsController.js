@@ -20,12 +20,15 @@ export function getAllCars(context) {
 
 			context.$element().html(template(allCars));
 
-			let loadComments = $("#load-comments");
+			let loadCommentsBtn = $("#load-comments");
+
 			// take all comments by ad id 
-			loadComments.on('click', function() {
-			loadAllComments(commentTemplate);
+			let isLoadCommentsBtnClicked = false;
+			loadCommentsBtn.on('click', function() {
+				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
+				loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, loadAllComments, commentTemplate, loadCommentsBtn);
 			});
-		
+
 			// show/hide add new comment form
 			let loadCommentFormBtn = $('#load-comment-form');
 			let addCommentFormDiv = $('#div-comment-form');
@@ -129,10 +132,13 @@ export function getTrucks(context) {
 			};
 			context.$element().html(template(allCars));
 
-			let loadComments = $("#load-comments");
+			let loadCommentsBtn = $("#load-comments");
+
 			// take all comments by ad id 
-			loadComments.on('click', function() {
-			loadAllComments(commentTemplate);
+			let isLoadCommentsBtnClicked = false;
+			loadCommentsBtn.on('click', function() {
+				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
+				loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, loadAllComments, commentTemplate, loadCommentsBtn);
 			});
 		
 			// show/hide add new comment form
@@ -236,10 +242,13 @@ export function getMotors(context) {
 			};
 			context.$element().html(template(allCars));
 
-			let loadComments = $("#load-comments");
+			let loadCommentsBtn = $("#load-comments");
+
 			// take all comments by ad id 
-			loadComments.on('click', function() {
-			loadAllComments(commentTemplate);
+			let isLoadCommentsBtnClicked = false;
+			loadCommentsBtn.on('click', function() {
+				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
+				loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, loadAllComments, commentTemplate, loadCommentsBtn);
 			});
 		
 			// show/hide add new comment form
@@ -343,10 +352,13 @@ export function getCaravans(context) {
 			};
 			context.$element().html(template(allCars));
 
-			let loadComments = $("#load-comments");
+			let loadCommentsBtn = $("#load-comments");
+
 			// take all comments by ad id 
-			loadComments.on('click', function() {
-			loadAllComments(commentTemplate);
+			let isLoadCommentsBtnClicked = false;
+			loadCommentsBtn.on('click', function() {
+				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
+				loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, loadAllComments, commentTemplate, loadCommentsBtn);
 			});
 		
 			// show/hide add new comment form
@@ -450,10 +462,14 @@ export function getMyAd(context) {
 			};
 			context.$element().html(template(allCars));
 			console.log(carsDatabaseAJAXResponse);
-			let loadComments = $("#load-comments");
+
+			let loadCommentsBtn = $("#load-comments");
+
 			// take all comments by ad id 
-			loadComments.on('click', function() {
-			loadAllComments(commentTemplate);
+			let isLoadCommentsBtnClicked = false;
+			loadCommentsBtn.on('click', function() {
+				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
+				loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, loadAllComments, commentTemplate, loadCommentsBtn);
 			});
 		
 			// show/hide add new comment form
@@ -585,18 +601,28 @@ function searchInAds(input, carsDatabaseAJAXResponse, context, template) {
 	context.$element().html(template(findedCars));
 }
 
+function loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, loadAllComments, commentTemplate, loadCommentsBtn) {
+	if (isLoadCommentsBtnClicked) {
+		loadAllComments(commentTemplate);
+		loadCommentsBtn.text('Hide Comments');
+	} else {
+		let commentDiv = $('#comments').html('');
+		loadCommentsBtn.text('Show Comments');
+	}
+}
+
 function loadAllComments(commentTemplate) {
 	let adId = $('.fade').attr("id");
 	let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
 	getAllCommentsByAdId(adId, authtoken, 'comments')
 		.then(response => {			
 			let comments = response;
-			console.log(comments);
         	for (let i = 0; i < comments.length; i++) {
                 comments[i] = fixDate(comments[i]);
             }			
 			let commentsDiv = $('#comments');
 			commentsDiv.html(commentTemplate({ comments }));
+					//$('.fade').jscroll();
 		}, error => {
 			toastr.error("Cannot load comments");
 		});

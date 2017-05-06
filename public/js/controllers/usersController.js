@@ -116,7 +116,6 @@ export function logout(context) {
 
             sessionStorage.clear();
             user = {};
-            // TODO: let user = {};
             toastr.success("Successful logout");
             context.redirect('#/home');
         }, error => {
@@ -187,20 +186,6 @@ function createProfile(user, userId, authtoken) {
     return createUserProfile(user, authtoken)
         .then(
         response => {
-            /*
-        let userData = response;          
-        let firstName = userData._firstName;
-        let lastName = userData._lastName;
-        let username = userData._username;
-        let password = userData._password;
-        let email = userData._email;
-        let phoneNumber = userData._phoneNumber;
-        let country = userData._country;
-        let town = userData._town;
-        // TODO: get adds from profile??
-        // let adds
-        user = new User(firstName, lastName, username, password, email, phoneNumber, country, town);
-        */
             return getProfileById(userId, authtoken);
         }, error => {
             toastr.error("Unsuccessful registration");
