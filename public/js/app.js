@@ -1,6 +1,7 @@
 /*globals $, Sammy*/
 import 'addEventOnButtonsForChangeTheRoute';
 import 'loadNavigationButtons';
+import 'factory';
 import { homeController } from 'homeController';
 import * as carsController from 'carsController';
 import * as usersController from 'usersController';
@@ -81,12 +82,16 @@ import { createAdController } from 'createAdController';
 			$('#viewSearch').hide();
 		});
 
+		this.get('#/user/profile/:id', function(context) {
+			usersController.loadUserProfileForm(context);
+		});
+
 		this.get('#/createAd', function (context) {
 			$('#viewSearch').hide();
 			createAdController(context);
 		});
 
-			
+		
 		// Make Sammy.js leave the forms alone!
 		this._checkFormSubmission = function(form) {
 			return false;
