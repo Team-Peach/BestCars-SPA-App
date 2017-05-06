@@ -36,11 +36,11 @@ export function getMyCars(params) {
 
         return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);
 }
-
+/* Георги
 export function postCar() {
         return requester.post('/cars/add');
 }
-
+*/
 export function registerUser(newUser) {
         let url = CONSTANTS.kinveyRegisterUserUrl;
         let headers = CONSTANTS.kinveyBasicHeaders;

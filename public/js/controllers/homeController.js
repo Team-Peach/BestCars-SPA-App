@@ -1,7 +1,7 @@
 /*globals $*/
 import { getCars as getCars } from 'data';
 import { load as loadTemplate } from 'templates';
-import { search, autocomplete } from 'search';
+import { search, autocomplete } from 'adsSearch';
 import { addNewComment as addNewComment } from 'data';
 import { getAllCommentsByAdId as getAllCommentsByAdId } from 'data';
 import { guestUserAuthToken } from 'constants';
@@ -9,7 +9,7 @@ import { guestUserAuthToken } from 'constants';
 import { Comment } from 'comment';
 
 export function homeController(context) {
-	Promise.all([getCars('cars'), getCars('trucks'),getCars('motorcycles'), getCars('caravans'), loadTemplate('home'), loadTemplate('cars'), loadTemplate('comment')])
+	Promise.all([getCars('cars'), getCars('trucks'),getCars('motorcycles'), getCars('caravans'), loadTemplate('home'), loadTemplate('ads'), loadTemplate('comment')])
 		.then(([carsResponse, trucksResponse, motorcyclesResponse, caravanasResponce, templateHome, templateCars, commentTemplate]) => {
 			context.$element().html(templateHome());
 			let allAds = [].concat(carsResponse, trucksResponse, motorcyclesResponse, caravanasResponce),
@@ -131,21 +131,3 @@ function fixDate(item) {
     newItem._kmd.ect = moment(item._kmd.ect).format('MMM Do YYYY, hh:mm');
     return newItem;
 }
-
-/*
-let $appContainer = $('#app-container');
-export function homeController(params) {
-	//TODO delete this -  just for test 
-	$('#route').html('TODO home');
-
-	// if route has /home?pesho='gosho'
-	let { routeQueryParameters } = params;
-
-	Promise.all([getHome(), loadTemplate('home')])
-		.then(([databaseAJAXResponse, handlebarsTemplate]) => {
-			$appContainer.html(handlebarsTemplate(databaseAJAXResponse));
-		})
-		.catch((err) => console.log(err));
-	
-}
-*/

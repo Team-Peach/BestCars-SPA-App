@@ -1,8 +1,15 @@
 # Tasks
-  
+  ProfileController - routes - '#/profile', 'myAd'(move from vehicleController), 'user/profile/:id'(TODO)
+  AboutController - routes - "aboutUs"(move from userController)
+  ContactUs - routes - "contact us" (move from contactU)
+  HomeCotroller - refactoring
+  UserController - move logout 
+  data - userData, vehicleData, homeData.....
+
+ --------------------------------------------------------------------------------------------------------------------- 
   - unit testing
 	- DONE! - use KendoUI or jQueryUI
-	- Make the application responsive - bootstrap
+	- DONE! - Make the application responsive - bootstrap
 	- DONE! - third-part API - Facebook
 	- work in all browsers - chrome, mozilla, edge, opera, safari, internet explorer 10/11
 	- DONE! - semantic HTML tags
@@ -12,8 +19,8 @@
 	- DONE! - showing user profile and all ads when clicked on button profile - added button my ads
 	- DONE! - adding new ad when user is logged
 
-	- template for ad preview
-	- template for ad content 
+	- DONE! - template for ad preview
+	- DONE! - template for ad content 
 
 	- home page
 	- DONE! - about page

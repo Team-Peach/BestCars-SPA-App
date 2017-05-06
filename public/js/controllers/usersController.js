@@ -236,11 +236,9 @@ export function loadUserProfile(context) {
     //let userId = sessionStorage.getItem('id');  //take from url
     let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken
     //let userId = context.params;
-    console.log(context.params);
 
     Promise.all([getUserProfileById(userId, authtoken), loadTemplate('userProfile')])
         .then(([response, template]) => {
-
             //remove images
             let userData = response[0];
             console.log(response)

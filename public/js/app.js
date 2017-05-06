@@ -3,7 +3,7 @@ import 'addEventOnButtonsForChangeTheRoute';
 import 'loadNavigationButtons';
 import 'factory';
 import { homeController } from 'homeController';
-import * as carsController from 'carsController';
+import { getAllVehicles as vehiclesController } from 'vehiclesController';
 import * as usersController from 'usersController';
 import { createAdController } from 'createAdController';
 
@@ -22,32 +22,17 @@ import { createAdController } from 'createAdController';
 			homeController(context);
 		});
 
-		this.post('#/cars', carsController.post);
+		this.get('#/createAd', createAdController);
 
-		this.post('#/createAd', createAdController);
+		this.get('#/cars', vehiclesController);
 
-		this.get('#/cars', function (context) {
-			$('#viewSearch').show();
-			carsController.getAllCars(context);
-		});
+		this.get('#/motorcycles',  vehiclesController);
 
-		this.get('#/motors', function (context) {
-			$('#viewSearch').show();
-			carsController.getMotors(context);
-		});
+		this.get('#/trucks', vehiclesController);
 
-		this.get('#/trucks', function (context) {
-			$('#viewSearch').show();
-			carsController.getTrucks(context);
-		});
-
-		this.get('#/caravans', function (context) {
-			$('#viewSearch').show();
-			carsController.getCaravans(context);
-		});
+		this.get('#/campers', vehiclesController);
 
 		this.get('#/myAd', function (context) {
-			$('#viewSearch').show();
 			carsController.getMyAd(context);
 		});
 
