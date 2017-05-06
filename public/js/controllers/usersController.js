@@ -1,4 +1,5 @@
-/*globals $*/
+/* globals $, toastr */
+
 import { registerUser, loginUser, logoutUser, createUserProfile, getUserProfileById, addUserProfileImage } from 'data';
 import { load as loadTemplate } from 'templates';
 import { createUser } from 'factory';
@@ -37,26 +38,8 @@ export function loadLoginForm(context) {
                 let password = $('#password').val();
                 let user = { "username": username, "password": password };
                 login(context, user);
-            })
+            });
         });
-}
-
-export function loadContactUsForm(context) {
-    loadTemplate('contactUs')
-        .then(template => {
-            context.$element().html(template());
-        });
-
-    //TODO finish
-}
-
-export function loadAboutUs(context) {
-    loadTemplate('aboutUs')
-        .then(template => {
-            context.$element().html(template());
-        });
-
-    //TODO finish
 }
 
 export function loadUserProfileForm(context) {
@@ -127,10 +110,6 @@ export function logout(context) {
             toastr.error("Unsuccessful logout");
             context.redirect('#/home');
         });
-}
-
-export function getUserProfile(context) {
-
 }
 
 function register(context, user) {
@@ -241,7 +220,6 @@ export function loadUserProfile(context) {
         .then(([response, template]) => {
             //remove images
             let userData = response[0];
-            console.log(response)
             let firstName = userData._firstName;
             let lastName = userData._lastName;
             let username = userData._username;

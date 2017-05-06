@@ -10,7 +10,7 @@ import { attachFilterAds } from 'adsFilter';
 
 import * as comments from 'comments';
 
-export function getAllVehicles(context) {
+export function vehiclesController(context) {
 	    	let vehicleType = window.location.hash.split('#/')[1];
 	Promise.all([getCars(vehicleType),loadTemplate('ads'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {

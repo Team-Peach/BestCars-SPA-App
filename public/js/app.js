@@ -3,13 +3,13 @@ import 'addEventOnButtonsForChangeTheRoute';
 import 'loadNavigationButtons';
 import 'factory';
 import { homeController } from 'homeController';
-import { getAllVehicles as vehiclesController } from 'vehiclesController';
-import * as usersController from 'usersController';
+import { vehiclesController } from 'vehiclesController';
 import { createAdController } from 'createAdController';
+import * as usersController from 'usersController';
+import { aboutUsController } from 'aboutUsController';
+import { contactUsController } from 'contactUsController';
 
 (function () {
-
-
 	var sammyApp = Sammy('#app-container', function () {
 
 		this.get('#/', function (context) {
@@ -22,29 +22,21 @@ import { createAdController } from 'createAdController';
 			homeController(context);
 		});
 
-		this.get('#/createAd', createAdController);
-
 		this.get('#/cars', vehiclesController);
 
-		this.get('#/motorcycles',  vehiclesController);
+		this.get('#/motorcycles', vehiclesController);
 
 		this.get('#/trucks', vehiclesController);
 
 		this.get('#/campers', vehiclesController);
 
-		this.get('#/myAd', function (context) {
-			carsController.getMyAd(context);
-		});
+		this.get('#/about', aboutUsController);
 
-		this.get('#/about', function (context) {
-			usersController.loadAboutUs(context);
-			$('#viewSearch').hide();
-		});
+		this.get('#/contacts', contactUsController);
 
-		this.get('#/contacts', function (context) {
-			usersController.loadContactUsForm(context);
-			$('#viewSearch').hide();
-		});
+		this.get('#/createAd', createAdController);
+
+		
 
 		this.get('#/register', function (context) {
 			usersController.loadRegistrationForm(context);
@@ -66,21 +58,25 @@ import { createAdController } from 'createAdController';
 			$('#viewSearch').hide();
 		});
 
-		this.get('#/user/profile/:id', function(context) {
+		this.get('#/user/profile/:id', function (context) {
 			usersController.loadUserProfile(context);
+		});
+
+		this.get('#/myAd', function (context) {
+			carsController.getMyAd(context);
 		});
 
 		this.get('#/createAd', function (context) {
 			$('#viewSearch').hide();
 			createAdController(context);
 		});
-			
+
 		// Make Sammy.js leave the forms alone!
-		this._checkFormSubmission = function(form) {
+		this._checkFormSubmission = function (form) {
 			return false;
 		};
 
-			//$('#app-container').jscroll();
+		//$('#app-container').jscroll();
 	});
 
 	$(function () {

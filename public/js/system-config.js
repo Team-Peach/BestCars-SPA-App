@@ -40,6 +40,8 @@ System.config({
 		'vehiclesController': 'js/controllers/vehiclesController.js',
 		'usersController': 'js/controllers/usersController.js',
 		'createAdController': 'js/controllers/createAdController.js',
+		'aboutUsController': 'js/controllers/aboutUsController.js',
+		'contactUsController': 'js/controllers/contactUsController.js',
 		'userData': 'js/data/userData.js',
 	}
 });

@@ -1,10 +1,10 @@
 # Tasks
-  ProfileController - routes - '#/profile', 'myAd'(move from vehicleController), 'user/profile/:id'(TODO)
-  AboutController - routes - "aboutUs"(move from userController)
-  ContactUs - routes - "contact us" (move from contactU)
-  HomeCotroller - refactoring
-  UserController - move logout 
-  data - userData, vehicleData, homeData.....
+  - ProfileController - routes - '#/profile', 'myAd'(move from vehicleController)-'user/profile/:id'(TODO)
+  - DONE AboutController - routes - "aboutUs"(move from userController)
+  - DONE ContactUs - routes - "contact us" (move from contactU)
+  - HomeCotroller - refactoring
+  - UserController - move logout 
+  - data - userData, vehicleData, homeData.....
 
  --------------------------------------------------------------------------------------------------------------------- 
   - unit testing
