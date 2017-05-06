@@ -8,37 +8,13 @@ export function createAdController(context) {
 		.then(template => {
 			context.$element().html(template());
 
-			$('#typeNewAd label.btn-lg').click(function () {
-				let $this = $(this);
-				let currentTypeSelected = $this.find('input').attr('value');
-				let adContainerForDifferentTypes = $('#newAdContainer');
+			let currentTypeSelected = findSelectedTypeTemplate();
+			let adContainerForDifferentTypes = $('#newAdContainer');
 
-				if (currentTypeSelected === 'cars') {
-					loadTemplate('createAdCar')
-						.then(templateCars => {
-							adContainerForDifferentTypes.html(templateCars());
-						});
-				}
-				else if (currentTypeSelected === 'motorcycles') {
-					loadTemplate('createAdMotorcycle')
-						.then(templateMotorcycles => {
-							adContainerForDifferentTypes.html(templateMotorcycles());
-						});
-				}
-				else if (currentTypeSelected === 'trucks') {
-					loadTemplate('createAdTruck')
-						.then(templateTrucks => {
-							adContainerForDifferentTypes.html(templateTrucks());
-						});
-				}
-				else if (currentTypeSelected === 'campers') {
-					loadTemplate('createAdCamper')
-						.then(templateCampers => {
-							adContainerForDifferentTypes.html(templateCampers());
-						});
-				}
-			});
-
+			loadTemplate(currentTypeSelected)
+				.then(templateCars => {
+					adContainerForDifferentTypes.html(templateCars());
+				});
 
 			$('#form-createAd').submit(function () {
 				let arrayOfFormObjValues = $('#form-createAd').serializeArray();
@@ -48,13 +24,12 @@ export function createAdController(context) {
 					valuesFromForm[field.name] = field.value;
 				});
 
-				if($('#imgContainer').find('img').length > 0) {
+				if ($('#imgContainer').find('img').length > 0) {
 					valuesFromForm.images = [];
 					let imagesFromForm = $('#imgContainer').find('img').each((i, img) => {
 						let $img = $(img);
 						valuesFromForm.images.push($img.attr('src'));
 					});
-
 				}
 
 				let typeOfVehicleAd = valuesFromForm.typeOfVehicle;
@@ -64,4 +39,28 @@ export function createAdController(context) {
 				context.redirect('#/myAd');
 			});
 		});
+
+
+	function findSelectedTypeTemplate() {
+		$('#typeNewAd label.btn-lg').click(function () {
+			let $this = $(this);
+			let currentTypeSelectedString = $this.find('input').attr('value');
+			let currentTypeSelected = '';
+
+			if (currentTypeSelected === 'cars') {
+				currentTypeSelected = 'createAdCar';
+			}
+			else if (currentTypeSelected === 'motorcycles') {
+				currentTypeSelected = 'createAdMotorcycle';
+			}
+			else if (currentTypeSelected === 'trucks') {
+				currentTypeSelected = 'createAdTruck';
+			}
+			else if (currentTypeSelected === 'campers') {
+				currentTypeSelected = 'createAdCamper';
+			}
+
+			return currentTypeSelected;
+		});
+	}
 }

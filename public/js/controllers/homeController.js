@@ -113,11 +113,11 @@ function getAllTags(allTags, allAds) {
 function searchInAds(input, allAds, context, template) {
 
 	let inputText = input.val();
-	let findedAds = search(allAds, inputText);
-	let findedCars = {
-		cars: findedAds,
+	let foundAds = search(allAds, inputText);
+	let foundCars = {
+		cars: foundAds,
 	};
-	return Promise.resolve(context.$element().html(template(findedCars)));
+	return Promise.resolve(context.$element().html(template(foundCars)));
 }
 
 /*

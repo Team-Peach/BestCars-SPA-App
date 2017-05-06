@@ -23,6 +23,7 @@ System.config({
 		'advertisement': 'js/opp/advertisement.js',
 		'comment': 'js/oop/comment.js',
 		'user': 'js/oop/user.js',
+		'factory': 'utils/factory.js',
 
 		'app': 'js/app.js',
 		'addEventOnButtonsForChangeTheRoute' : 'js/utils/addEventOnButtonsForChangeTheRoute.js',

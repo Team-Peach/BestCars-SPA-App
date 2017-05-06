@@ -1,14 +1,13 @@
 class User {
-    constructor(firstName, lastName, username, email, phoneNumber, country, town) {
+    constructor(firstName, lastName, username, password, email, phoneNumber, country, town) {
         this._firstName = firstName;
         this._lastName = lastName;
         this._username = username;
+        this._password = password;
         this._email = email;
         this._phoneNumber = phoneNumber;
         this._country = country;
         this._town = town;
-        this._adds = [];
-        this._image = "";
     }
 
     get firstName() {
@@ -48,6 +47,13 @@ class User {
         this._username = value;
     }
 
+     get password() {
+        return this._password;
+    }
+    set password(value) {
+        this._password = value;
+    }
+
     get email() {
         return this._email;
     }
@@ -56,7 +62,6 @@ class User {
         if (!emailRegex.test(value)) {
             throw new TypeError("Invalid e-mail");
         }
-
         this._email = value;
     }
 
@@ -79,18 +84,6 @@ class User {
     }
     set town(value) {
         this._town = value;
-    }
-    get adds() {
-        return this._adds;
-    }
-    set adds(value) {
-        this._adds = value;
-    }
-    get image() {
-        return this._image;
-    }
-    set image(value) {
-        this._image = value;
     }
 }
 
