@@ -2,6 +2,7 @@
 import { registerUser, loginUser, logoutUser, createUserProfile, getUserProfileById, addUserProfileImage } from 'data';
 import { load as loadTemplate } from 'templates';
 import { createUser } from 'factory';
+import { guestUserAuthToken } from 'constants'; 
 
 export function loadRegistrationForm(context) {
     loadTemplate('register')
@@ -229,4 +230,31 @@ function addProfileImage(user) {
     let uploadedImage = $('#profile-image').attr('src'); 
     currentUser.image = uploadedImage;
     return addUserProfileImage(currentUser, profileId, authtoken);
+}
+
+export function loadUserProfile(context) {
+    //let userId = sessionStorage.getItem('id');  //take from url
+    let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken
+    //let userId = context.params;
+    console.log(context.params);
+
+    Promise.all([getUserProfileById(userId, authtoken), loadTemplate('userProfile')])
+        .then(([response, template]) => {
+
+            //remove images
+            let userData = response[0];
+            console.log(response)
+            let firstName = userData._firstName;
+            let lastName = userData._lastName;
+            let username = userData._username;
+            let email = userData._email;
+            let phoneNumber = userData._phoneNumber;
+            let country = userData._country;
+            let town = userData._town;
+
+            let user = createUser(firstName, lastName, username, email, phoneNumber, country, town);
+            user.image = userData._image;  
+            
+            context.$element().html(template({ user }));
+        });
 }
