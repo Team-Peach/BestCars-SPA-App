@@ -15,6 +15,11 @@ function getKinveyUserAuthHeaders() {
                 "Authorization": "Kinvey " + sessionStorage['authtoken']
         };
 }
+export function editeAd(params, vehicleId, body) {
+        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + vehicleId;
+        let body = body;
+        return requester.put(kinveyAppDataUrl,JSON.stringify(body), getKinveyUserAuthHeaders());
+}
 
 export function deleteVehicle(params, vehicleId) {
         let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + vehicleId;
