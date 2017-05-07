@@ -16,6 +16,12 @@ function getKinveyUserAuthHeaders() {
         };
 }
 
+export function editeeeAd(params, vehicleId, body) {
+        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + vehicleId;
+        let bodyAjax = body;
+        return requester.put(kinveyAppDataUrl,JSON.stringify(bodyAjax), getKinveyUserAuthHeaders());
+}
+
 export function deleteVehicle(params, vehicleId) {
         let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + vehicleId;
         return requester.del(kinveyAppDataUrl, getKinveyUserAuthHeaders());
