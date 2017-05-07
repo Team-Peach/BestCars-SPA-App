@@ -1,5 +1,6 @@
 # Tasks
-  - ProfileController - routes - '#/profile', 'myAd'(move from vehicleController)-'user/profile/:id'(TODO)
+  - ProfileController - routes - '#/profile', 'myAd'(move from vehicleController)-
+  - DONE 'user/profile/:id'(TODO)
   - DONE AboutController - routes - "aboutUs"(move from userController)
   - DONE ContactUs - routes - "contact us" (move from contactU)
   - DONE HomeController - refactoring

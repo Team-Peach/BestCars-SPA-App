@@ -95,27 +95,33 @@ export function loadUserProfileForm(context) {
 
 
 export function loadUserProfile(context) {
-    //let userId = sessionStorage.getItem('id');  //take from url
-    let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
-    //let userId = context.params;
+    let userId = context.params['id'];  //take from url
+    let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken
 
-    Promise.all([getUserProfileById(userId, authtoken), loadTemplate('userProfile')])
-        .then(([response, template]) => {
-            //remove images
-            let userData = response[0];
-            let firstName = userData._firstName;
-            let lastName = userData._lastName;
-            let username = userData._username;
-            let email = userData._email;
-            let phoneNumber = userData._phoneNumber;
-            let country = userData._country;
-            let town = userData._town;
+    if (userId === "58fca97d5282416426652ade") {
+        toastr.info("The account you are trying to view does not exist");
+        //todo return to latest path
+    }
+    else {
+        //todo hide modal
+        Promise.all([getUserProfileById(userId, authtoken), loadTemplate('userProfile')])
+            .then(([response, template]) => {
+                let userData = response[0];
+                let firstName = userData._firstName;
+                let lastName = userData._lastName;
+                let username = userData._username;
+                let email = userData._email;
+                let phoneNumber = userData._phoneNumber;
+                let country = userData._country;
+                let town = userData._town;
 
-            let user = createUser(firstName, lastName, username, email, phoneNumber, country, town);
-            user.image = userData._image;  
-            
-            context.$element().html(template({ user }));
-        });
+                let user = createUser(firstName, lastName, username, email, phoneNumber, country, town);
+                user.image = userData._image;
+
+                context.$element().html(template({ user }));
+                $('#upload-image-form').remove();
+            });
+    }
 }
 
 function register(context, user) {

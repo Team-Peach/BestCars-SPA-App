@@ -39,7 +39,9 @@ import * as profileController from 'profileController';
 
 		this.get('#/profile', usersController.loadUserProfileForm);	// to profileController from userController
 
-		this.get('#/user/profile/:id', usersController.loadUserProfile);	// to profileController from userController
+		this.get('#/user/profile/', function (context) {
+			usersController.loadUserProfile(context);
+		});	
 
 		this.get('#/myAds', myAdsController);
 
@@ -47,8 +49,6 @@ import * as profileController from 'profileController';
 		this._checkFormSubmission = function (form) {
 			return false;
 		};
-
-		//$('#app-container').jscroll();
 	});
 
 	$(function () {

@@ -90,7 +90,7 @@
                                         <p>Person for contact: {{_nameForContacts}}</p>
                                         <p>GSM: {{_gsm}}</p>
                                         <p>eMail: {{_eMail}}</p>
-                                        <p><a href="user/profile/?id:{{_acl.creator}}">View owner profile</a></p>
+                                        <p><a href="user/profile/?id={{_acl.creator}}">View owner profile</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -100,14 +100,14 @@
                             </div>
 
                             <!-- Ad new comment form -->
-                            <div class='hidden' id="div-comment-form" class="panel panel-default">
+                            <div class="hidden div-comment-form panel panel-default">
                                 <div class="panel-body">
-                                    <form id="comment-form" role="form" method="POST">
+                                    <form class="comment-form" role="form" method="POST">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
 												</span>
-                                                <textarea class="form-control" id="comment-content" placeholder="Comment" name="eventdescription" type="text"></textarea>
+                                                <textarea class="form-control comment-content" placeholder="Comment" name="eventdescription" type="text"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -118,10 +118,10 @@
                             </div>
 
                             <!-- end ad new commend form -->
-                            <button id="load-comments" type="button" class="btn btn-default">Show comments</button>
+                            <button type="button" class="load-comments btn btn-default">Show comments</button>
                         </div>
                         <div class="modal-footer">
-                            <button id="load-comment-form" type="button" class="btn btn-default">Add new comment</button>
+                            <button type="button" class="load-comments btn btn-default">Add new comment</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>

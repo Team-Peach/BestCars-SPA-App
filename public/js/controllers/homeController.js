@@ -23,30 +23,38 @@ export function homeController(context) {
 			autocomplete(allTags);
 			searchForm.on('submit', function (e) {
 				e.preventDefault();
-				adsSearch.searchInAds(input, allAds, context, templateCars)
+				Promise.resolve(adsSearch.searchInAds(input, allAds, context, templateCars))
 					.then(resolve => {
-						let loadCommentsBtn = $("#load-comments");
-
 						// take all comments by ad id 
 						let isLoadCommentsBtnClicked = false;
-						loadCommentsBtn.on('click', function () {
+						let loadCommentsButtons = $(".load-comments");
+						loadCommentsButtons.on('click', function () {
 							isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
-							comments.loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, comments.loadAllComments, commentTemplate, loadCommentsBtn);
+							let loadCommentBtn = $(this);
+							let commentDiv = $(this).parent().children('.comments');
+							let adId = $(this).parent().parent().parent().parent().attr("id");
+							comments.loadCommentsBtnIsChecked(adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv);
 						});
 
 						// show/hide add new comment form
-						let loadCommentFormBtn = $('#load-comment-form');
-						let addCommentFormDiv = $('#div-comment-form');
+						let loadCommentFormButtons = $('.load-comment-form');
 
-						loadCommentFormBtn.on('click', function () {
-							comments.loadAddNewCommentForm(addCommentFormDiv, loadCommentFormBtn);
+						loadCommentFormButtons.on('click', function () {
+							let loadCommentsFormBtn = $(this);
+							let addCommentFormDiv = $(this).parent().prev().children('.div-comment-form ');
+							comments.loadAddNewCommentForm(addCommentFormDiv, loadCommentsFormBtn);
 						});
+						// add new comment
+						let addCommentForm = $('.comment-form');
 
-						// add new comment ?? Todo: commentController or extract function in other file
-						let addCommentForm = $('#comment-form');
 						addCommentForm.on('submit', function (ev) {
 							ev.preventDefault();
-							comments.addComment(addCommentFormDiv, loadCommentFormBtn);
+							let addCommentFormDiv = $(this).parent().parent();
+							let loadCommentFormBtn = $(this).parent().parent().parent().next().children('.load-comment-form');
+							let contentInput = $(this).children().children('.input-group').children('.comment-content');
+							let commentsDiv = $(this).parent().parent().prev('.comments');
+							let adId = $(this).parent().parent().parent().parent().parent().parent().attr("id");
+							comments.addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv);
 						});
 					});
 			});

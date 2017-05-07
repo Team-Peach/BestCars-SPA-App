@@ -5,12 +5,12 @@ import { addNewComment as addNewComment } from 'data';
 import { getAllCommentsByAdId as getAllCommentsByAdId } from 'data';
 import { createComment } from 'factory';
 
-export function loadCommentsBtnIsChecked(isLoadCommentsBtnClicked, commentTemplate, loadCommentsBtn) {
+export function loadCommentsBtnIsChecked(adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentsBtn, commentsDiv) {
 	if (isLoadCommentsBtnClicked) {
-		loadAllComments(commentTemplate);
+		loadAllComments(adId, commentTemplate, commentsDiv);
 		loadCommentsBtn.text('Hide Comments');
 	} else {
-		let commentDiv = $('#comments').html('');
+		commentsDiv.html('');
 		loadCommentsBtn.text('Show Comments');
 	}
 }
@@ -24,10 +24,9 @@ export function loadAddNewCommentForm(addCommentFormDiv, loadCommentFormBtn) {
 	}
 }
 
-export function addComment(addCommentFormDiv, loadCommentFormBtn) {
-	let adId = $('.fade').attr("id");
-	let content = $('#comment-content').val();
+export function addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv) {
 	let author = sessionStorage.getItem('username') || "Anonymous";
+	let content = contentInput.val();
 	let comment = createComment(adId, content, author);
 	let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
 	if (content === '') {
@@ -36,20 +35,19 @@ export function addComment(addCommentFormDiv, loadCommentFormBtn) {
 		addNewComment(comment, authtoken, 'comments')
 			.then(response => {
 				toastr.success('Added new comment!');
-				$('#comments').html('');
-				$('#comment-content').val('');
+				
+				contentInput.val('');
 				addCommentFormDiv.toggleClass('hidden');
 				loadCommentFormBtn.text('Add new comment');
 			}, error => {
 				toastr.error('Cannot save the comment, please try latter');
-				$('#comment-content').val('');
+				contentInput.val('');
 			});
 	}
 }
 
 
-function loadAllComments(commentTemplate) {
-	let adId = $('.fade').attr("id");
+function loadAllComments(adId, commentTemplate, commentsDiv) {
 	let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
 	getAllCommentsByAdId(adId, authtoken, 'comments')
 		.then(response => {			
@@ -57,7 +55,6 @@ function loadAllComments(commentTemplate) {
         	for (let i = 0; i < comments.length; i++) {
                 comments[i] = fixDate(comments[i]);
             }			
-			let commentsDiv = $('#comments');
 			commentsDiv.html(commentTemplate({ comments }));
 		}, error => {
 			toastr.error("Cannot load comments");
