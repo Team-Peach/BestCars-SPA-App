@@ -13,7 +13,7 @@ export function homeController(context) {
 	$('#viewSearch').hide();
 
 	let vehicleType = ['cars', 'motorcycles', 'trucks', 'campers'];
-	Promise.all([adForHome(vehicleType[0]), adForHome(vehicleType[1]), adForHome(vehicleType[2]), adForHome(vehicleType[3]),loadTemplate('ads'), loadTemplate('comment')])
+	Promise.all([adForHome(vehicleType[0]), adForHome(vehicleType[1]), adForHome(vehicleType[2]), adForHome(vehicleType[3]),loadTemplate('home'), loadTemplate('comment')])
 		.then(([cars, motorcycles, trucks, campers, template]) => {
 			let allCars = {
 				cars: cars,
