@@ -10,8 +10,8 @@ export function createUser(firstName, lastName, username,  email, phoneNumber, c
 	return new User(firstName, lastName, username, email, phoneNumber, country, town);
 }
 
-export function createAdvertisement(title, vehicle, date, images, description, contacts){
-	return new Advertisement(title, vehicle, date, images, description, contacts);
+export function createAdvertisement(title, vehicle, date, images, description, town, nameForContacts, eMail , gsm){
+	return new Advertisement(title, vehicle, date, images, description, town, nameForContacts, eMail , gsm);
 }
 
 export function createCar(manufacturer, model, year, kilometers, price, fuel, transmission, horsepower, type, numberOfDoors, numberOfSeats){
