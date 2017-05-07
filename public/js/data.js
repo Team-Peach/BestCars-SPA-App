@@ -16,6 +16,15 @@ function getKinveyUserAuthHeaders() {
         };
 }
 
+
+export function adForHome(params) {
+        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + '?query={}&sort={"_kmd": -1}&limit=3';
+        let guestUserAuthToken = CONSTANTS.guestUserAuthToken;
+        const kinveyAuthHeaders = { 'Authorization': "Kinvey " + guestUserAuthToken };
+
+        return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);
+}
+
 export function editeeeAd(params, vehicleId, body) {
         let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + vehicleId;
         let bodyAjax = body;
