@@ -1,22 +1,23 @@
-/* globals $,  */
+/* globals $, toastr */
 
 import { deleteVehicle as deleteVehicle } from 'data';
 import { getMyCars as getMyCars } from 'data';
 import { load as loadTemplate } from 'templates';
+import { attachFilterAds } from 'adsFilter';
 import * as comments from 'comments';
 import * as adsSearch from 'adsSearch';
-import { attachFilterAds } from 'adsFilter';
 
 export function myAdsController(context) {
 	var userId = sessionStorage.id;
-	console.log(555);
-	Promise.all([getMyCars(userId), loadTemplate('myAd'), loadTemplate('comment')])
-		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
 
+	Promise.all([getMyCars(userId), loadTemplate('myAds'), loadTemplate('comment')])
+		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
 			let allCars = {
 				cars: carsDatabaseAJAXResponse
 			};
+
 			context.$element().html(template(allCars));
+
 
 			let loadCommentsBtn = $("#load-comments");
 
@@ -56,5 +57,18 @@ export function myAdsController(context) {
 
 			// filter events
 			attachFilterAds(carsDatabaseAJAXResponse, context, template);
+
+			$('.deleteButton').click(function () {
+				console.log($(this).parent().parent().parent());
+				var id = $(this).parent().parent().parent().attr('data-id');
+				var type = $(this).parent().parent().parent().attr('data-type');
+				deleteVehicle(type, id)
+					.then(response => {
+						toastr.success("Successfully delete");
+						window.location.reload(true);
+					}, error => {
+						toastr.error("Cannot delete");
+					});
+			});
 		});
 }

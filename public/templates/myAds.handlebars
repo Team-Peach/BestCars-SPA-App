@@ -2,7 +2,7 @@
     <div class="row">
         </br>
         {{#each cars}}
-        <div class="col-sm-4">
+        <div class="col-sm-4" data-id="{{_id}}" data-type="{{_typeOfVehicle}}">
             <div class="panel panel-primary">
                 <div class="panel-heading text-center"><strong>{{_title}}</strong></div>
                 <div class="panel-body">
@@ -46,6 +46,7 @@
                         <p>Year: <strong>{{_vehicle._year}}</strong></p>
                         <p>Price: <span><strong style="font-size:200%"> &euro;{{_vehicle._price}}</strong></span></p>
                         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#{{_id}}">More info</button>
+                        <button type="button" class="btn btn-danger btn-lg deleteButton">Delete</button>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ function getKinveyUserAuthHeaders() {
 
 export function deleteVehicle(params, vehicleId) {
         let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + vehicleId;
-        return requester.deletee(kinveyAppDataUrl, getKinveyUserAuthHeaders());
+        return requester.del(kinveyAppDataUrl, getKinveyUserAuthHeaders());
 }
 
 export function getCars(params) {
@@ -36,11 +36,13 @@ export function getMyCars(params) {
 
         return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);
 }
+
 /* Георги
 export function postCar() {
         return requester.post('/cars/add');
 }
 */
+
 export function registerUser(newUser) {
         let url = CONSTANTS.kinveyRegisterUserUrl;
         let headers = CONSTANTS.kinveyBasicHeaders;

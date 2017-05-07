@@ -2,8 +2,8 @@
 
 export function getAllTags(allTags, carsDatabaseAJAXResponse) {
 	for (let i = 0; i < carsDatabaseAJAXResponse.length; i++) {
-		allTags.push(carsDatabaseAJAXResponse[i].manufacturer);
-		allTags.push(carsDatabaseAJAXResponse[i].model);
+		allTags.push(carsDatabaseAJAXResponse[i]._vehicle._manufacturer);
+		allTags.push(carsDatabaseAJAXResponse[i]._vehicle._model);
 	}
 }
 
@@ -37,8 +37,8 @@ export function search(allVehicles, text) {
     maxPatternLength: 32,
     minMatchCharLength: 1,
     keys: [
-      "manufacturer",
-      "model"
+      "_vehicle._manufacturer",
+      "_vehicle._model"
     ]
   };
   let fuse = new Fuse(allVehicles, options);

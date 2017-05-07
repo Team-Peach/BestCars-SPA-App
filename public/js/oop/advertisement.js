@@ -1,5 +1,6 @@
 class Advertisement {
-    constructor(title, vehicle, date, images, description, town, nameForContacts, eMail , gsm) {
+    constructor(typeOfVehicle, title, vehicle, date, images, description, town, nameForContacts, eMail, gsm) {
+        this._typeOfVehicle = typeOfVehicle;
         this._title = title;
         this._vehicle = vehicle;
         this._date = date;
