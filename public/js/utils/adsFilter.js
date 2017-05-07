@@ -7,7 +7,7 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 			cars: carsDatabaseAJAXResponse
 		};
 		LowCars.cars.sort(function (a, b) {
-			return parseInt(a.price) - parseInt(b.price);
+			return parseInt(a._vehicle._price) - parseInt(b._vehicle._price);
 		});
 		context.$element().html(template(LowCars));
 	});
@@ -18,7 +18,7 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 			cars: carsDatabaseAJAXResponse
 		};
 		HighCars.cars.sort(function (a, b) {
-			return parseInt(b.price) - parseInt(a.price);
+			return parseInt(b._vehicle._price) - parseInt(a._vehicle._price);
 		});
 		context.$element().html(template(HighCars));
 	});
@@ -31,7 +31,7 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 			cars: carsDatabaseAJAXResponse
 		};
 		LowCars.cars.sort(function (a, b) {
-			return parseInt(a.year) - parseInt(b.year);
+			return parseInt(a._vehicle._year) - parseInt(b._vehicle._year);
 		});
 		context.$element().html(template(LowCars));
 	});
@@ -42,7 +42,7 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 			cars: carsDatabaseAJAXResponse
 		};
 		HighCars.cars.sort(function (a, b) {
-			return parseInt(b.year) - parseInt(a.year);
+			return parseInt(b._vehicle._year) - parseInt(a._vehicle._year);
 		});
 		context.$element().html(template(HighCars));
 	});
