@@ -94,7 +94,7 @@ function createAdFromFormFieldsValues(valuesFromForm, currentVehicleTypeSelected
 		currentVehicle = factory.createCamper(valuesFromForm.manufacturer, valuesFromForm.model, valuesFromForm.year, valuesFromForm.kilometers, valuesFromForm.price, valuesFromForm.fuel, valuesFromForm.transmission, valuesFromForm.horsepower, valuesFromForm.type, valuesFromForm.numberOfSleepingPlaces);
 	}
 	
-	let nowDate = moment().format('MMM Do YYYY, hh:mm');
+	let nowDate = new Date();
 	// title, vehicle, date, images, description, town, nameForContacts, eMail , gsm
 	let ad = factory.createAdvertisement(valuesFromForm.typeOfVehicle, valuesFromForm.title, currentVehicle, nowDate, valuesFromForm.images, valuesFromForm.description, valuesFromForm.town, valuesFromForm.nameForContacts, valuesFromForm.eMail, valuesFromForm.gsm);
 
