@@ -12,7 +12,7 @@ export function homeController(context) {
 	$('#search-form').hide();
 
 	let vehicleType = ['cars', 'motorcycles', 'trucks', 'campers'];
-	Promise.all([adForHome(vehicleType[0]), adForHome(vehicleType[1]), adForHome(vehicleType[2]), adForHome(vehicleType[3]),loadTemplate('home'), loadTemplate('comment')])
+	Promise.all([adForHome(vehicleType[0]), adForHome(vehicleType[1]), adForHome(vehicleType[2]), adForHome(vehicleType[3]), loadTemplate('home'), loadTemplate('comment')])
 		.then(([cars, motorcycles, trucks, campers, template, commentTemplate]) => {
 			let allCars = {
 				cars: cars,
@@ -36,15 +36,14 @@ export function homeController(context) {
 
 			// show/hide add new comment form
 			let loadCommentFormButtons = $('.load-comment-form');
-
 			loadCommentFormButtons.on('click', function () {
 				let loadCommentsFormBtn = $(this);
 				let addCommentFormDiv = $(this).parent().prev().children('.div-comment-form ');
 				comments.loadAddNewCommentForm(addCommentFormDiv, loadCommentsFormBtn);
 			});
+
 			// add new comment
 			let addCommentForm = $('.comment-form');
-
 			addCommentForm.on('submit', function (ev) {
 				ev.preventDefault();
 				let addCommentFormDiv = $(this).parent().parent();
