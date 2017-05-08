@@ -14,7 +14,5 @@
         $('#buttonMyAd').removeClass('hidden');
         $('#buttonUserProfile').removeClass('hidden');
     }
-
-
 })();
 

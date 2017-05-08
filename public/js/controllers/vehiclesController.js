@@ -1,4 +1,5 @@
 /*globals $ */
+
 import { getCars as getCars } from 'data';
 import { postCar as postCar } from 'data';
 import { guestUserAuthToken } from 'constants';
@@ -33,15 +34,14 @@ export function vehiclesController(context) {
 
 			// show/hide add new comment form
 			let loadCommentFormButtons = $('.load-comment-form');
-
 			loadCommentFormButtons.on('click', function () {
 				let loadCommentsFormBtn = $(this);
 				let addCommentFormDiv = $(this).parent().prev().children('.div-comment-form ');
 				comments.loadAddNewCommentForm(addCommentFormDiv, loadCommentsFormBtn);
 			});
+
 			// add new comment
 			let addCommentForm = $('.comment-form');
-
 			addCommentForm.on('submit', function (ev) {
 				ev.preventDefault();
 				let addCommentFormDiv = $(this).parent().parent();
@@ -70,12 +70,3 @@ export function vehiclesController(context) {
 			dismissModal(context);
 		});
 }
-
-/* Георги
-export function post(context) {
-	Promise.all([postCar(), loadTemplate()])
-		.then(() => {
-
-		});
-}
-*/

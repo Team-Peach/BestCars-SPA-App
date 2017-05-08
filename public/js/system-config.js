@@ -31,8 +31,8 @@ System.config({
 		'comments': 'js/utils/comments.js',
 		'adsSearch': 'js/utils/adsSearch.js',
 		'adsFilter': 'js/utils/adsFilter.js',
-		'registerValidator': 'js/utils/registerValidator.js',
-		'createAdValidator': 'js/utils/createAdValidator.js',
+		'registerValidator': 'js/utils/validators/registerValidator.js',
+		'createAdValidator': 'js/utils/validators/createAdValidator.js',
 		'dismissModal': 'js/utils/dismissModal.js',
 		'toastr-config': 'js/utils/toastr-config.js',
 

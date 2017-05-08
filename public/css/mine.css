@@ -13,6 +13,7 @@ body {
     background-size: cover;
     overflow: hidden;
 }
+
 .navbar {
     margin-bottom: 50px;
     border-radius: 0;
@@ -28,7 +29,6 @@ footer {
     background-color: #222222;
     padding: 25px;
 }
-
 
 .form-control:focus {
     border-color: #ffda31;
@@ -209,6 +209,7 @@ input::-webkit-input-placeholder {
 .toppad {
     margin-top:20px;
 }
+
 #viewSearch{
     display: none;
 }

@@ -7,7 +7,7 @@ import * as comments from 'comments';
 import { dismissModal } from 'dismissModal';
 
 export function myAdsController(context) {
-	var userId = sessionStorage.getItem('id');    //sessionStorage.id;
+	var userId = sessionStorage.getItem('id'); //sessionStorage.id;
 	var authtoken = sessionStorage.getItem('authtoken');
 	$('#search-form').hide();
 	let vehicleType = ['cars', 'motorcycles', 'trucks', 'campers'];

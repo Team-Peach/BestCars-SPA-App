@@ -92,7 +92,6 @@ function login(context, user) {
 
         }, error => {
             toastr.error("Unsuccessful login");
-            console.log(error);
             context.redirect('#/register');
         });
 }

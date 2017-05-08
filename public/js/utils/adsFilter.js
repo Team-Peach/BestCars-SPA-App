@@ -1,6 +1,8 @@
-export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
-	/* filter by price */
+/* globals $ */
 
+export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
+
+	/* filter by price */
 	$('#sortByPrice-Low').click(function (event) {
 		// event.preventDefault();
 		let LowCars = {
@@ -24,7 +26,6 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 	});
 
 	/* filter by year */
-
 	$('#sortByYear-Low').click(function (event) {
 		// event.preventDefault();
 		let LowCars = {
