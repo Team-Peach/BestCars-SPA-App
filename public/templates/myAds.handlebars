@@ -2,10 +2,12 @@
 
     <div class="row">
         </br>
+        {{#if cars}}
+            <h1 class="display-1">MY CARS</h1>
+        {{/if}}
+        </br>
         {{#each cars}}
-            {{#if cars}}
-                <h1>My cars</h1>
-            {{/if}}
+
         <div class="col-sm-4">
             <div class="panel panel-primary hvr-grow">
                 <div class="panel-heading text-center"><strong>{{_title}}</strong></div>
@@ -139,10 +141,11 @@
 
     <div class="row">
         </br>
+        {{#if motorcycles}}
+            <h1 class="display-1">MY MOTORCYCLES</h1>
+        {{/if}}
+        </br>
         {{#each motorcycles}}
-            {{#if motorcycles}}
-                <h1>My motorcycles!</h1>
-            {{/if}}
         <div class="col-sm-4">
             <div class="panel panel-primary hvr-grow">
                 <div class="panel-heading text-center"><strong>{{_title}}</strong></div>
@@ -277,10 +280,11 @@
 
     <div class="row">
         </br>
+        {{#if trucks}}
+            <h1 class="display-1">MY TRUCKS</h1>
+        {{/if}}
+        </br>
         {{#each trucks}}
-            {{#if trucks}}
-                <h1>My trucks!</h1>
-            {{/if}}
         <div class="col-sm-4">
             <div class="panel panel-primary hvr-grow">
                 <div class="panel-heading text-center"><strong>{{_title}}</strong></div>
@@ -414,10 +418,11 @@
 
     <div class="row">
         </br>
+        {{#if campers}}
+            <h1 class="display-1">MY CAMPERS</h1>
+        {{/if}}
+        </br>
         {{#each campers}}
-            {{#if campers}}
-                <h1>My campers!</h1>
-            {{/if}}
         <div class="col-sm-4">
             <div class="panel panel-primary hvr-grow">
                 <div class="panel-heading text-center"><strong>{{_title}}</strong></div>
