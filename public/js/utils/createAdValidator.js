@@ -73,11 +73,8 @@ export function validatePrice(value) {
 
 function validateString(value, minLength, maxLength, field) {
     if (value.length < minLength || value.length > maxLength) {
-        console.log(field);
         let errMessage = `Between ${minLength} and ${maxLength} characters`;
         field.addClass('errorInput').val('').attr('placeholder', errMessage);
-        console.log(field);
-
         throw new Error(errMessage);
     }
 }

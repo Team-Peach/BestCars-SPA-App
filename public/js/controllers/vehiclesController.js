@@ -10,7 +10,6 @@ import { dismissModal } from 'dismissModal';
 
 export function vehiclesController(context) {
 	let vehicleType = window.location.hash.split('#/')[1];
-	console.log(window.location.hash);
 	$('#search-form').show();
 	Promise.all([getCars(vehicleType), loadTemplate('ads'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
@@ -18,7 +17,6 @@ export function vehiclesController(context) {
 			let allCars = {
 				cars: carsDatabaseAJAXResponse
 			};
-			console.log(allCars);
 
 			context.$element().html(template(allCars));
 
@@ -47,7 +45,6 @@ export function vehiclesController(context) {
 			addCommentForm.on('submit', function (ev) {
 				ev.preventDefault();
 				let addCommentFormDiv = $(this).parent().parent();
-				console.log(addCommentFormDiv)
 				let loadCommentFormBtn = $(this).parent().parent().parent().next().children('.load-comment-form');
 				let contentInput = $(this).children().children('.input-group').children('.comment-content');
 				let commentsDiv = $(this).parent().parent().prev('.comments');

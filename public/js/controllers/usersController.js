@@ -76,7 +76,7 @@ export function loadLoginForm(context) {
 }
 
 function login(context, user) {
-    loginUser(context, user)
+    loginUser(user)
         .then(response => {
             toastr.success("Successful login");
             let username = response.username;

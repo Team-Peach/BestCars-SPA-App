@@ -55,7 +55,6 @@ export function myAdsController(context) {
 			});
 
 			$('.deleteButton').click(function () {
-				console.log($(this).parent().parent().parent());
 				var id = $(this).parent().parent().parent().attr('data-id');
 				var type = $(this).parent().parent().parent().attr('data-type');
 				deleteVehicle(type, id)
