@@ -60,7 +60,7 @@ export function loadUserProfileForm(context) {
 export function loadUserProfile(context) {
     $('#search-form').hide();
     let userId = context.params['id'];  //take from url
-    let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken
+    let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
 
     if (userId === guestUserId) {
         toastr.info("The account you are trying to view does not exist");
@@ -97,7 +97,7 @@ export function loadUserProfile(context) {
 export function loadUserAds(context) {
     $('#search-form').hide();
     let userId = context.params['id'];  //take from url
-    let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken
+    let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
     
    	$('#search-form').hide();
 	let vehicleType = ['cars', 'motorcycles', 'trucks', 'campers'];
@@ -129,15 +129,14 @@ export function loadUserAds(context) {
 
 			// show/hide add new comment form
 			let loadCommentFormButtons = $('.load-comment-form');
-
 			loadCommentFormButtons.on('click', function () {
 				let loadCommentsFormBtn = $(this);
 				let addCommentFormDiv = $(this).parent().prev().children('.div-comment-form ');
 				comments.loadAddNewCommentForm(addCommentFormDiv, loadCommentsFormBtn);
 			});
+            
 			// add new comment
 			let addCommentForm = $('.comment-form');
-
 			addCommentForm.on('submit', function (ev) {
 				ev.preventDefault();
 				let addCommentFormDiv = $(this).parent().parent();
