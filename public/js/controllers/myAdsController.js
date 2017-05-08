@@ -19,8 +19,6 @@ export function myAdsController(context) {
 			context.$element().html(template(allCars));
 
 
-			let loadCommentsBtn = $("#load-comments");
-
 			// take all comments by ad id 
 			let isLoadCommentsBtnClicked = false;
 			let loadCommentsButtons = $(".load-comments");

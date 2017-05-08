@@ -1,16 +1,16 @@
 /* globals $, Fuse */
 
-export function getAllTags(allTags, carsDatabaseAJAXResponse) {
-	for (let i = 0; i < carsDatabaseAJAXResponse.length; i++) {
-		allTags.push(carsDatabaseAJAXResponse[i]._vehicle._manufacturer);
-		allTags.push(carsDatabaseAJAXResponse[i]._vehicle._model);
+export function getAllTags(allTags, vehicles) {
+	for (let i = 0; i < vehicles.length; i++) {
+		allTags.push(vehicles[i]._vehicle._manufacturer);
+		allTags.push(vehicles[i]._vehicle._model);
 	}
 }
 
-export function searchInAds(input, carsDatabaseAJAXResponse, context, template) {
+export function searchInAds(input, vehicles, context, template) {
 
 	let inputText = input.val();
-	let findAds = search(carsDatabaseAJAXResponse, inputText);
+	let findAds = search(vehicles, inputText);
 	let findCars = {
 		cars: findAds,
 	};

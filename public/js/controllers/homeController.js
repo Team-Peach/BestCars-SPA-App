@@ -59,17 +59,19 @@ export function homeController(context) {
 			});
 
 			let allTags = [];
-			adsSearch.getAllTags(allTags, carsDatabaseAJAXResponse);
+			let vehicles = [].concat(cars, motorcycles, trucks, campers);
+			console.log("vehciles",vehicles);
+			adsSearch.getAllTags(allTags, vehicles);
 			adsSearch.autocomplete(allTags);
 
 			let searchForm = $('#search-form');
 			let input = $('#search');
 			searchForm.on('submit', function (e) {
 				e.preventDefault();
-				adsSearch.searchInAds(input, carsDatabaseAJAXResponse, context, template);
+				adsSearch.searchInAds(input, vehicles, context, template);
 			});
 
 			// filter events
-			attachFilterAds(carsDatabaseAJAXResponse, context, template);
+			attachFilterAds(vehicles, context, template);
 		});
 }
