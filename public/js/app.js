@@ -3,6 +3,7 @@
 import 'logout';
 import 'factory';
 import 'loadNavigationButtons';
+import 'toastr-config';
 import { homeController } from 'homeController';
 import { vehiclesController } from 'vehiclesController';
 import { createAdController } from 'createAdController';

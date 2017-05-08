@@ -55,11 +55,19 @@ export function createAdController(context) {
 				}
 
 				if (!currentVehicleTypeSelectedString) {
-					toastr.error("Please select vehicle type!");
+					toastr.warning("Please select vehicle type!");
 					return;
 				}
 
-				let ad = createAdFromFormFieldsValues(valuesFromForm, currentVehicleTypeSelectedString);
+				let ad;
+				try {
+					ad = createAdFromFormFieldsValues(valuesFromForm, currentVehicleTypeSelectedString);
+				}
+				catch (e) {
+					toastr.warning('Please fill all fields correct!');
+					return;
+				}
+
 				let typeOfAdForDatabaseCollection = valuesFromForm.typeOfVehicle;
 				let authtoken = sessionStorage.getItem('authtoken');
 
@@ -93,7 +101,7 @@ function createAdFromFormFieldsValues(valuesFromForm, currentVehicleTypeSelected
 		// manufacturer, model, year, kilometers, price, fuel, transmission, horsepower, type, numberOfSleepingPlaces
 		currentVehicle = factory.createCamper(valuesFromForm.manufacturer, valuesFromForm.model, valuesFromForm.year, valuesFromForm.kilometers, valuesFromForm.price, valuesFromForm.fuel, valuesFromForm.transmission, valuesFromForm.horsepower, valuesFromForm.type, valuesFromForm.numberOfSleepingPlaces);
 	}
-	
+
 	let nowDate = new Date();
 	// title, vehicle, date, images, description, town, nameForContacts, eMail , gsm
 	let ad = factory.createAdvertisement(valuesFromForm.typeOfVehicle, valuesFromForm.title, currentVehicle, nowDate, valuesFromForm.images, valuesFromForm.description, valuesFromForm.town, valuesFromForm.nameForContacts, valuesFromForm.eMail, valuesFromForm.gsm);

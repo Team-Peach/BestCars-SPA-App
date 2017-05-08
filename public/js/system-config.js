@@ -34,6 +34,7 @@ System.config({
 		'registerValidator': 'js/utils/registerValidator.js',
 		'createAdValidator': 'js/utils/createAdValidator.js',
 		'dismissModal': 'js/utils/dismissModal.js',
+		'toastr-config': 'js/utils/toastr-config.js',
 
 		'requester' : 'js/requester.js',
 		'data' : 'js/data.js',

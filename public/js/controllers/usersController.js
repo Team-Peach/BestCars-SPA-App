@@ -24,9 +24,10 @@ export function loadRegistrationForm(context) {
                     user = createUser(valuesFromForm.firstName, valuesFromForm.lastName, valuesFromForm.username, valuesFromForm.email, valuesFromForm.phoneNumber, valuesFromForm.country, valuesFromForm.town);
                 }
                 catch (e) {
+                    toastr.warning('Please fill all fields correct!');
                     return;
                 }
-                
+
                 register(context, user);
             });
         });
