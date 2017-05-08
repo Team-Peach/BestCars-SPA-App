@@ -13,16 +13,13 @@ export function loadRegistrationForm(context) {
             let $registerForm = $('#register');
             $registerForm.on('submit', function (ev) {
                 ev.preventDefault();
-                let firstName = $('#firstName').val();
-                let lastName = $('#lastName').val();
-                let username = $('#username').val();
-                let password = $('#password').val();
-                let email = $('#email').val();
-                let phoneNumber = $('#phoneNumber').val();
-                let country = $('#country').val();
-                let town = $('#town').val();
-
-                let user = createUser(firstName, lastName, username, email, phoneNumber, country, town);
+                let arrayOfFormObjValues = $registerForm.serializeArray();
+				let valuesFromForm = {};
+				$.each(arrayOfFormObjValues, function (i, field) {
+					valuesFromForm[field.name] = field.value;
+				});
+                
+                let user = createUser(valuesFromForm.firstName, valuesFromForm.lastName, valuesFromForm.username, valuesFromForm.email, valuesFromForm.phoneNumber, valuesFromForm.country, valuesFromForm.town);
                 register(context, user);
             });
         });
