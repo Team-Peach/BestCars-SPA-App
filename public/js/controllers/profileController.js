@@ -3,7 +3,7 @@
 import { getUserProfileById, addUserProfileImage } from 'data';
 import { load as loadTemplate } from 'templates';
 import { createUser } from 'factory';
-import { guestUserAuthToken } from 'constants'; 
+import { guestUserAuthToken, guestUserId } from 'constants'; 
 
 export function loadUserProfileForm(context) {
     $('#viewSearch').hide();
@@ -55,10 +55,11 @@ export function loadUserProfileForm(context) {
 }
 
 export function loadUserProfile(context) {
+
     let userId = context.params['id'];  //take from url
     let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken
 
-    if (userId === "58fca97d5282416426652ade") {
+    if (userId === guestUserId) {
         toastr.info("The account you are trying to view does not exist");
         context.redirect("#/home");
         //todo return to latest path
@@ -80,6 +81,8 @@ export function loadUserProfile(context) {
                 user.image = userData._image;
 
                 context.$element().html(template({ user }));
+                let body = $('.modal-open');
+                body.removeClass('modal-open');
                 $('#upload-image-form').remove();
             });
     }

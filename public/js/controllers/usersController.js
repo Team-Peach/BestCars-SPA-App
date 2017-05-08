@@ -3,7 +3,6 @@
 import { registerUser, loginUser, logoutUser, createUserProfile } from 'data';
 import { load as loadTemplate } from 'templates';
 import { createUser } from 'factory';
-import { guestUserAuthToken } from 'constants'; 
 
 export function loadRegistrationForm(context) {
     $('#viewSearch').hide();
@@ -47,22 +46,19 @@ export function loadLoginForm(context) {
 function register(context, user) {
     registerUser(user)
         .then(response => {
-            console.log(context);
             let username = response.username;
             let authtoken = response._kmd.authtoken;
             let userId = response._id;
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('authtoken', authtoken);
             sessionStorage.setItem('id', userId);
-            createProfile(context, user, userId, authtoken)
+            createUserProfile(user, authtoken)
                 .then(response => {
                     toastr.success("Welcome to BestCars!");
-                    $('#buttonLogin').addClass('hidden');
-                    $('#buttonRegister').addClass('hidden');
-                    $('#buttonLogout').removeClass('hidden');
-                    $('#buttonCreateNewAd').removeClass('hidden');
-                    $('#buttonUserProfile').removeClass('hidden');                    
-                    context.redirect('#/profile');
+                    setTimeout(function () {
+                        window.location.href = '#/profile';
+                        window.location.reload(true);
+                    }, 2000);
                 }, error => {
                     toastr.error("Unsuccessful registration");
                 });
@@ -75,34 +71,20 @@ function register(context, user) {
 function login(context, user) {
     loginUser(user)
         .then(response => {
+            toastr.success("Successful login");
             let username = response.username;
             let authtoken = response._kmd.authtoken;
             let userId = response._id;
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('authtoken', authtoken);
             sessionStorage.setItem('id', userId);
+            setTimeout(function() {
+            window.location.href = '#/profile';
+            window.location.reload(true);
+              }, 1000);
 
-            $('#buttonLogin').addClass('hidden');
-            $('#buttonRegister').addClass('hidden');
-            $('#buttonLogout').removeClass('hidden');
-            $('#buttonCreateNewAd').removeClass('hidden');
-            $('#buttonUserProfile').removeClass('hidden');
-
-            toastr.success("Successful login");
-            context.redirect("#/profile");
         }, error => {
             toastr.error("Unsuccessful login");
             context.redirect('#/register');
         });
 }
-
-function createProfile(context, user, userId, authtoken) {
-    return createUserProfile(user, authtoken)
-        .then(
-        response => {
-            context.redirect("#/profile");
-        }, error => {
-            toastr.error("Unsuccessful registration");
-        });
-}
-

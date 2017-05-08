@@ -1,5 +1,5 @@
 # Tasks
-  - ProfileController - routes - '#/profile', 'myAd'(move from vehicleController)-
+  - DONE ProfileController - routes - '#/profile', 'myAd'(move from vehicleController)-
   - DONE 'user/profile/:id'(TODO)
   - DONE AboutController - routes - "aboutUs"(move from userController)
   - DONE ContactUs - routes - "contact us" (move from contactU)
