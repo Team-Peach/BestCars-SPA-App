@@ -7,6 +7,7 @@ import { guestUserAuthToken, guestUserId } from 'constants';
 
 export function loadUserProfileForm(context) {
     $('#viewSearch').hide();
+    $('#search-form').hide();
     let userId = sessionStorage.getItem('id');
     let authtoken = sessionStorage.getItem('authtoken');
 
