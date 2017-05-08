@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Best cars application Tests</title>
+  <link rel="stylesheet" href="../libs/mocha/mocha.css" />
+</head>
+
+<body>
+
+  <h2> BestCars application tests</h2> 
+  <div id="mocha"></div>
+  <p>Team Peach 2017</p>
+  <!-- Testing -->
+  <script src="../libs/mocha/mocha.js"></script>
+  <script src="../libs/chai/chai.js"></script>
+  <script src="../libs/sinon/pkg/sinon.js"></script>
+  <script src="../libs/sinon-chai/lib/sinon-chai.js"></script>
+
+  <!-- Libs -->
+  <script src="../libs/jquery/dist/jquery.min.js"></script>
+  <script src="../libs/systemjs/dist/system.js"></script>
+  <script src="config.js"></script>
+  <script src="../libs/sammy/lib/sammy.js"></script>
+  <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../libs/handlebars/dist/handlebars.min.js"></script>
+  <script src="../libs/toastr/build/toastr.min.js"></script>
+  <script src="../libs/fuse.js/dist/fuse.min.js"></script>
+  <!-- Jquery-UI scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="../libs/moment/moment.js"></script>
+
+  <!-- Unit tests -->
+  <script>
+    mocha.setup('bdd');
+    const {expect} = chai;
+    // chai.use(sinonChai);
+  </script>
+
+</body>
+
+</html>

@@ -28,12 +28,17 @@
     "fuse.js": "^3.0.0",
     "handlebars": "^4.0.6",
     "jquery": "^3.2.1",
-    "jscroll": "^2.3.7",
     "moment": "^2.18.1",
     "sammy": "^0.7.6",
     "systemjs": "^0.20.12",
     "systemjs-plugin-babel": "0.0.21",
     "systemjs-plugin-text": "0.0.9",
     "toastr": "^2.1.2"
+  }, 
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
+    "sinon": "^2.2.0",
+    "sinon-chai": "^2.10.0"
   }
 }
