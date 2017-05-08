@@ -47,7 +47,7 @@ export function validateCountry(value) {
 }
 
 export function validateTown(value) {
-    let townField = $('#town').val();
+    let townField = $('#town');
     let stringRegex = /^[A-Za-z]+$/;
     validateString(value, 3, 15, townField);
     validateWithRegex(value, stringRegex, 'Only latin characters!', townField);

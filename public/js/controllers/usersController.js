@@ -24,10 +24,9 @@ export function loadRegistrationForm(context) {
                     user = createUser(valuesFromForm.firstName, valuesFromForm.lastName, valuesFromForm.username, valuesFromForm.email, valuesFromForm.phoneNumber, valuesFromForm.country, valuesFromForm.town);
                 }
                 catch (e) {
-                    console.log('return');
                     return;
                 }
-                console.log('create user');
+                
                 register(context, user);
             });
         });

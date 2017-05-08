@@ -4,9 +4,9 @@ class Car extends Vehicle {
     constructor(manufacturer, model, year, kilometers, price, fuel, transmission, horsepower, type, numberOfDoors, numberOfSeats) {
         super(manufacturer, model, year, kilometers, price, fuel, transmission, horsepower);
 
-        this._type = type;
-        this._numberOfDoors = numberOfDoors;
-        this._numberOfSeats = numberOfSeats;
+        this.type = type;
+        this.numberOfDoors = numberOfDoors;
+        this.numberOfSeats = numberOfSeats;
     }
 
     get type() {

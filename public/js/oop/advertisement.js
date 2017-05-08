@@ -1,3 +1,5 @@
+import * as createAdValidator from 'registerValidator';
+
 class Advertisement {
     constructor(typeOfVehicle, title, vehicle, date, images, description, town, nameForContacts, eMail, gsm) {
         this.typeOfVehicle = typeOfVehicle;

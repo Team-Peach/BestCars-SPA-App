@@ -1,3 +1,5 @@
+/*globals $ */
+
 export function dismissModal(context) {
     let redirectToUserProfileLinks = $('.redirect-user-profile');
     redirectToUserProfileLinks.on('click', function (ev) {

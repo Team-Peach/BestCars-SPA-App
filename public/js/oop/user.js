@@ -9,7 +9,7 @@ class User {
         this.phoneNumber = phoneNumber;
         this.country = country;
         this.town = town;
-        this.image = "";
+        this.image = '';
     }
 
     get firstName() {

@@ -1,13 +1,13 @@
 class Vehicle {
     constructor(manufacturer, model, year, kilometers, price, fuel, transmission, horsepower) {
-        this._manufacturer = manufacturer;
-        this._model = model;
-        this._year = year;
-        this._kilometers = kilometers;
-        this._price = price;
-        this._fuel = fuel;
-        this._transmission = transmission;
-        this._horsepower = horsepower;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.year = year;
+        this.kilometers = kilometers;
+        this.price = price;
+        this.fuel = fuel;
+        this.transmission = transmission;
+        this.horsepower = horsepower;
     }
 
     get manufacturer() {

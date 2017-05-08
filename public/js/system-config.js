@@ -29,11 +29,12 @@ System.config({
 		'logout' : 'js/utils/logout.js',
 		'loadNavigationButtons': 'js/utils/loadNavigationButtons.js',
 		'comments': 'js/utils/comments.js',
-		
 		'adsSearch': 'js/utils/adsSearch.js',
 		'adsFilter': 'js/utils/adsFilter.js',
 		'registerValidator': 'js/utils/registerValidator.js',
+		'createAdValidator': 'js/utils/createAdValidator.js',
 		'dismissModal': 'js/utils/dismissModal.js',
+
 		'requester' : 'js/requester.js',
 		'data' : 'js/data.js',
 		'templates': 'js/templates.js',
