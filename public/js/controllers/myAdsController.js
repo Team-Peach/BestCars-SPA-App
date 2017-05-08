@@ -3,14 +3,13 @@
 import { deleteVehicle as deleteVehicle } from 'data';
 import { getMyCars as getMyCars } from 'data';
 import { load as loadTemplate } from 'templates';
-import { attachFilterAds } from 'adsFilter';
 import * as comments from 'comments';
-import * as adsSearch from 'adsSearch';
 
 export function myAdsController(context) {
-	var userId = sessionStorage.id;
+	var userId = sessionStorage.getItem('id');    //sessionStorage.id;
+	var authtoken = sessionStorage.getItem('authtoken');
 	$('#search-form').hide();
-	Promise.all([getMyCars(userId), loadTemplate('myAds'), loadTemplate('comment')])
+	Promise.all([getMyCars(userId, authtoken), loadTemplate('myAds'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
 			let allCars = {
 				cars: carsDatabaseAJAXResponse

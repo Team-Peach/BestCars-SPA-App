@@ -16,7 +16,6 @@ function getKinveyUserAuthHeaders() {
         };
 }
 
-
 export function adForHome(params) {
         let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + '?query={}&sort={"_kmd": -1}&limit=3';
         let guestUserAuthToken = CONSTANTS.guestUserAuthToken;
@@ -44,10 +43,9 @@ export function getCars(params) {
         return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);
 }
 
-export function getMyCars(params) {
+export function getMyCars(params, authtoken) {
         let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/cars/' + '?query={"_acl.creator":"'+ params + '"}';
-        let guestUserAuthToken = CONSTANTS.guestUserAuthToken;
-        const kinveyAuthHeaders = { 'Authorization': "Kinvey " + guestUserAuthToken };
+        const kinveyAuthHeaders = { 'Authorization': "Kinvey " + authtoken };
 
         return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);
 }
@@ -92,8 +90,6 @@ export function getUserProfileById(userId, authtoken) {
 
         return requester.get(url, headers);
 }
-
-//TODO getAll Users Profiles
 
 export function createAd(params, authtoken, type) {
         let url = CONSTANTS.kinveyAppDataUrl + '/' + type;

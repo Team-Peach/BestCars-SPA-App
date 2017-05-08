@@ -4,8 +4,6 @@ import {adForHome as adForHome} from 'data';
 import { postCar as postCar } from 'data';
 import { guestUserAuthToken } from 'constants';
 import { load as loadTemplate } from 'templates';
-import * as adsSearch from 'adsSearch';
-import { attachFilterAds } from 'adsFilter';
 import * as comments from 'comments';
 
 export function homeController(context) {
