@@ -39,7 +39,7 @@ export function vehiclesController(context) {
 			loadCommentFormButtons.on('click', function () {
 				let loadCommentsFormBtn = $(this);
 				let addCommentFormDiv = $(this).parent().prev().children('.div-comment-form ');
-				comments.loadAddNewCommentForm(context, addCommentFormDiv, loadCommentsFormBtn);
+				comments.loadAddNewCommentForm(addCommentFormDiv, loadCommentsFormBtn);
 			});
 			// add new comment
 			let addCommentForm = $('.comment-form');
@@ -47,6 +47,7 @@ export function vehiclesController(context) {
 			addCommentForm.on('submit', function (ev) {
 				ev.preventDefault();
 				let addCommentFormDiv = $(this).parent().parent();
+				console.log(addCommentFormDiv)
 				let loadCommentFormBtn = $(this).parent().parent().parent().next().children('.load-comment-form');
 				let contentInput = $(this).children().children('.input-group').children('.comment-content');
 				let commentsDiv = $(this).parent().parent().prev('.comments');
