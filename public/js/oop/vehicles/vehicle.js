@@ -13,7 +13,6 @@ class Vehicle {
     get manufacturer() {
         return this._manufacturer;
     }
-
     set manufacturer(value) {
         this._manufacturer = value;
     }
@@ -21,7 +20,6 @@ class Vehicle {
     get model() {
         return this._model;
     }
-
     set model(value) {
         this._model = value;
     }
@@ -29,39 +27,27 @@ class Vehicle {
     get year() {
         return this._year;
     }
-
     set year(value) {
         this._year = value;
-    }
-
-    get price() {
-        return this._price;
-    }
-
-    set price(value) {
-        this._price = value;
     }
 
     get kilometers() {
         return this._kilometers;
     }
-
     set kilometers(value) {
         this._kilometers = value;
     }
 
-    get type() {
-        return this._type;
+    get price() {
+        return this._price;
     }
-
-    set type(value) {
-        this._type = value;
+    set price(value) {
+        this._price = value;
     }
 
     get fuel() {
         return this._fuel;
     }
-
     set fuel(value) {
         this._fuel = value;
     }
@@ -69,15 +55,13 @@ class Vehicle {
     get transmission() {
         return this._transmission;
     }
-
     set transmission(value) {
         this._transmission = value;
     }
 
-     get horsepower() {
+    get horsepower() {
         return this._horsepower;
     }
-
     set horsepower(value) {
         this._horsepower = value;
     }

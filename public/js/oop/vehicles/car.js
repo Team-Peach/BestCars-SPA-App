@@ -8,17 +8,24 @@ class Car extends Vehicle {
         this._numberOfDoors = numberOfDoors;
         this._numberOfSeats = numberOfSeats;
     }
+
+    get type() {
+        return this._type;
+    }
+    set type(value) {
+        this._type = value;
+    }
+
     get numberOfDoors() {
         return this._numberOfDoors;
     }
-
     set numberOfDoors(value) {
         this._numberOfDoors = value;
     }
+
     get numberOfSeats() {
         return this._numberOfSeats;
     }
-
     set numberOfSeats(value) {
         this._numberOfSeats = value;
     }
