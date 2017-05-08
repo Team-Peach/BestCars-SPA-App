@@ -1,27 +1,22 @@
+import * as registerValidator from 'registerValidator';
+
 class User {
     constructor(firstName, lastName, username, email, phoneNumber, country, town) {
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._username = username;
-        this._email = email;
-        this._phoneNumber = phoneNumber;
-        this._country = country;
-        this._town = town;
-        this._image = "";
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.country = country;
+        this.town = town;
+        this.image = "";
     }
 
     get firstName() {
         return this._firstName;
     }
     set firstName(value) {
-        if (value.length < 3 || value.length > 20) {
-            throw new TypeError("First name must be between 3 and 20 characters long");
-        }
-        let firstNameRegex = /^[A-Za-z]+$/;
-        if (!firstNameRegex.test(value)) {
-            throw new TypeError("First name must contain only Latin characters");
-        }
-
+        registerValidator.validateFirstName(value);
         this._firstName = value;
     }
 
@@ -29,14 +24,7 @@ class User {
         return this._lastName;
     }
     set lastName(value) {
-        if (value.length < 3 || value.length > 20) {
-            throw new TypeError("Last name must be between 3 and 20 characters long");
-        }
-        let lastNameRegex = /^[A-Za-z]+$/;
-        if (!lastNameRegex.test(value)) {
-            throw new TypeError("Last name must contain only Latin characters");
-        }
-
+        registerValidator.validateLastName(value);
         this._lastName = value;
     }
 
@@ -44,6 +32,7 @@ class User {
         return this._username;
     }
     set username(value) {
+        registerValidator.validateUsername(value);
         this._username = value;
     }
 
@@ -51,10 +40,7 @@ class User {
         return this._email;
     }
     set email(value) {
-        let emailRegex = /^\w+@[a-zA-Z.]+$/;
-        if (!emailRegex.test(value)) {
-            throw new TypeError("Invalid e-mail");
-        }
+        registerValidator.validateEmail(value);
         this._email = value;
     }
 
@@ -62,6 +48,7 @@ class User {
         return this._phoneNumber;
     }
     set phoneNumber(value) {
+        registerValidator.validatePhoneNumber(value);
         this._phoneNumber = value;
     }
 
@@ -69,6 +56,7 @@ class User {
         return this._country;
     }
     set country(value) {
+        registerValidator.validateCountry(value);
         this._country = value;
     }
 
@@ -76,13 +64,13 @@ class User {
         return this._town;
     }
     set town(value) {
+        registerValidator.validateTown(value);
         this._town = value;
     }
 
     get image() {
         return this._image;
     }
-
     set image(value) {
         this._image = value;
     }

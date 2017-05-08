@@ -14,30 +14,21 @@ export function loadRegistrationForm(context) {
             $registerForm.on('submit', function (ev) {
                 ev.preventDefault();
                 let arrayOfFormObjValues = $registerForm.serializeArray();
-				let valuesFromForm = {};
-				$.each(arrayOfFormObjValues, function (i, field) {
-					valuesFromForm[field.name] = field.value;
-				});
-                
-                let user = createUser(valuesFromForm.firstName, valuesFromForm.lastName, valuesFromForm.username, valuesFromForm.email, valuesFromForm.phoneNumber, valuesFromForm.country, valuesFromForm.town);
-                register(context, user);
-            });
-        });
-}
+                let valuesFromForm = {};
+                $.each(arrayOfFormObjValues, function (i, field) {
+                    valuesFromForm[field.name] = field.value;
+                });
 
-export function loadLoginForm(context) {
-    $('#viewSearch').hide();
-    $('#search-form').hide();
-    loadTemplate('login')
-        .then(template => {
-            context.$element().html(template());
-            let $loginForm = $('#login');
-            $loginForm.on('submit', function (ev) {
-                ev.preventDefault();
-                let username = $('#username').val();
-                let password = $('#password').val();
-                let user = { "username": username, "password": password };
-                login(context, user);
+                let user;
+                try {
+                    user = createUser(valuesFromForm.firstName, valuesFromForm.lastName, valuesFromForm.username, valuesFromForm.email, valuesFromForm.phoneNumber, valuesFromForm.country, valuesFromForm.town);
+                }
+                catch (e) {
+                    console.log('return');
+                    return;
+                }
+                console.log('create user');
+                register(context, user);
             });
         });
 }
@@ -67,6 +58,23 @@ function register(context, user) {
         });
 }
 
+export function loadLoginForm(context) {
+    $('#viewSearch').hide();
+    $('#search-form').hide();
+    loadTemplate('login')
+        .then(template => {
+            context.$element().html(template());
+            let $loginForm = $('#login');
+            $loginForm.on('submit', function (ev) {
+                ev.preventDefault();
+                let username = $('#username').val();
+                let password = $('#password').val();
+                let user = { "username": username, "password": password };
+                login(context, user);
+            });
+        });
+}
+
 function login(context, user) {
     loginUser(user)
         .then(response => {
@@ -77,10 +85,10 @@ function login(context, user) {
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('authtoken', authtoken);
             sessionStorage.setItem('id', userId);
-            setTimeout(function() {
-            window.location.href = '#/profile';
-            window.location.reload(true);
-              }, 1000);
+            setTimeout(function () {
+                window.location.href = '#/profile';
+                window.location.reload(true);
+            }, 1000);
 
         }, error => {
             toastr.error("Unsuccessful login");

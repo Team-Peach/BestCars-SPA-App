@@ -247,3 +247,19 @@ input::-webkit-input-placeholder {
 #fb-page {
     border: 2px solid #ffe984;
 }
+
+.errorInput::-webkit-input-placeholder {
+    color: red;
+}
+.errorInput:-moz-placeholder {
+    /* FF 4-18 */
+    color: red;
+}
+.errorInput::-moz-placeholder {
+    /* FF 19+ */
+    color: red;
+}
+.errorInput:-ms-input-placeholder {
+    /* IE 10+ */
+    color: red;
+}

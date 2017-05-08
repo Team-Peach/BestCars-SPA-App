@@ -1,8 +1,8 @@
 class Comment {
     constructor(adId, content, author) {
-        this._adId = adId;
-        this._content = content;
-        this._author = author;
+        this.adId = adId;
+        this.content = content;
+        this.author = author;
     }
 
     get adId() {

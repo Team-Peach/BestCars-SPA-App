@@ -1,15 +1,15 @@
 class Advertisement {
     constructor(typeOfVehicle, title, vehicle, date, images, description, town, nameForContacts, eMail, gsm) {
-        this._typeOfVehicle = typeOfVehicle;
-        this._title = title;
-        this._vehicle = vehicle;
-        this._date = date;
-        this._images = images;
-        this._description = description;
-        this._town = town;
-        this._nameForContacts = nameForContacts;
-        this._eMail = eMail;
-        this._gsm = gsm;
+        this.typeOfVehicle = typeOfVehicle;
+        this.title = title;
+        this.vehicle = vehicle;
+        this.date = date;
+        this.images = images;
+        this.description = description;
+        this.town = town;
+        this.nameForContacts = nameForContacts;
+        this.eMail = eMail;
+        this.gsm = gsm;
     }
 
     get typeOfVehicle() {
