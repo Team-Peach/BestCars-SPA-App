@@ -43,8 +43,8 @@ export function getCars(params) {
         return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);
 }
 
-export function getMyCars(params, authtoken) {
-        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/cars/' + '?query={"_acl.creator":"'+ params + '"}';
+export function getMyAds(creatorId, collection, authtoken) {
+        let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + collection + '/' + '?query={"_acl.creator":"'+ creatorId + '"}';
         const kinveyAuthHeaders = { 'Authorization': "Kinvey " + authtoken };
 
         return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);

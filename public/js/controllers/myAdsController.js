@@ -1,7 +1,7 @@
 /* globals $, toastr */
 
 import { deleteVehicle as deleteVehicle } from 'data';
-import { getMyCars as getMyCars } from 'data';
+import { getMyAds as getMyAds } from 'data';
 import { load as loadTemplate } from 'templates';
 import * as comments from 'comments';
 import { dismissModal } from 'dismissModal';
@@ -10,10 +10,14 @@ export function myAdsController(context) {
 	var userId = sessionStorage.getItem('id');    //sessionStorage.id;
 	var authtoken = sessionStorage.getItem('authtoken');
 	$('#search-form').hide();
-	Promise.all([getMyCars(userId, authtoken), loadTemplate('myAds'), loadTemplate('comment')])
-		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
+	let vehicleType = ['cars', 'motorcycles', 'trucks', 'campers'];
+	Promise.all([getMyAds(userId, vehicleType[0], authtoken), getMyAds(userId, vehicleType[1], authtoken), getMyAds(userId, vehicleType[2], authtoken), getMyAds(userId, vehicleType[3], authtoken),loadTemplate('myAds'), loadTemplate('comment')])
+		.then(([cars, motorcycles, trucks, campers, template, commentTemplate]) => {
 			let allCars = {
-				cars: carsDatabaseAJAXResponse
+				cars: cars,
+				motorcycles: motorcycles,
+				trucks: trucks,
+				campers: campers
 			};
 
 			context.$element().html(template(allCars));

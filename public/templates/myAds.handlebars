@@ -1,9 +1,13 @@
 <section class="container">
+
     <div class="row">
         </br>
         {{#each cars}}
-        <div class="col-sm-4" data-id="{{_id}}" data-type="{{_typeOfVehicle}}">
-            <div class="panel panel-primary">
+            {{#if cars}}
+                <h1>My cars</h1>
+            {{/if}}
+        <div class="col-sm-4">
+            <div class="panel panel-primary hvr-grow">
                 <div class="panel-heading text-center"><strong>{{_title}}</strong></div>
                 <div class="panel-body">
                     <div id="myCarousel{{@index}}" class="carousel slide" data-ride="carousel">
@@ -11,9 +15,9 @@
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
                             {{#each _images}} {{#if @first}}
-                            <li data-target="#myCarousel{{@index}}" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel{{@index}}" data-slide-to="0" class="active"></li>
                             {{else}}
-                            <li data-target="#myCarousel{{@index}}" data-slide-to="{{@index}}"></li>
+                                <li data-target="#myCarousel{{@index}}" data-slide-to="{{@index}}"></li>
                             {{/if}} {{/each}}
                         </ol>
 
@@ -21,24 +25,24 @@
                         <div class="carousel-inner">
                             {{#each _images}} {{#if @first}}
                             <div class="item active">
-                                {{else}}
-                                <div class="item">
-                                    {{/if}}
-                                    <img src="{{this}}" class="img-responsive" style="width:100%" alt="Image">
-                                    <div class="carousel-caption">
-                                    </div>
+                            {{else}}
+                            <div class="item">
+                            {{/if}}
+                                <img src="{{this}}" class="img-responsive" style="width:100%" alt="Image">
+                                <div class="carousel-caption">
                                 </div>
-                                {{else}}
-                                <img src="./../images/no-image.png" class="img-responsive" style="width:100%" alt="Image">                                {{/each}}
                             </div>
+                            {{else}}
+                                <img src="./../images/no-image.png" class="img-responsive" style="width:100%" alt="Image">                                {{/each}}
+                        </div>
 
                             <!-- Left and right controls -->
                             <a class="left carousel-control" href="#myCarousel{{@index}}" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                            <span class="sr-only">Previous</span></a>
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span></a>
                             <a class="right carousel-control" href="#myCarousel{{@index}}" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="sr-only">Next</span></a>
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span></a>
                         </div>
                     </div>
                     <div class="panel-footer">
@@ -46,7 +50,6 @@
                         <p>Year: <strong>{{_vehicle._year}}</strong></p>
                         <p>Price: <span><strong style="font-size:200%"> &euro;{{_vehicle._price}}</strong></span></p>
                         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#{{_id}}">More info</button>
-                        <button type="button" class="btn btn-danger btn-lg deleteButton">Delete</button>
                     </div>
                 </div>
             </div>
@@ -73,16 +76,16 @@
                                     <p>Year: {{_vehicle._year}}</p>
                                     <p>Price: {{_vehicle._price}}</p>
                                     {{#if _vehicle._numberOfDoors}}
-                                    <p>Number of doors: {{_vehicle._numberOfDoors}}</p>
+                                        <p>Number of doors: {{_vehicle._numberOfDoors}}</p>
                                     {{/if}} {{#if _vehicle._numberOfSeats}}
                                     <p>Number of seats: {{_vehicle._numberOfSeats}}</p>
-                                    {{/if}} {{#if _vehicle._maxLoadCapacity}}
+                                {{/if}} {{#if _vehicle._maxLoadCapacity}}
                                     <p>Max load capacity: {{_vehicle._maxLoadCapacity}}</p>
-                                    {{/if}} {{#if _vehicle._numberOfWheels}}
+                                {{/if}} {{#if _vehicle._numberOfWheels}}
                                     <p>Number of wheels: {{_vehicle._numberOfWheels}}</p>
-                                    {{/if}} {{#if _vehicle._numberOfSleepingPlaces}}
+                                {{/if}} {{#if _vehicle._numberOfSleepingPlaces}}
                                     <p>Number of sleeping places: {{_vehicle._numberOfSleepingPlaces}}</p>
-                                    {{/if}}
+                                {{/if}}
                                 </div>
 
                                 <div class="col-sm-6">
@@ -128,9 +131,421 @@
 
                 </div>
             </div>
-            {{/each}}
+        {{/each}}
 
-        </div>
+    </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        </br>
+        {{#each motorcycles}}
+            {{#if motorcycles}}
+                <h1>My motorcycles!</h1>
+            {{/if}}
+        <div class="col-sm-4">
+            <div class="panel panel-primary hvr-grow">
+                <div class="panel-heading text-center"><strong>{{_title}}</strong></div>
+                <div class="panel-body">
+                    <div id="myCarousel{{@index}}" class="carousel slide" data-ride="carousel">
+
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            {{#each _images}} {{#if @first}}
+                                <li data-target="#myCarousel{{@index}}" data-slide-to="0" class="active"></li>
+                            {{else}}
+                                <li data-target="#myCarousel{{@index}}" data-slide-to="{{@index}}"></li>
+                            {{/if}} {{/each}}
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            {{#each _images}} {{#if @first}}
+                            <div class="item active">
+                            {{else}}
+                            <div class="item">
+                            {{/if}}
+                                <img src="{{this}}" class="img-responsive" style="width:100%" alt="Image">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                            {{else}}
+                                <img src="./../images/no-image.png" class="img-responsive" style="width:100%" alt="Image">                                {{/each}}
+                        </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel{{@index}}" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span></a>
+                            <a class="right carousel-control" href="#myCarousel{{@index}}" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span></a>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <p>Manufacturer: <strong>{{_vehicle._manufacturer}}</strong></p>
+                        <p>Year: <strong>{{_vehicle._year}}</strong></p>
+                        <p>Price: <span><strong style="font-size:200%"> &euro;{{_vehicle._price}}</strong></span></p>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#{{_id}}">More info</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="{{_id}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title text-center">Ad information</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <p>Мanufacturer: {{_vehicle._manufacturer}}</p>
+                                    <p>Model: {{_vehicle._model}}</p>
+                                    <p>Type: {{_vehicle._type}}</p>
+                                    <p>Horsepower: {{_vehicle._horsepower}}</p>
+                                    <p>Fuel: {{_vehicle._fuel}}</p>
+                                    <p>Kilometers travelled: {{_vehicle._kilometers}}</p>
+                                    <p>Transmision: {{_vehicle._transmision}}</p>
+                                    <p>Year: {{_vehicle._year}}</p>
+                                    <p>Price: {{_vehicle._price}}</p>
+                                    {{#if _vehicle._numberOfDoors}}
+                                        <p>Number of doors: {{_vehicle._numberOfDoors}}</p>
+                                    {{/if}} {{#if _vehicle._numberOfSeats}}
+                                    <p>Number of seats: {{_vehicle._numberOfSeats}}</p>
+                                {{/if}} {{#if _vehicle._maxLoadCapacity}}
+                                    <p>Max load capacity: {{_vehicle._maxLoadCapacity}}</p>
+                                {{/if}} {{#if _vehicle._numberOfWheels}}
+                                    <p>Number of wheels: {{_vehicle._numberOfWheels}}</p>
+                                {{/if}} {{#if _vehicle._numberOfSleepingPlaces}}
+                                    <p>Number of sleeping places: {{_vehicle._numberOfSleepingPlaces}}</p>
+                                {{/if}}
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="pull-right">
+                                        <p>Person for contact: {{_nameForContacts}}</p>
+                                        <p>GSM: {{_gsm}}</p>
+                                        <p>eMail: {{_eMail}}</p>
+                                        <p><a  class="redirect-user-profile" href="#/user/profile/?id={{_acl.creator}}">View owner profile</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comments">
+
+                            </div>
+
+                            <!-- Ad new comment form -->
+                            <div class="hidden div-comment-form panel panel-default">
+                                <div class="panel-body">
+                                    <form class="comment-form" role="form" method="POST">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+												</span>
+                                                <textarea class="form-control comment-content" placeholder="Comment" name="eventdescription" type="text"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-default" value="Add">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- end ad new commend form -->
+                            <button type="button" class="load-comments btn btn-default">Show comments</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="load-comment-form btn btn-default">Add new comment</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {{/each}}
+
+    </div>
+    </div>
+    <hr>
+
+
+    <div class="row">
+        </br>
+        {{#each trucks}}
+            {{#if trucks}}
+                <h1>My trucks!</h1>
+            {{/if}}
+        <div class="col-sm-4">
+            <div class="panel panel-primary hvr-grow">
+                <div class="panel-heading text-center"><strong>{{_title}}</strong></div>
+                <div class="panel-body">
+                    <div id="myCarousel{{@index}}" class="carousel slide" data-ride="carousel">
+
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            {{#each _images}} {{#if @first}}
+                                <li data-target="#myCarousel{{@index}}" data-slide-to="0" class="active"></li>
+                            {{else}}
+                                <li data-target="#myCarousel{{@index}}" data-slide-to="{{@index}}"></li>
+                            {{/if}} {{/each}}
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            {{#each _images}} {{#if @first}}
+                            <div class="item active">
+                            {{else}}
+                            <div class="item">
+                            {{/if}}
+                                <img src="{{this}}" class="img-responsive" style="width:100%" alt="Image">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                            {{else}}
+                                <img src="./../images/no-image.png" class="img-responsive" style="width:100%" alt="Image">                                {{/each}}
+                        </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel{{@index}}" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span></a>
+                            <a class="right carousel-control" href="#myCarousel{{@index}}" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span></a>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <p>Manufacturer: <strong>{{_vehicle._manufacturer}}</strong></p>
+                        <p>Year: <strong>{{_vehicle._year}}</strong></p>
+                        <p>Price: <span><strong style="font-size:200%"> &euro;{{_vehicle._price}}</strong></span></p>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#{{_id}}">More info</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="{{_id}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title text-center">Ad information</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <p>Мanufacturer: {{_vehicle._manufacturer}}</p>
+                                    <p>Model: {{_vehicle._model}}</p>
+                                    <p>Type: {{_vehicle._type}}</p>
+                                    <p>Horsepower: {{_vehicle._horsepower}}</p>
+                                    <p>Fuel: {{_vehicle._fuel}}</p>
+                                    <p>Kilometers travelled: {{_vehicle._kilometers}}</p>
+                                    <p>Transmision: {{_vehicle._transmision}}</p>
+                                    <p>Year: {{_vehicle._year}}</p>
+                                    <p>Price: {{_vehicle._price}}</p>
+                                    {{#if _vehicle._numberOfDoors}}
+                                        <p>Number of doors: {{_vehicle._numberOfDoors}}</p>
+                                    {{/if}} {{#if _vehicle._numberOfSeats}}
+                                    <p>Number of seats: {{_vehicle._numberOfSeats}}</p>
+                                {{/if}} {{#if _vehicle._maxLoadCapacity}}
+                                    <p>Max load capacity: {{_vehicle._maxLoadCapacity}}</p>
+                                {{/if}} {{#if _vehicle._numberOfWheels}}
+                                    <p>Number of wheels: {{_vehicle._numberOfWheels}}</p>
+                                {{/if}} {{#if _vehicle._numberOfSleepingPlaces}}
+                                    <p>Number of sleeping places: {{_vehicle._numberOfSleepingPlaces}}</p>
+                                {{/if}}
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="pull-right">
+                                        <p>Person for contact: {{_nameForContacts}}</p>
+                                        <p>GSM: {{_gsm}}</p>
+                                        <p>eMail: {{_eMail}}</p>
+                                        <p><a class="redirect-user-profile" href="#/user/profile/?id={{_acl.creator}}">View owner profile</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comments">
+
+                            </div>
+
+                            <!-- Ad new comment form -->
+                            <div class="hidden div-comment-form panel panel-default">
+                                <div class="panel-body">
+                                    <form class="comment-form" role="form" method="POST">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+												</span>
+                                                <textarea class="form-control comment-content" placeholder="Comment" name="eventdescription" type="text"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-default" value="Add">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- end ad new commend form -->
+                            <button type="button" class="load-comments btn btn-default">Show comments</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="load-comment-form btn btn-default">Add new comment</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {{/each}}
+
+    </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        </br>
+        {{#each campers}}
+            {{#if campers}}
+                <h1>My campers!</h1>
+            {{/if}}
+        <div class="col-sm-4">
+            <div class="panel panel-primary hvr-grow">
+                <div class="panel-heading text-center"><strong>{{_title}}</strong></div>
+                <div class="panel-body">
+                    <div id="myCarousel{{@index}}" class="carousel slide" data-ride="carousel">
+
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            {{#each _images}} {{#if @first}}
+                                <li data-target="#myCarousel{{@index}}" data-slide-to="0" class="active"></li>
+                            {{else}}
+                                <li data-target="#myCarousel{{@index}}" data-slide-to="{{@index}}"></li>
+                            {{/if}} {{/each}}
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            {{#each _images}} {{#if @first}}
+                            <div class="item active">
+                            {{else}}
+                            <div class="item">
+                            {{/if}}
+                                <img src="{{this}}" class="img-responsive" style="width:100%" alt="Image">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                            {{else}}
+                                <img src="./../images/no-image.png" class="img-responsive" style="width:100%" alt="Image">                                {{/each}}
+                        </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel{{@index}}" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span></a>
+                            <a class="right carousel-control" href="#myCarousel{{@index}}" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span></a>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <p>Manufacturer: <strong>{{_vehicle._manufacturer}}</strong></p>
+                        <p>Year: <strong>{{_vehicle._year}}</strong></p>
+                        <p>Price: <span><strong style="font-size:200%"> &euro;{{_vehicle._price}}</strong></span></p>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#{{_id}}">More info</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="{{_id}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title text-center">Ad information</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <p>Мanufacturer: {{_vehicle._manufacturer}}</p>
+                                    <p>Model: {{_vehicle._model}}</p>
+                                    <p>Type: {{_vehicle._type}}</p>
+                                    <p>Horsepower: {{_vehicle._horsepower}}</p>
+                                    <p>Fuel: {{_vehicle._fuel}}</p>
+                                    <p>Kilometers travelled: {{_vehicle._kilometers}}</p>
+                                    <p>Transmision: {{_vehicle._transmision}}</p>
+                                    <p>Year: {{_vehicle._year}}</p>
+                                    <p>Price: {{_vehicle._price}}</p>
+                                    {{#if _vehicle._numberOfDoors}}
+                                        <p>Number of doors: {{_vehicle._numberOfDoors}}</p>
+                                    {{/if}} {{#if _vehicle._numberOfSeats}}
+                                    <p>Number of seats: {{_vehicle._numberOfSeats}}</p>
+                                {{/if}} {{#if _vehicle._maxLoadCapacity}}
+                                    <p>Max load capacity: {{_vehicle._maxLoadCapacity}}</p>
+                                {{/if}} {{#if _vehicle._numberOfWheels}}
+                                    <p>Number of wheels: {{_vehicle._numberOfWheels}}</p>
+                                {{/if}} {{#if _vehicle._numberOfSleepingPlaces}}
+                                    <p>Number of sleeping places: {{_vehicle._numberOfSleepingPlaces}}</p>
+                                {{/if}}
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="pull-right">
+                                        <p>Person for contact: {{_nameForContacts}}</p>
+                                        <p>GSM: {{_gsm}}</p>
+                                        <p>eMail: {{_eMail}}</p>
+                                        <p><a class="redirect-user-profile" href="#/user/profile/?id={{_acl.creator}}">View owner profile</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comments">
+
+                            </div>
+
+                            <!-- Ad new comment form -->
+                            <div class="hidden div-comment-form panel panel-default">
+                                <div class="panel-body">
+                                    <form class="comment-form" role="form" method="POST">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+												</span>
+                                                <textarea class="form-control comment-content" placeholder="Comment" name="eventdescription" type="text"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-default" value="Add">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- end ad new commend form -->
+                            <button type="button" class="load-comments btn btn-default">Show comments</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="load-comment-form btn btn-default">Add new comment</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {{/each}}
+
+    </div>
     </div>
 </section>
 <br>
