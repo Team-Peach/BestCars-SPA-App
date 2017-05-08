@@ -39,7 +39,9 @@ import * as profileController from 'profileController';
 
 		this.get('#/profile', profileController.loadUserProfileForm);
 		
-		this.get('#/user/profile/', profileController.loadUserProfile);	
+		this.get('#/user/profile/', profileController.loadUserProfile);
+			
+		this.get('#/user/profile/ads/', profileController.loadUserAds);
 
 		this.get('#/myAds', myAdsController);
 

@@ -25,7 +25,7 @@ body {
 
 /* Add a gray background color and some padding to the footer */
 footer {
-    background-color: #f2f2f2;
+    background-color: #222222;
     padding: 25px;
 }
 
@@ -36,7 +36,6 @@ footer {
 }
 
 img.logoto {
-
     width: 170px;
     height: 90px;
 }
@@ -125,7 +124,7 @@ h2 {
 }
 
 footer {
-    background-color: #f2f2f2;
+    background-color: #101010;
     padding: 25px;
 }
 /*user registration form and login form css*/
@@ -214,7 +213,6 @@ input::-webkit-input-placeholder {
     display: none;
 }
 
-
 /* loader */
 .loader {
     margin: auto;
@@ -239,4 +237,13 @@ input::-webkit-input-placeholder {
 
 #search-form{
     display: none;
+}
+
+.copyright-footer {
+    color: #ffe984;
+    margin-top: 65px; 
+}
+
+#fb-page {
+    border: 2px solid #ffe984;
 }
