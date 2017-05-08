@@ -13,6 +13,7 @@ import * as comments from 'comments';
 
 export function homeController(context) {
 	$('#viewSearch').hide();
+	$('#search-form').hide();
 
 	let vehicleType = ['cars', 'motorcycles', 'trucks', 'campers'];
 	Promise.all([adForHome(vehicleType[0]), adForHome(vehicleType[1]), adForHome(vehicleType[2]), adForHome(vehicleType[3]),loadTemplate('home'), loadTemplate('comment')])

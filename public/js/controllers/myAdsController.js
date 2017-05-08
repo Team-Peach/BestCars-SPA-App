@@ -9,7 +9,7 @@ import * as adsSearch from 'adsSearch';
 
 export function myAdsController(context) {
 	var userId = sessionStorage.id;
-
+	$('#search-form').hide();
 	Promise.all([getMyCars(userId), loadTemplate('myAds'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
 			let allCars = {

@@ -7,6 +7,7 @@ import * as factory from 'factory';
 
 export function createAdController(context) {
 	$('#viewSearch').hide();
+	$('#search-form').hide();
 	loadTemplate('createAd')
 		.then(template => {
 			context.$element().html(template());

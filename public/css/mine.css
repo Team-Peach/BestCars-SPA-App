@@ -236,3 +236,7 @@ input::-webkit-input-placeholder {
     /*min-height: 220px;*/
     /*max-height: 220px;*/
 /*}*/
+
+#search-form{
+    display: none;
+}

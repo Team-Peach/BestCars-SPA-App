@@ -10,6 +10,7 @@ import * as comments from 'comments';
 export function vehiclesController(context) {
 	let vehicleType = window.location.hash.split('#/')[1];
 	console.log(window.location.hash);
+	$('#search-form').show();
 	Promise.all([getCars(vehicleType), loadTemplate('ads'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
 			$('#viewSearch').show();
