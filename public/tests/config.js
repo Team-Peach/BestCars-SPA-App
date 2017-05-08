@@ -29,7 +29,6 @@ System.config({
 		'dismissModal': 'js/utils/dismissModal.js',
         'data' : '../js/data.js',
 		'requester' : '../js/requester.js',
-		'data' : '../js/data.js',
 		'templates': '../js/templates.js',
 		'constants': '../js/utils/constants.js',
 		'homeController': '../js/controllers/homeController.js',
@@ -42,9 +41,7 @@ System.config({
 		'myAdsController': '../js/controllers/myAdsController.js',
 
         //tests
-		'dataTests': 'data-tests.js',
-        'userControllerTests': 'userController-tests.js'
+		'tests': 'tests.js',
 	}
 });
-System.import('userControllerTests');
-System.import('dataTests');
+System.import('tests');
