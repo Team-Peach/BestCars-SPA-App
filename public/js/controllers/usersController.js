@@ -6,6 +6,7 @@ import { createUser } from 'factory';
 
 export function loadRegistrationForm(context) {
     $('#viewSearch').hide();
+    $('#search-form').hide();
     loadTemplate('register')
         .then(template => {
             context.$element().html(template());
@@ -29,6 +30,7 @@ export function loadRegistrationForm(context) {
 
 export function loadLoginForm(context) {
     $('#viewSearch').hide();
+    $('#search-form').hide();
     loadTemplate('login')
         .then(template => {
             context.$element().html(template());

@@ -18,7 +18,6 @@ export function myAdsController(context) {
 
 			context.$element().html(template(allCars));
 
-
 			// take all comments by ad id 
 			let isLoadCommentsBtnClicked = false;
 			let loadCommentsButtons = $(".load-comments");
@@ -50,22 +49,6 @@ export function myAdsController(context) {
 				let adId = $(this).parent().parent().parent().parent().parent().parent().attr("id");
 				comments.addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv);
 			});
-
-			let allTags = [];
-
-			adsSearch.getAllTags(allTags, carsDatabaseAJAXResponse);
-
-			adsSearch.autocomplete(allTags);
-
-			let searchForm = $('#search-form');
-			let input = $('#search');
-			searchForm.on('submit', function (e) {
-				e.preventDefault();
-				adsSearch.searchInAds(input, carsDatabaseAJAXResponse, context, template);
-			});
-
-			// filter events
-			attachFilterAds(carsDatabaseAJAXResponse, context, template);
 
 			$('.deleteButton').click(function () {
 				console.log($(this).parent().parent().parent());

@@ -56,7 +56,7 @@ export function loadUserProfileForm(context) {
 }
 
 export function loadUserProfile(context) {
-
+    $('#search-form').hide();
     let userId = context.params['id'];  //take from url
     let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken
 

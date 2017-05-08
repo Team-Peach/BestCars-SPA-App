@@ -8,9 +8,6 @@ import * as adsSearch from 'adsSearch';
 import { attachFilterAds } from 'adsFilter';
 import * as comments from 'comments';
 
-
-
-
 export function homeController(context) {
 	$('#viewSearch').hide();
 	$('#search-form').hide();
@@ -58,21 +55,5 @@ export function homeController(context) {
 				let adId = $(this).parent().parent().parent().parent().parent().parent().attr("id");
 				comments.addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv);
 			});
-
-			let allTags = [];
-			let vehicles = [].concat(cars, motorcycles, trucks, campers);
-			console.log("vehciles",vehicles);
-			adsSearch.getAllTags(allTags, vehicles);
-			adsSearch.autocomplete(allTags);
-
-			let searchForm = $('#search-form');
-			let input = $('#search');
-			searchForm.on('submit', function (e) {
-				e.preventDefault();
-				adsSearch.searchInAds(input, vehicles, context, template);
-			});
-
-			// filter events
-			attachFilterAds(vehicles, context, template);
 		});
 }
