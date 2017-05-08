@@ -6,8 +6,8 @@ System.config({
 		'plugin-babel': '../libs/systemjs-plugin-babel/plugin-babel.js',
 		'systemjs-babel-build': '../libs/systemjs-plugin-babel/systemjs-babel-browser.js',
 		'text': '../libs/systemjs-plugin-text/text.js',
+		
 		// app scripts
-
 		'vehicle': '../js/oop/vehicles/vehicle.js',
 		'car': '../js/oop/vehicles/car.js',
 		'motorcycle': '../js/oop/vehicles/motorcycle.js',
@@ -44,7 +44,6 @@ System.config({
         //tests
 		'dataTests': 'data-tests.js',
         'userControllerTests': 'userController-tests.js'
-		
 	}
 });
 System.import('userControllerTests');
