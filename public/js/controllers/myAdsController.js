@@ -4,6 +4,7 @@ import { deleteVehicle as deleteVehicle } from 'data';
 import { getMyCars as getMyCars } from 'data';
 import { load as loadTemplate } from 'templates';
 import * as comments from 'comments';
+import { dismissModal } from 'dismissModal';
 
 export function myAdsController(context) {
 	var userId = sessionStorage.getItem('id');    //sessionStorage.id;
@@ -25,7 +26,7 @@ export function myAdsController(context) {
 				let loadCommentBtn = $(this);
 				let commentDiv = $(this).parent().children('.comments');
 				let adId = $(this).parent().parent().parent().parent().attr("id");
-				comments.loadCommentsBtnIsChecked(adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv);
+				comments.loadCommentsBtnIsChecked(context, adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv);
 			});
 
 			// show/hide add new comment form
@@ -61,5 +62,8 @@ export function myAdsController(context) {
 						toastr.error("Cannot delete");
 					});
 			});
+
+			// dismiss modal
+			dismissModal(context);
 		});
 }

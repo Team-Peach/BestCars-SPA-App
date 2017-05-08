@@ -5,6 +5,7 @@ import { postCar as postCar } from 'data';
 import { guestUserAuthToken } from 'constants';
 import { load as loadTemplate } from 'templates';
 import * as comments from 'comments';
+import { dismissModal } from 'dismissModal';
 
 export function homeController(context) {
 	$('#viewSearch').hide();
@@ -30,7 +31,7 @@ export function homeController(context) {
 				let loadCommentBtn = $(this);
 				let commentDiv = $(this).parent().children('.comments');
 				let adId = $(this).parent().parent().parent().parent().attr("id");
-				comments.loadCommentsBtnIsChecked(adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv);
+				comments.loadCommentsBtnIsChecked(context, adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv)
 			});
 
 			// show/hide add new comment form
@@ -53,5 +54,8 @@ export function homeController(context) {
 				let adId = $(this).parent().parent().parent().parent().parent().parent().attr("id");
 				comments.addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv);
 			});
+
+			// dismiss modal
+			dismissModal(context);
 		});
 }

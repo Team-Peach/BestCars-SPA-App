@@ -33,6 +33,7 @@ System.config({
 		'adsSearch': 'js/utils/adsSearch.js',
 		'adsFilter': 'js/utils/adsFilter.js',
 		'registerValidator': 'js/utils/registerValidator.js',
+		'dismissModal': 'js/utils/dismissModal.js',
 		'requester' : 'js/requester.js',
 		'data' : 'js/data.js',
 		'templates': 'js/templates.js',

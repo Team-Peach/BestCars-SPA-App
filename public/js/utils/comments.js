@@ -4,10 +4,11 @@ import { guestUserAuthToken } from 'constants';
 import { addNewComment as addNewComment } from 'data';
 import { getAllCommentsByAdId as getAllCommentsByAdId } from 'data';
 import { createComment } from 'factory';
+import { dismissModal } from 'dismissModal';
 
-export function loadCommentsBtnIsChecked(adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentsBtn, commentsDiv) {
+export function loadCommentsBtnIsChecked(context, adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentsBtn, commentsDiv) {
 	if (isLoadCommentsBtnClicked) {
-		loadAllComments(adId, commentTemplate, commentsDiv);
+		loadAllComments(context, adId, commentTemplate, commentsDiv);
 		loadCommentsBtn.text('Hide Comments');
 	} else {
 		commentsDiv.html('');
@@ -47,7 +48,7 @@ export function addComment(adId, contentInput, addCommentFormDiv, loadCommentFor
 }
 
 
-function loadAllComments(adId, commentTemplate, commentsDiv) {
+function loadAllComments(context, adId, commentTemplate, commentsDiv) {
 	let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
 	getAllCommentsByAdId(adId, authtoken, 'comments')
 		.then(response => {			
@@ -56,6 +57,7 @@ function loadAllComments(adId, commentTemplate, commentsDiv) {
                 comments[i] = fixDate(comments[i]);
             }			
 			commentsDiv.html(commentTemplate({ comments }));
+			dismissModal(context);
 		}, error => {
 			toastr.error("Cannot load comments");
 		});

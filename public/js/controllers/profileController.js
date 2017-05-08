@@ -5,6 +5,7 @@ import { load as loadTemplate } from 'templates';
 import { createUser } from 'factory';
 import { guestUserAuthToken, guestUserId } from 'constants'; 
 import * as comments from 'comments';
+import { dismissModal } from 'dismissModal';
 
 export function loadUserProfileForm(context) {
     $('#viewSearch').hide();
@@ -64,10 +65,8 @@ export function loadUserProfile(context) {
     if (userId === guestUserId) {
         toastr.info("The account you are trying to view does not exist");
         context.redirect("#/home");
-        //todo return to latest path
     }
     else {
-        //todo hide modal
         Promise.all([getUserProfileById(userId, authtoken), loadTemplate('userProfile')])
             .then(([response, template]) => {
                 let userData = response[0];
@@ -83,13 +82,11 @@ export function loadUserProfile(context) {
                 user.image = userData._image;
 
                 context.$element().html(template({ user }));
-
+                $('#upload-image-form').remove();
                 let myAdsBtn = $('#my-ads');
 
                 myAdsBtn.on('click', function(ev) {
                     ev.preventDefault();
-                    console.log(userId);
-                    console.log("#/user/profile/ads/?id=" + userId);
                     context.redirect("#/user/profile/ads/?id=" + userId);
                 })
             });
@@ -109,9 +106,10 @@ export function loadUserAds(context) {
 			};
 
 			context.$element().html(template(allCars));
+            
             //remove delete buttons 
-
             let deleteButtons = $('.deleteButton');
+            deleteButtons.remove();
 
 			// take all comments by ad id 
 			let isLoadCommentsBtnClicked = false;
@@ -121,7 +119,7 @@ export function loadUserAds(context) {
 				let loadCommentBtn = $(this);
 				let commentDiv = $(this).parent().children('.comments');
 				let adId = $(this).parent().parent().parent().parent().attr("id");
-				comments.loadCommentsBtnIsChecked(adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv);
+				comments.loadCommentsBtnIsChecked(context, adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv);
 			});
 
 			// show/hide add new comment form
@@ -144,6 +142,9 @@ export function loadUserAds(context) {
 				let adId = $(this).parent().parent().parent().parent().parent().parent().attr("id");
 				comments.addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv);
 			});
+
+            //dismiss modal
+            dismissModal(context);            
 		});    
 }
 
