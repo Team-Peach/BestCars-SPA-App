@@ -30,7 +30,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    <input id="create-ad-title" name="title" class="form-control" type="text">
+                    <input id="create-ad-title" required placeholder="Enter ad title" name="title" class="form-control" type="text">
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input id="create-ad-town" name="town" class="form-control" type="text">
+                    <input id="create-ad-town" name="town" placeholder="Enter your town" class="form-control" type="text">
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    <input id="create-ad-nameForContacts" name="nameForContacts" class="form-control" type="text">
+                    <input id="create-ad-nameForContacts" placeholder="Enter your name" name="nameForContacts" class="form-control" type="text">
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input id="create-ad-eMail" name="eMail" class="form-control" type="text">
+                    <input id="create-ad-eMail" placeholder="Enter your eMail" name="eMail" class="form-control" type="text">
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input id="create-ad-gsm" name="gsm" placeholder="+359 " class="form-control" type="text">
+                    <input id="create-ad-gsm" required name="gsm" placeholder="Enter your GSM" class="form-control" type="text">
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label">Manufacturer</label>
             <div class="col-md-4 inputGroupContainer">
-                <select id="create-ad-manufacturer" name="manufacturer" class="form-control">
+                <select id="create-ad-manufacturer" required name="manufacturer" class="form-control">
                     <option value="" ></option>
                     <optgroup label="A">
                         <option value="Acura" >Acura</option>
@@ -221,7 +221,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    <input id="create-ad-model" name="model" class="form-control" type="text">
+                    <input id="create-ad-model" placeholder="Enter vehicle model" name="model" class="form-control" type="text">
                 </div>
             </div>
         </div>
@@ -237,7 +237,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    <input id="create-ad-year" name="year" class="form-control" type="text">
+                    <input id="create-ad-year" placeholder="Enter vehicle year"  name="year" class="form-control" type="text">
                 </div>
             </div>
         </div>
@@ -248,7 +248,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    <input id="create-ad-kilometers" name="kilometers" class="form-control" type="text">
+                    <input id="create-ad-kilometers" placeholder="Enter vehicle traveled kilometers"  name="kilometers" class="form-control" type="text">
                 </div>
             </div>
         </div>
@@ -272,6 +272,7 @@
             <label class="col-md-4 control-label">Transmisson</label>
             <div class="col-md-4 inputGroupContainer">
                 <select name="transmission" class="form-control">
+                    <option value=""></option>
                     <option value="Manual">Manual</option>
                     <option value="Automatic">Automatic</option>
                 </select>
@@ -284,7 +285,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    <input id="create-ad-horsepower" name="horsepower" class="form-control" type="text">
+                    <input id="create-ad-horsepower" placeholder="Enter vehicle horsepowers"  name="horsepower" class="form-control" type="text">
                 </div>
             </div>
         </div>
@@ -295,7 +296,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
-                    <input id="create-ad-price" name="price" class="form-control" type="number" min="0" step="100" data-number-to-fixed="2">
+                    <input id="create-ad-price" placeholder="Enter vehicle price" required name="price" class="form-control" type="number" min="0" step="100" data-number-to-fixed="2">
                 </div>
             </div>
         </div>
@@ -305,7 +306,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label">Upload images</label>
             <div class="col-md-4 inputGroupContainer">
-                <input  id="file" type="file" class="form-control" name="uploadedImage" onchange="show(this)" multiple="multiple" />
+                <input id="file" type="file" class="form-control" name="uploadedImage" onchange="show(this)" multiple="multiple" />
             </div>
         </div>
         <div id="imgContainer" class="col-sm-12"></div>

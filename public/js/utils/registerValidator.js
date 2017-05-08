@@ -31,7 +31,7 @@ export function validatePassword(value) {
 export function validateEmail(value) {
     let emailFiled = $('#email');
     let emailRegex = /^\w+@[a-zA-Z.]+$/;
-    validateWithRegex(value, emailRegex, '"Invalid e-mail"', emailFiled);
+    validateWithRegex(value, emailRegex, 'Invalid e-mail', emailFiled);
 }
 
 export function validatePhoneNumber(value) {

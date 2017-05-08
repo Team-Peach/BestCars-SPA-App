@@ -1,3 +1,5 @@
+import * as createAdValidator from 'createAdValidator';
+
 class Vehicle {
     constructor(manufacturer, model, year, kilometers, price, fuel, transmission, horsepower) {
         this.manufacturer = manufacturer;
@@ -21,6 +23,7 @@ class Vehicle {
         return this._model;
     }
     set model(value) {
+        createAdValidator.validateModel(value);
         this._model = value;
     }
 
@@ -28,6 +31,7 @@ class Vehicle {
         return this._year;
     }
     set year(value) {
+        createAdValidator.validateYear(value);
         this._year = value;
     }
 
@@ -35,6 +39,7 @@ class Vehicle {
         return this._kilometers;
     }
     set kilometers(value) {
+        createAdValidator.validateKilometers(value);
         this._kilometers = value;
     }
 
@@ -42,6 +47,7 @@ class Vehicle {
         return this._price;
     }
     set price(value) {
+        createAdValidator.validatePrice(value);
         this._price = value;
     }
 
@@ -63,6 +69,7 @@ class Vehicle {
         return this._horsepower;
     }
     set horsepower(value) {
+        createAdValidator.validateHorsepower(value);
         this._horsepower = value;
     }
 }

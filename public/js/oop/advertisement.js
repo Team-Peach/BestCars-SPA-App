@@ -1,4 +1,4 @@
-import * as createAdValidator from 'registerValidator';
+import * as createAdValidator from 'createAdValidator';
 
 class Advertisement {
     constructor(typeOfVehicle, title, vehicle, date, images, description, town, nameForContacts, eMail, gsm) {
@@ -25,6 +25,7 @@ class Advertisement {
         return this._title;
     }
     set title(value) {
+        createAdValidator.validateTitle(value);
         this._title = value;
     }
 
@@ -53,6 +54,7 @@ class Advertisement {
         return this._description;
     }
     set description(value) {
+        createAdValidator.validateDescription(value);
         this._description = value;
     }
 
@@ -60,6 +62,7 @@ class Advertisement {
         return this._town;
     }
     set town(value) {
+        createAdValidator.validateTown(value);
         this._town = value;
     }
 
@@ -67,6 +70,7 @@ class Advertisement {
         return this._nameForContacts;
     }
     set nameForContacts(value) {
+        createAdValidator.validateNameForContacts(value);
         this._nameForContacts = value;
     }
 
@@ -74,6 +78,7 @@ class Advertisement {
         return this._eMail;
     }
     set eMail(value) {
+        createAdValidator.validateEmail(value);
         this._eMail = value;
     }
 
@@ -81,6 +86,7 @@ class Advertisement {
         return this._gsm;
     }
     set gsm(value) {
+        createAdValidator.validateGSM(value);
         this._gsm = value;
     }
 }
