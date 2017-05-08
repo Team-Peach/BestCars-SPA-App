@@ -1,10 +1,10 @@
 /* globals $ */
 
 export function validateTitle(value) {
-    let titleField = $('#title');
-    var titleRegex = /^[a-zA-Z0-9\-]+$/;
+    let titleField = $('#create-ad-title');
+    var titleRegex = /^[a-zA-Z0-9\-. ]+$/;
     validateString(value, 3, 15, titleField);
-    validateWithRegex(value, titleRegex, 'Only A-Z, a-z, 0-9 and -', titleField);
+    validateWithRegex(value, titleRegex, 'Only A-Z, a-z, 0-9 . and -', titleField);
 }
 
 export function validateDescription(value) {
@@ -14,14 +14,14 @@ export function validateDescription(value) {
 
 export function validateTown(value) {
     let townField = $('#create-ad-town');
-    let townRegex = /^[A-Za-z0-9]+$/;
+    let townRegex = /^[A-Za-z0-9. ]+$/;
     validateString(value, 3, 15, townField);
     validateWithRegex(value, townRegex, 'Only latin characters and digits!', townField);
 }
 
 export function validateNameForContacts(value) {
     let nameForContactsField = $('#create-ad-nameForContacts');
-    let stringRegex = /^[A-Za-z]+$/;
+    let stringRegex = /^[A-Za-z ]+$/;
     validateString(value, 3, 15, nameForContactsField);
     validateWithRegex(value, stringRegex, 'Only latin characters!', nameForContactsField);
 }
@@ -34,7 +34,7 @@ export function validateEmail(value) {
 
 export function validateGSM(value) {
     let gsmField = $('#create-ad-gsm');
-    let gsmRegex = /^[0-9\+]+$/;
+    let gsmRegex = /^[0-9\+ ]+$/;
     validateString(value, 3, 15, gsmField);
     validateWithRegex(value, gsmRegex, 'Only latin characters!', gsmField);
 }
@@ -42,7 +42,7 @@ export function validateGSM(value) {
 // vehicle validations
 export function validateModel(value) {
     let modelField = $('#create-ad-model');
-    let stringRegex = /^[A-Za-z0-9]+$/;
+    let stringRegex = /^[A-Za-z0-9. ]+$/;
     validateString(value, 1, 15, modelField);
     validateWithRegex(value, stringRegex, 'Only latin characters and digits!', modelField);
 }
