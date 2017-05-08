@@ -18,23 +18,23 @@ export function loadRegistrationForm(context) {
                 $.each(arrayOfFormObjValues, function (i, field) {
                     valuesFromForm[field.name] = field.value;
                 });
-
+                let password = $('#password').val();
                 let user;
                 try {
                     user = createUser(valuesFromForm.firstName, valuesFromForm.lastName, valuesFromForm.username, valuesFromForm.email, valuesFromForm.phoneNumber, valuesFromForm.country, valuesFromForm.town);
-                }
+            }
                 catch (e) {
                     toastr.warning('Please fill all fields correct!');
                     return;
                 }
 
-                register(context, user);
+                register(context, user, password);
             });
         });
 }
 
-function register(context, user) {
-    registerUser(user)
+function register(context, user, password) {
+    registerUser(user, password)
         .then(response => {
             let username = response.username;
             let authtoken = response._kmd.authtoken;
@@ -92,6 +92,7 @@ function login(context, user) {
 
         }, error => {
             toastr.error("Unsuccessful login");
+            console.log(error);
             context.redirect('#/register');
         });
 }
