@@ -1,6 +1,6 @@
 /* globals $, toastr */
 
-import { getUserProfileById, addUserProfileImage, getMyCars } from 'data';
+import { getUserProfileById, addUserProfileImage, getMyAds } from 'data';
 import { load as loadTemplate } from 'templates';
 import { createUser } from 'factory';
 import { guestUserAuthToken, guestUserId } from 'constants'; 
@@ -82,9 +82,10 @@ export function loadUserProfile(context) {
                 user.image = userData._image;
 
                 context.$element().html(template({ user }));
+
                 $('#upload-image-form').remove();
                 let myAdsBtn = $('#my-ads');
-
+                myAdsBtn.text('User ads');
                 myAdsBtn.on('click', function(ev) {
                     ev.preventDefault();
                     context.redirect("#/user/profile/ads/?id=" + userId);
@@ -99,10 +100,14 @@ export function loadUserAds(context) {
     let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken
     
    	$('#search-form').hide();
-	Promise.all([getMyCars(userId, authtoken), loadTemplate('myAds'), loadTemplate('comment')])
-		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
+	let vehicleType = ['cars', 'motorcycles', 'trucks', 'campers'];
+	Promise.all([getMyAds(userId, vehicleType[0], authtoken), getMyAds(userId, vehicleType[1], authtoken), getMyAds(userId, vehicleType[2], authtoken), getMyAds(userId, vehicleType[3], authtoken),loadTemplate('myAds'), loadTemplate('comment')])
+		.then(([cars, motorcycles, trucks, campers, template, commentTemplate]) => {
 			let allCars = {
-				cars: carsDatabaseAJAXResponse
+				cars: cars,
+				motorcycles: motorcycles,
+				trucks: trucks,
+				campers: campers
 			};
 
 			context.$element().html(template(allCars));
