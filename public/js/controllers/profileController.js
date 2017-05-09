@@ -25,8 +25,6 @@ export function loadUserProfileForm(context) {
             let town = userData._town;
             let profileId = userData._id;
             sessionStorage.setItem('profileId', profileId);  
-            console.log(profileId)     
-            console.log(userData)
             let user = createUser(firstName, lastName, username, email, phoneNumber, country, town);
             user.image = userData._image;  
             context.$element().html(template({ user }));
@@ -92,7 +90,7 @@ export function loadUserProfile(context) {
                 myAdsBtn.on('click', function(ev) {
                     ev.preventDefault();
                     context.redirect("#/user/profile/ads/?id=" + userId);
-                })
+                });
             });
     }
 }
