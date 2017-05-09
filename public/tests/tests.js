@@ -46,7 +46,7 @@ describe('Data Tests', () => {
                 .then(done, done);
         })
 
-        it('(.....) expect register User to call post function from requester once', (done) => {
+        it('(2) expect register User to call post function with correct url', (done) => {
 
             requesterPostStub.returns(Promise.resolve());
             let url = CONSTANTS.kinveyRegisterUserUrl;
@@ -59,22 +59,9 @@ describe('Data Tests', () => {
                 .then(done, done);
         })
 
-
-
-
-
-
-
-
-
-
-
         // with  object user with property username
         it('(3) expect register User to make a POST request to kinvey url', (done) => {
-
-
             requesterPostStub.returns(Promise.resolve());
-
 
             let user = {
                 "username": "user"
@@ -87,7 +74,70 @@ describe('Data Tests', () => {
                 })
                 .then(done, done);
         })
-    })  
+
+        it('(4) expect register User to call post function from requester once', (done) => {
+
+            requesterPostStub.returns(Promise.resolve());
+            let url = CONSTANTS.kinveyRegisterUserUrl;
+            let user = {
+                "username": "user"
+            }
+
+            let password = '123456';
+            data.registerUser(user, password)
+                .then(() => {
+                    expect(requesterPostStub).to.have.been.calledWith(url);
+                })
+                .then(done, done);
+        })
+
+        it('(5) expect register User to call post function from requester with correct user data(username)', (done) => {
+
+            let url = CONSTANTS.kinveyRegisterUserUrl;
+            let user = {
+                "username": "user"
+            }
+            let password = '123456';
+            let response = {
+                "username": "user", 
+                "password": "123456"
+            }
+
+            requesterPostStub.returns(Promise.resolve(response));
+
+            data.registerUser(user, password)
+                .then(() => {
+                    let responseUsername = JSON.parse(requesterPostStub.args[0][1]).username;
+                    expect(responseUsername).to.equal(user.username);
+                })
+                .then(done, done);
+        })
+
+        it('(6) expect register User to call post function from requester with correct user data(password)', (done) => {
+
+            let url = CONSTANTS.kinveyRegisterUserUrl;
+            let user = {
+                "username": "user"
+            }
+            let password = '123456';
+            let response = {
+                "username": "user", 
+                "password": "123456"
+            }
+
+            requesterPostStub.returns(Promise.resolve(response));
+
+            data.registerUser(user, password)
+                .then(() => {
+                    let responseUsername = JSON.parse(requesterPostStub.args[0][1]).password;
+                    console.log(response)
+                    expect(responseUsername).to.equal(password);
+                })
+                .then(done, done);
+        })     
+    })
+
+
 
 });
 
