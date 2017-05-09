@@ -55,7 +55,7 @@ export function createAdController(context) {
 				}
 
 				if (!currentVehicleTypeSelectedString) {
-					toastr.warning("Please select vehicle type!");
+					toastr.warning('Please select vehicle type!');
 					return;
 				}
 
@@ -77,7 +77,7 @@ export function createAdController(context) {
 					},
 					error => {
 						context.redirect('#/profile');
-						toastr.error("Cannot save advertisement! Please fill the fields correctly.");
+						toastr.error('Cannot save advertisement! Please fill the fields correctly.');
 					});
 			});
 		});

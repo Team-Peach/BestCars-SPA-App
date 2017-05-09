@@ -2,10 +2,10 @@
 
 import { getUserProfileById, addUserProfileImage, getMyAds } from 'data';
 import { load as loadTemplate } from 'templates';
-import { createUser } from 'factory';
 import { guestUserAuthToken, guestUserId } from 'constants'; 
-import * as comments from 'comments';
+import { createUser } from 'factory';
 import { dismissModal } from 'dismissModal';
+import * as comments from 'comments';
 
 export function loadUserProfileForm(context) {
     $('#viewSearch').hide();
@@ -36,7 +36,7 @@ export function loadUserProfileForm(context) {
                 if ($('#imgContainer').find('img').length > 0) {
                     addProfileImage(user)
                         .then(response => {
-                            toastr.success("Successfully added new profile image");
+                            toastr.success('Successfully added new profile image');
                             getUserProfileById(userId, authtoken)
                                 .then(response => {
                                     let imgContainer = $('#imgContainer');
@@ -44,10 +44,10 @@ export function loadUserProfileForm(context) {
                                     input.val('');
                                     window.location.reload(true);
                                 }, error => {
-                                    toastr.error("Cannot save the picture");
+                                    toastr.error('Cannot save the picture');
                                 });
                         }, error => {
-                            toastr.error("Cannot save the picture");
+                            toastr.error('Cannot save the picture');
                         });
                 }
                 else {
@@ -64,8 +64,8 @@ export function loadUserProfile(context) {
     let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
 
     if (userId === guestUserId) {
-        toastr.info("The account you are trying to view does not exist");
-        context.redirect("#/home");
+        toastr.info('The account you are trying to view does not exist');
+        context.redirect('#/home');
     }
     else {
         Promise.all([getUserProfileById(userId, authtoken), loadTemplate('userProfile')])
@@ -89,7 +89,7 @@ export function loadUserProfile(context) {
                 myAdsBtn.text('User ads');
                 myAdsBtn.on('click', function(ev) {
                     ev.preventDefault();
-                    context.redirect("#/user/profile/ads/?id=" + userId);
+                    context.redirect('#/user/profile/ads/?id=' + userId);
                 });
             });
     }
@@ -117,12 +117,12 @@ export function loadUserAds(context) {
 
 			// take all comments by ad id 
 			let isLoadCommentsBtnClicked = false;
-			let loadCommentsButtons = $(".load-comments");
+			let loadCommentsButtons = $('.load-comments');
 			loadCommentsButtons.on('click', function () {
 				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
 				let loadCommentBtn = $(this);
 				let commentDiv = $(this).parent().children('.comments');
-				let adId = $(this).parent().parent().parent().parent().attr("id");
+				let adId = $(this).parent().parent().parent().parent().attr('id');
 				comments.loadCommentsBtnIsChecked(context, adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv);
 			});
 
@@ -142,7 +142,7 @@ export function loadUserAds(context) {
 				let loadCommentFormBtn = $(this).parent().parent().parent().next().children('.load-comment-form');
 				let contentInput = $(this).children().children('.input-group').children('.comment-content');
 				let commentsDiv = $(this).parent().parent().prev('.comments');
-				let adId = $(this).parent().parent().parent().parent().parent().parent().attr("id");
+				let adId = $(this).parent().parent().parent().parent().parent().parent().attr('id');
 				comments.addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv);
 			});
 

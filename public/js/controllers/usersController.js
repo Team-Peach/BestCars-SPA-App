@@ -44,17 +44,17 @@ function register(context, user, password) {
             sessionStorage.setItem('id', userId);
             createUserProfile(user, authtoken)
                 .then(response => {
-                    toastr.success("Welcome to BestCars!");
+                    toastr.success('Welcome to BestCars!');
                     setTimeout(function () {
                         window.location.href = '#/profile';
                         window.location.reload(true);
                     }, 2000);
                 }, error => {
-                    toastr.error("Unsuccessful registration");
+                    toastr.error('Unsuccessful registration');
                 });
 
         }, error => {
-            toastr.error("Unsuccessful registration");
+            toastr.error('Unsuccessful registration');
         });
 }
 
@@ -69,7 +69,7 @@ export function loadLoginForm(context) {
                 ev.preventDefault();
                 let username = $('#username').val();
                 let password = $('#password').val();
-                let user = { "username": username, "password": password };
+                let user = { 'username': username, 'password': password };
                 login(context, user);
             });
         });
@@ -78,7 +78,7 @@ export function loadLoginForm(context) {
 function login(context, user) {
     loginUser(user)
         .then(response => {
-            toastr.success("Successful login");
+            toastr.success('Successful login');
             let username = response.username;
             let authtoken = response._kmd.authtoken;
             let userId = response._id;
@@ -91,7 +91,7 @@ function login(context, user) {
             }, 1000);
 
         }, error => {
-            toastr.error("Unsuccessful login");
+            toastr.error('Unsuccessful login');
             context.redirect('#/register');
         });
 }

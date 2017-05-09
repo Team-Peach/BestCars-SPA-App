@@ -3,8 +3,8 @@
 import { deleteVehicle as deleteVehicle } from 'data';
 import { getMyAds as getMyAds } from 'data';
 import { load as loadTemplate } from 'templates';
-import * as comments from 'comments';
 import { dismissModal } from 'dismissModal';
+import * as comments from 'comments';
 
 export function myAdsController(context) {
 	var userId = sessionStorage.getItem('id'); //sessionStorage.id;
@@ -24,12 +24,12 @@ export function myAdsController(context) {
 
 			// take all comments by ad id 
 			let isLoadCommentsBtnClicked = false;
-			let loadCommentsButtons = $(".load-comments");
+			let loadCommentsButtons = $('.load-comments');
 			loadCommentsButtons.on('click', function () {
 				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
 				let loadCommentBtn = $(this);
 				let commentDiv = $(this).parent().children('.comments');
-				let adId = $(this).parent().parent().parent().parent().attr("id");
+				let adId = $(this).parent().parent().parent().parent().attr('id');
 				comments.loadCommentsBtnIsChecked(context, adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv);
 			});
 
@@ -50,7 +50,7 @@ export function myAdsController(context) {
 				let loadCommentFormBtn = $(this).parent().parent().parent().next().children('.load-comment-form');
 				let contentInput = $(this).children().children('.input-group').children('.comment-content');
 				let commentsDiv = $(this).parent().parent().prev('.comments');
-				let adId = $(this).parent().parent().parent().parent().parent().parent().attr("id");
+				let adId = $(this).parent().parent().parent().parent().parent().parent().attr('id');
 				comments.addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv);
 			});
 
@@ -59,10 +59,10 @@ export function myAdsController(context) {
 				var type = $(this).parent().parent().parent().attr('data-type');
 				deleteVehicle(type, id)
 					.then(response => {
-						toastr.success("Successfully delete");
+						toastr.success('Successfully delete');
 						window.location.reload(true);
 					}, error => {
-						toastr.error("Cannot delete");
+						toastr.error('Cannot delete');
 					});
 			});
 

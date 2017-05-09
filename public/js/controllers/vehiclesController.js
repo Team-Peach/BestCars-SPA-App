@@ -2,12 +2,12 @@
 
 import { getVehicles as getVehicles } from 'data';
 import { postCar as postCar } from 'data';
-import { guestUserAuthToken } from 'constants';
 import { load as loadTemplate } from 'templates';
-import * as adsSearch from 'adsSearch';
+import { guestUserAuthToken } from 'constants';
 import { attachFilterAds } from 'adsFilter';
-import * as comments from 'comments';
 import { dismissModal } from 'dismissModal';
+import * as comments from 'comments';
+import * as adsSearch from 'adsSearch';
 
 export function vehiclesController(context) {
 	let vehicleType = window.location.hash.split('#/')[1];
@@ -23,12 +23,12 @@ export function vehiclesController(context) {
 
 			// take all comments by ad id 
 			let isLoadCommentsBtnClicked = false;
-			let loadCommentsButtons = $(".load-comments");
+			let loadCommentsButtons = $('.load-comments');
 			loadCommentsButtons.on('click', function () {
 				isLoadCommentsBtnClicked = !isLoadCommentsBtnClicked;
 				let loadCommentBtn = $(this);
 				let commentDiv = $(this).parent().children('.comments');
-				let adId = $(this).parent().parent().parent().parent().attr("id");
+				let adId = $(this).parent().parent().parent().parent().attr('id');
 				comments.loadCommentsBtnIsChecked(context, adId, isLoadCommentsBtnClicked, commentTemplate, loadCommentBtn, commentDiv);
 			});
 
@@ -48,7 +48,7 @@ export function vehiclesController(context) {
 				let loadCommentFormBtn = $(this).parent().parent().parent().next().children('.load-comment-form');
 				let contentInput = $(this).children().children('.input-group').children('.comment-content');
 				let commentsDiv = $(this).parent().parent().prev('.comments');
-				let adId = $(this).parent().parent().parent().parent().parent().parent().attr("id");
+				let adId = $(this).parent().parent().parent().parent().parent().parent().attr('id');
 				comments.addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv);
 			});
 
