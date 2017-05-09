@@ -1,4 +1,4 @@
-import { Vehicle } from "vehicle";
+import { Vehicle } from 'vehicle';
 
 class Truck extends Vehicle {
     constructor(manufacturer, model, year, kilometers, price, fuel, transmission, horsepower, type, maxLoadCapacity, numberOfWheels) {

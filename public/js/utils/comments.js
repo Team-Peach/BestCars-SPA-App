@@ -1,8 +1,8 @@
 /* globals $, toastr, moment */
 
-import { guestUserAuthToken } from 'constants';
 import { addNewComment as addNewComment } from 'data';
 import { getAllCommentsByAdId as getAllCommentsByAdId } from 'data';
+import { guestUserAuthToken } from 'constants';
 import { createComment } from 'factory';
 import { dismissModal } from 'dismissModal';
 
@@ -26,7 +26,7 @@ export function loadAddNewCommentForm(addCommentFormDiv, loadCommentFormBtn) {
 }
 
 export function addComment(adId, contentInput, addCommentFormDiv, loadCommentFormBtn, commentsDiv) {
-	let author = sessionStorage.getItem('username') || "Anonymous";
+	let author = sessionStorage.getItem('username') || 'Anonymous';
 	let content = contentInput.val();
 	let comment = createComment(adId, content, author);
 	let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
@@ -59,7 +59,7 @@ function loadAllComments(context, adId, commentTemplate, commentsDiv) {
 			commentsDiv.html(commentTemplate({ comments }));
 			dismissModal(context);
 		}, error => {
-			toastr.error("Cannot load comments");
+			toastr.error('Cannot load comments');
 		});
 }
 

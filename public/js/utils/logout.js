@@ -16,9 +16,9 @@ import { logoutUser } from 'data';
                 $('#buttonUserProfile').addClass('hidden');
 
                 sessionStorage.clear();
-                toastr.success("Successful logout");
+                toastr.success('Successful logout');
             }, error => {
-                toastr.error("Unsuccessful logout");
+                toastr.error('Unsuccessful logout');
             });
     });
 })();

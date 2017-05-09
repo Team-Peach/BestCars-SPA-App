@@ -19,7 +19,7 @@ export function searchInAds(input, vehicles, context, template) {
 }
 
 export function autocomplete(availableTags) {
-    let searchInput = $( "#search" );
+    let searchInput = $( '#search' );
     searchInput.autocomplete({
       source: availableTags
     });
@@ -37,8 +37,8 @@ export function search(allVehicles, text) {
     maxPatternLength: 32,
     minMatchCharLength: 1,
     keys: [
-      "_vehicle._manufacturer",
-      "_vehicle._model"
+      '_vehicle._manufacturer',
+      '_vehicle._model'
     ]
   };
   let fuse = new Fuse(allVehicles, options);
