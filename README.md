@@ -1,5 +1,5 @@
 # About the Project
-This is SPA App builded for "Telerik academy" course **JavaScript Applications**. Our App named [BestCars] (http://bestcars.herokuapp.com/) is a business app for selling and buying new vehicles (cars, motorcycles, trucks, campers). For selling your vehicle you have to register first and create a new ad. For buying a new vehicle you have to just see existing ads in our app and contact whit the owner.      
+This is SPA App builded for "Telerik academy" course **JavaScript Applications**. Our App named [BestCars](http://bestcars.herokuapp.com/) is a business app for selling and buying new vehicles (cars, motorcycles, trucks, campers). For selling your vehicle you have to register first and create a new ad. For buying a new vehicle you have to just see existing ads in our app and contact whit the owner.      
 
 # JavaScript Applications: Teamwork Assignment
 
