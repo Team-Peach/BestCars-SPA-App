@@ -465,22 +465,88 @@ describe('Data Tests', () => {
                 .then(done, done);
         })
     })
-    // add UserProfileImage
+    // addUserProfileImage
 
-    //TOD0 deleteVehicle 
+    describe('Data,js - addUserProfileImage', () => {
+        let requesterPostStub;
+        beforeEach(() => {
+            requesterPostStub = sinon.stub(requester, 'put');
+        });
+        afterEach(() => {
+            requesterPostStub.restore();
+        });
+
+        // with  object user with correct property image
+        it('(22) expect addUserProfileImage to call put function from requester once', (done) => {
+
+            requesterPostStub.returns(Promise.resolve());
+            let user = {
+                'username': 'user',
+                'image': 'image'
+            };
+
+            let profileId = "profileId123"
+            let authtoken = 'authtoken123';
+
+            data.addUserProfileImage(user, profileId, authtoken)
+                .then(() => {
+                    expect(requesterPostStub).to.have.been.called.once;
+                })
+                .then(done, done);
+        })
+
+        it('(23) expect addUserProfileImage to make a put request with correct url', (done) => {
+
+            requesterPostStub.returns(Promise.resolve());
+            let user = {
+                'username': 'user',
+                'image': 'image'
+            };
+
+            let response = {
+                'username': 'user',
+                'image': 'image'
+            }
+
+            let profileId = "profileId123"
+            let authtoken = 'authtoken123';
+            let url = CONSTANTS.kinveyAppDataUrl + CONSTANTS.kinveyUsersProfileCollection + '/' + profileId;
+
+            requesterPostStub.returns(Promise.resolve(response));
+            data.addUserProfileImage(user, profileId, authtoken)
+                .then(() => {
+                    expect(requesterPostStub).to.have.been.calledWith(url);
+                })
+                .then(done, done);
+        })
+
+        it('(24) expect addUserProfileImage to call post function from requester with correct user data(image)', (done) => {
+
+            requesterPostStub.returns(Promise.resolve());
+            let user = {
+                'username': 'user',
+                'image': 'image'
+            };
+
+            let response = {
+                'username': 'user',
+                'image': 'image'
+            }
+
+            let profileId = "profileId123"
+            let authtoken = 'authtoken123';
+            let url = CONSTANTS.kinveyAppDataUrl + CONSTANTS.kinveyUsersProfileCollection + '/' + profileId;
+
+            requesterPostStub.returns(Promise.resolve(response));
+            data.addUserProfileImage(user, profileId, authtoken)
+                .then(() => {
+                    let responseUsername = JSON.parse(requesterPostStub.args[0][1]).image;
+                    expect(responseUsername).to.equal(user.image);
+                })
+                .then(done, done);
+        })
+    })
 });
-
-
-
-
-
-// vehicle controller 
-describe('Vehicle controller tests', () => {
-    describe('Data register new user', () => {
-
-    });
-});
-
 
 
 mocha.run();
