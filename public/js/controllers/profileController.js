@@ -23,10 +23,12 @@ export function loadUserProfileForm(context) {
             let phoneNumber = userData._phoneNumber;
             let country = userData._country;
             let town = userData._town;
-
+            let profileId = userData._id;
+            sessionStorage.setItem('profileId', profileId);  
+            console.log(profileId)     
+            console.log(userData)
             let user = createUser(firstName, lastName, username, email, phoneNumber, country, town);
             user.image = userData._image;  
-
             context.$element().html(template({ user }));
             let input = $('#file');
             input.on('change', function () {
@@ -37,7 +39,7 @@ export function loadUserProfileForm(context) {
                     addProfileImage(user)
                         .then(response => {
                             toastr.success("Successfully added new profile image");
-                            getProfileById(userId, authtoken)
+                            getUserProfileById(userId, authtoken)
                                 .then(response => {
                                     let imgContainer = $('#imgContainer');
                                     imgContainer.empty();
@@ -58,6 +60,7 @@ export function loadUserProfileForm(context) {
 }
 
 export function loadUserProfile(context) {
+    $('#viewSearch').hide();
     $('#search-form').hide();
     let userId = context.params['id'];  //take from url
     let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
@@ -98,8 +101,6 @@ export function loadUserAds(context) {
     $('#search-form').hide();
     let userId = context.params['id'];  //take from url
     let authtoken = sessionStorage.getItem('authtoken') || guestUserAuthToken;
-    
-   	$('#search-form').hide();
 	let vehicleType = ['cars', 'motorcycles', 'trucks', 'campers'];
 	Promise.all([getMyAds(userId, vehicleType[0], authtoken), getMyAds(userId, vehicleType[1], authtoken), getMyAds(userId, vehicleType[2], authtoken), getMyAds(userId, vehicleType[3], authtoken),loadTemplate('myAds'), loadTemplate('comment')])
 		.then(([cars, motorcycles, trucks, campers, template, commentTemplate]) => {
@@ -150,16 +151,6 @@ export function loadUserAds(context) {
             //dismiss modal
             dismissModal(context);            
 		});    
-}
-
-function getProfileById(userId, authtoken) {
-    return getUserProfileById(userId, authtoken)
-        .then(response => {
-            let profileId = response[0]._id;       
-            sessionStorage.setItem('profileId', profileId);            
-        }, error => {
-            toastr.error("Cannot load profile");
-        });
 }
 
 function showImage(input) {
