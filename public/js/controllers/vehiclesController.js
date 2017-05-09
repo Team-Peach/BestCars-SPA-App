@@ -1,6 +1,6 @@
 /*globals $ */
 
-import { getCars as getCars } from 'data';
+import { getVehicles as getVehicles } from 'data';
 import { postCar as postCar } from 'data';
 import { guestUserAuthToken } from 'constants';
 import { load as loadTemplate } from 'templates';
@@ -12,7 +12,7 @@ import { dismissModal } from 'dismissModal';
 export function vehiclesController(context) {
 	let vehicleType = window.location.hash.split('#/')[1];
 	$('#search-form').show();
-	Promise.all([getCars(vehicleType), loadTemplate('ads'), loadTemplate('comment')])
+	Promise.all([getVehicles(vehicleType), loadTemplate('ads'), loadTemplate('comment')])
 		.then(([carsDatabaseAJAXResponse, template, commentTemplate]) => {
 			$('#viewSearch').show();
 			let allCars = {

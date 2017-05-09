@@ -1,7 +1,6 @@
 /*globals $, Sammy*/
 
 import 'logout';
-import 'factory';
 import 'loadNavigationButtons';
 import 'toastr-config';
 import { homeController } from 'homeController';

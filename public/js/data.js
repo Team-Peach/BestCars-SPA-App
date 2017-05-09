@@ -2,10 +2,12 @@ import * as CONSTANTS from 'constants';
 import * as requester from 'requester';
 import User from 'user';
 
+//TODO
 export function getHome() {
         return requester.get('/home');
 }
 
+//TODO
 export function getUsers() {
         return requester.get('/users');
 }
@@ -24,6 +26,7 @@ export function adForHome(params) {
         return requester.get(kinveyAppDataUrl, kinveyAuthHeaders);
 }
 
+//TODO
 export function editAd(params, vehicleId, body) {
         let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + vehicleId;
         let bodyAjax = body;
@@ -37,7 +40,7 @@ export function deleteVehicle(params, vehicleId) {
         return requester.del(kinveyAppDataUrl, getKinveyUserAuthHeaders());
 }
 
-export function getCars(params) {
+export function getVehicles(params) {
         let kinveyAppDataUrl = CONSTANTS.kinveyAppDataUrl + '/' + params + '/' + '?query={}&sort={"_kmd": -1}';
         let guestUserAuthToken = CONSTANTS.guestUserAuthToken;
         const kinveyAuthHeaders = { 'Authorization': "Kinvey " + guestUserAuthToken };

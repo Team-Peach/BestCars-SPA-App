@@ -15,7 +15,6 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 	});
 
 	$('#sortByPrice-High').click(function (event) {
-		// event.preventDefault();
 		let HighCars = {
 			cars: carsDatabaseAJAXResponse
 		};
@@ -27,7 +26,6 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 
 	/* filter by year */
 	$('#sortByYear-Low').click(function (event) {
-		// event.preventDefault();
 		let LowCars = {
 			cars: carsDatabaseAJAXResponse
 		};
@@ -38,7 +36,6 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 	});
 
 	$('#sortByYear-High').click(function (event) {
-		// event.preventDefault();
 		let HighCars = {
 			cars: carsDatabaseAJAXResponse
 		};
@@ -49,7 +46,6 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 	});
 
 	$('#sortByDate-Old').click(function (event) {
-		// event.preventDefault();
 		let LowCars = {
 			cars: carsDatabaseAJAXResponse
 		};
@@ -60,7 +56,6 @@ export function attachFilterAds(carsDatabaseAJAXResponse, context, template) {
 	});
 
 	$('#sortByDate-New').click(function (event) {
-		// event.preventDefault();
 		let HighCars = {
 			cars: carsDatabaseAJAXResponse
 		};

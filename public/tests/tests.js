@@ -32,11 +32,28 @@ describe('Data Tests', () => {
 
         it('expect register User to call post function from requester once', (done) => {
             requesterPostStub.returns(Promise.resolve());
-            let userStub = sinon.stub(User, 'constructor');
+            let userStub = sinon.createStubInstance(User);
+            console.log(userStub)
+            
+            userStub.callsFake(() => {
+                return {
+                    "firstName": "first",
+                    "lastName" : "last",
+                    "username" : "stub",
+                    "email" : "stub@gmail.com",
+                    "phoneNumber" : "0888888888",
+                    "country" : "Bulgaria",
+                    "town" : "Sofia",
+                    "image" : ''
+                }
+            });
+
+            console.log(userStub)
+            //userStub.with//sinon.stub(User, 'constructor');
             let password = '123456';
             data.registerUser(userStub, password)
             .then(() => {
-                expect(requesterPostStub).to.have.been.called.once;
+                 expect(requesterPostStub).to.have.been.called.once;
             })
             .then(done, done);
         })
