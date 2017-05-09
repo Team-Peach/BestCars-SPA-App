@@ -1,7 +1,8 @@
-/* globals mocha, chai, describe, it  */
+/* globals beforeEach, afterEach, sinon, mocha, chai, describe, it  */
 import * as requester from 'requester';
 import * as data from 'data';
 import { User } from 'user';
+import * as CONSTANTS from 'constants';
 
 mocha.setup('bdd');
 let expect = chai.expect;
@@ -22,48 +23,72 @@ afterEach(clearSessionStorage);
 //data tests
 describe('Data Tests', () => {
     describe('Data register new user', () => {
+        let sandbox;
         let requesterPostStub;
         beforeEach(() => {
+            sandbox = sinon.sandbox.create();
             requesterPostStub = sinon.stub(requester, 'post');
         });
         afterEach(() => {
+            sandbox.restore();
             requesterPostStub.restore();
         });
 
-        it('expect register User to call post function from requester once', (done) => {
+        // with instance of new User
+        it('(1) expect register User to call post function from requester once', (done) => {
             requesterPostStub.returns(Promise.resolve());
             let userStub = sinon.createStubInstance(User);
-            console.log(userStub)
-            
-            userStub.callsFake(() => {
-                return {
-                    "firstName": "first",
-                    "lastName" : "last",
-                    "username" : "stub",
-                    "email" : "stub@gmail.com",
-                    "phoneNumber" : "0888888888",
-                    "country" : "Bulgaria",
-                    "town" : "Sofia",
-                    "image" : ''
-                }
-            });
-
-            console.log(userStub)
-            //userStub.with//sinon.stub(User, 'constructor');
             let password = '123456';
             data.registerUser(userStub, password)
-            .then(() => {
-                 expect(requesterPostStub).to.have.been.called.once;
-            })
-            .then(done, done);
+                .then(() => {
+                    expect(requesterPostStub).to.have.been.called.once;
+                })
+                .then(done, done);
         })
-    })
-    /*
-    it('Test 1 - adForHome function should be invoke once with valid parameters', () => {
-        let vehicleType = 'cars';
 
-    });
-    */
+        it('(.....) expect register User to call post function from requester once', (done) => {
+
+            requesterPostStub.returns(Promise.resolve());
+            let url = CONSTANTS.kinveyRegisterUserUrl;
+            let userStub = sinon.createStubInstance(User);
+            let password = '123456';
+            data.registerUser(userStub, password)
+                .then(() => {
+                    expect(requesterPostStub).to.have.been.calledWith(url);
+                })
+                .then(done, done);
+        })
+
+
+
+
+
+
+
+
+
+
+
+        // with  object user with property username
+        it('(3) expect register User to make a POST request to kinvey url', (done) => {
+
+
+            requesterPostStub.returns(Promise.resolve());
+
+
+            let user = {
+                "username": "user"
+            }
+
+            let password = '123456';
+            data.registerUser(user, password)
+                .then(() => {
+                    expect(requesterPostStub).to.have.been.called.once;
+                })
+                .then(done, done);
+        })
+    })  
+
 });
 
 
