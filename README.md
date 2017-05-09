@@ -1,39 +1,5 @@
-# Tasks
-  - DONE ProfileController - routes - '#/profile', 'myAd'(move from vehicleController)-
-  - DONE 'user/profile/:id'(TODO)
-  - DONE AboutController - routes - "aboutUs"(move from userController)
-  - DONE ContactUs - routes - "contact us" (move from contactU)
-  - DONE HomeController - refactoring
-  - DONE UserController - move logout 
-  - data - userData, vehicleData, homeData.....
-
- --------------------------------------------------------------------------------------------------------------------- 
-  - unit testing
-	- DONE! - use KendoUI or jQueryUI
-	- DONE! - Make the application responsive - bootstrap
-	- DONE! - third-part API - Facebook
-	- work in all browsers - chrome, mozilla, edge, opera, safari, internet explorer 10/11
-	- DONE! - semantic HTML tags
-
-	- DONE! - buttons hiding (login, logout, profile,  ... ) 
-	- DONE! - len user is logged show buttons - logout, new ad, profile
-	- DONE! - showing user profile and all ads when clicked on button profile - added button my ads
-	- DONE! - adding new ad when user is logged
-
-	- DONE! - template for ad preview
-	- DONE! - template for ad content 
-
-	- home page
-	- DONE! - about page
-	- DONE contacts page
-
-	- DONE! - implementation for search cars page - truck, motor, camper
-	- footer
-	- DONE! - ads comments
-	- integration tests
-	- minify source code
-	- work in browser internet explorer 6, 7, 8
-
+# About the Project
+This is SPA App builded for "Telerik academy" course **JavaScript Applications**. Our App named BestCars (http://bestcars.herokuapp.com/) is a business app for selling and buying new vehicles (cars, motorcycles, trucks, campers). For selling your vehicle you have to register first and create a new ad. For buying a new vehicle you have to just see existing ads in our app and contact whit the owner.      
 
 # JavaScript Applications: Teamwork Assignment
 
